@@ -13,6 +13,7 @@
 		39586F6B2612AAF10011AC62 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F642612AAF10011AC62 /* Heap.swift */; };
 		39586F6C2612AAF10011AC62 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F662612AAF10011AC62 /* Array.swift */; };
 		39586F7A2612B3BA0011AC62 /* Heap Solutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F792612B3BA0011AC62 /* Heap Solutions.swift */; };
+		39586F7E2612E2C50011AC62 /* Uncategorised.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F7D2612E2C50011AC62 /* Uncategorised.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,7 @@
 		39586F752612AB5F0011AC62 /* Matrix.notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = Matrix.notes; sourceTree = "<group>"; };
 		39586F762612AB5F0011AC62 /* P-NP.notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "P-NP.notes"; sourceTree = "<group>"; };
 		39586F792612B3BA0011AC62 /* Heap Solutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Heap Solutions.swift"; sourceTree = "<group>"; };
+		39586F7D2612E2C50011AC62 /* Uncategorised.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uncategorised.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				39586F792612B3BA0011AC62 /* Heap Solutions.swift */,
+				39586F7D2612E2C50011AC62 /* Uncategorised.swift */,
 			);
 			path = Solutions;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39586F6A2612AAF10011AC62 /* String.swift in Sources */,
+				39586F7E2612E2C50011AC62 /* Uncategorised.swift in Sources */,
 				39586F6C2612AAF10011AC62 /* Array.swift in Sources */,
 				39586F692612AAF10011AC62 /* Matrix.swift in Sources */,
 				39586F7A2612B3BA0011AC62 /* Heap Solutions.swift in Sources */,
