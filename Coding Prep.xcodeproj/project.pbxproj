@@ -12,6 +12,7 @@
 		39586F6A2612AAF10011AC62 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F632612AAF10011AC62 /* String.swift */; };
 		39586F6B2612AAF10011AC62 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F642612AAF10011AC62 /* Heap.swift */; };
 		39586F6C2612AAF10011AC62 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F662612AAF10011AC62 /* Array.swift */; };
+		39586F7A2612B3BA0011AC62 /* Heap Solutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F792612B3BA0011AC62 /* Heap Solutions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,7 @@
 		39586F742612AB5F0011AC62 /* CountingSort */ = {isa = PBXFileReference; lastKnownFileType = text; path = CountingSort; sourceTree = "<group>"; };
 		39586F752612AB5F0011AC62 /* Matrix.notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = Matrix.notes; sourceTree = "<group>"; };
 		39586F762612AB5F0011AC62 /* P-NP.notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "P-NP.notes"; sourceTree = "<group>"; };
+		39586F792612B3BA0011AC62 /* Heap Solutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Heap Solutions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				39586F612612AAF10011AC62 /* DS */,
 				39586F652612AAF10011AC62 /* Algorithms */,
 				39586F712612AB5F0011AC62 /* Notes */,
+				39586F782612B3A50011AC62 /* Solutions */,
 			);
 			path = "Coding Prep";
 			sourceTree = "<group>";
@@ -106,6 +109,14 @@
 				39586F762612AB5F0011AC62 /* P-NP.notes */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		39586F782612B3A50011AC62 /* Solutions */ = {
+			isa = PBXGroup;
+			children = (
+				39586F792612B3BA0011AC62 /* Heap Solutions.swift */,
+			);
+			path = Solutions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 				39586F6A2612AAF10011AC62 /* String.swift in Sources */,
 				39586F6C2612AAF10011AC62 /* Array.swift in Sources */,
 				39586F692612AAF10011AC62 /* Matrix.swift in Sources */,
+				39586F7A2612B3BA0011AC62 /* Heap Solutions.swift in Sources */,
 				39586F592612AAA90011AC62 /* main.swift in Sources */,
 				39586F6B2612AAF10011AC62 /* Heap.swift in Sources */,
 			);
