@@ -25,3 +25,20 @@ func mergeIntervals(_ intervals: [[Int]]) -> [[Int]] {
 
     return result
 }
+
+//q253.Meeting Rooms II
+func minHallsRequired(_ lectures: [[Int]]) -> Int {
+    var prefixSum: [Int] = Array(repeating: 0, count: 50)
+    for interval in lectures {
+        prefixSum[interval[0]] += 1
+        prefixSum[interval[1] + 1] -= 1
+    }
+
+    var ans = prefixSum[0]
+    for i in 1..<prefixSum.count {
+        prefixSum[i] += prefixSum[i - 1];
+        ans = max(ans, prefixSum[i]);
+    }
+
+    return ans
+}
