@@ -14,8 +14,11 @@ public class Heap<T: Comparable> {
 
     public init(_ array: [T], order: Order = .max) {
         self.order = order
-        let length = array.count
         storage = array
+        guard !array.isEmpty else {
+            return
+        }
+        let length = array.count
 		let lastParentIndex = parentIndex(of: length-1)
         for i in (0...lastParentIndex).reversed() {
             heapify(on: i)
