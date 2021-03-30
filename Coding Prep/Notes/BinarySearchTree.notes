@@ -1,0 +1,36 @@
+
+Binary Search Tree
+
+    - Allow binary search as well as fast insertion into the data structure.
+    - Implemented as a tree with pointers to left, right child and to parent.
+    - Invariant: left <= parent && right >= parent
+
+    Properties:
+
+        - Augmentation: Size of sub-tree rooted at a node
+        - Height of node: Length of longest path from node to a leaf. Leaf height is 0
+        - Depth of node: Length of path from root to the node. Root depth is 0
+
+    Operations:
+
+        - insert/delete
+        - find min: Keep going left. O(h)
+        - find max: Keep going right. O(h)
+        - successor/predecessor: O(h)
+
+AVL Trees:
+
+    - Balanced trees, have height(r) & height(l) differ by atmost 1.
+    - This is alternative way of saying height of tree is log(n)
+
+    Operations:
+
+        - Rotate: Right, Left (https://iq.opengenus.org/content/images/2019/02/Tree_rotation.png)
+        - Insert:
+            * Insert just like in a BST
+            * Fix AVL property if broken from changed node up using rotations
+
+    Fix height violations:
+        
+        - If X's right child is right heavy or balanced: Right rotate on X (RrX)
+        - If X's right child is left heavy: RrX.r -> LrX 

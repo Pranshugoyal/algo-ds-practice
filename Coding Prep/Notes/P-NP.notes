@@ -1,0 +1,13 @@
+P vs NP-Hard & NP-Coplete
+
+P is a set of problems with known polynomial solutions
+NP is a set of problems with known exponential solutions and non-deterministic polynomial solutions
+
+CNF Satisfiability is a known NP-Hard and NP-Complete problem, i.e. it has a known non-deterministic polynomial solution
+If any hard problem which only has an exponential solution can be reduced to CNF Satisfiability it's called NP-Hard problem
+If that problem also has a known non-deterministic polynomial solution it can be called NP-Complete problem.
+
+
+
+Links:
+https://www.youtube.com/watch?v=e2cF8a5aAhE

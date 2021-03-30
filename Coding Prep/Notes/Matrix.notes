@@ -1,0 +1,5 @@
+
+1: ImageRotation
+    - Initiate another matrix and copy rows into columns of new matrix. Simple but takes O(n) space.
+    - Transpose matrix & swap columns until N/2 where N is number of columns
+    - Move layer wise from outside to inside rotating each layer by doing 4 way swap starting from corners

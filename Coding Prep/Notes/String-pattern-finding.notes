@@ -1,0 +1,17 @@
+Pattern Matching
+
+1: Rabin-Karp Algorithm
+https://www.youtube.com/watch?v=qQ8vS2btsxI
+    - Uses a hash function to match substrings
+    - Uses a rolling method to avoid calculating complete hash everytime
+    - If hash matches then compare the substring
+    - Using a good hashing public function Spurious matches can be avoided
+    - One suggested hash public function is to take size of character set and use it as a base to calculate hash
+    - If numbers get too big a mod can be taken
+
+2: Knuth-Morris-Pratt (KMP) Algorithm
+https://www.youtube.com/watch?v=V5-7GzOfADQD
+    - Avoid repeated backtracking on main string
+    - Uses a pi(LPS) table on pattern to avoid backtracking
+
+3: Boyer-Moore Algorithm
