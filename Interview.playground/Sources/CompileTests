@@ -1,0 +1,65 @@
+
+func addNumbers() {
+    let op1: Int = 1
+    let op2: UInt = 2
+    let op3: Double = 3.14
+	var result = op1 + op2 + op3
+}
+
+func adds(to i: Int?) -> Int {
+    var j = 0
+    guard let i2 = i else {
+        j = 1
+    }
+
+    j = i2 + 5
+    return j
+}
+
+struct IntStack {
+    var items = [Int]()
+
+    func add(x: Int) {
+        items.append(x)
+    }
+}
+
+func performAndNotify(completion: ((Bool) -> Void)?) {
+    DispatchQueue.main.async {
+        completion?(true)
+    }
+}
+
+class Guard {
+
+    let i: Int
+
+    init(with index: Int) {
+        i = index
+    }
+
+    func guardTest() -> Int {
+        guard i > 6 else {
+            fatalError()
+        }
+
+        return i - 6
+    }
+}
+
+extension UIView {
+    func makeBlack() {
+        backgroundColor = .black
+    }
+}
+
+func testButton() {
+    let button = UIButton()
+    button.makeBlack()
+}
+
+func testMap() {
+    let string: String? = "2"
+    let i = string.map(Int.init)
+    print(i)
+}
