@@ -14,6 +14,8 @@
 		39586F6C2612AAF10011AC62 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F662612AAF10011AC62 /* Array.swift */; };
 		39586F7A2612B3BA0011AC62 /* Heap Solutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F792612B3BA0011AC62 /* Heap Solutions.swift */; };
 		39586F7E2612E2C50011AC62 /* Uncategorised.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39586F7D2612E2C50011AC62 /* Uncategorised.swift */; };
+		39CB89662639FF5F00E47213 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB89652639FF5F00E47213 /* Stack.swift */; };
+		39CB8969263A011D00E47213 /* StackStandardProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB8968263A011D00E47213 /* StackStandardProblems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		393106D2263BC4F000209518 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		39586F552612AAA90011AC62 /* Coding Prep */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Coding Prep"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39586F582612AAA90011AC62 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		39586F622612AAF10011AC62 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
@@ -42,6 +45,8 @@
 		39586F762612AB5F0011AC62 /* P-NP.notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "P-NP.notes"; sourceTree = "<group>"; };
 		39586F792612B3BA0011AC62 /* Heap Solutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Heap Solutions.swift"; sourceTree = "<group>"; };
 		39586F7D2612E2C50011AC62 /* Uncategorised.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uncategorised.swift; sourceTree = "<group>"; };
+		39CB89652639FF5F00E47213 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		39CB8968263A011D00E47213 /* StackStandardProblems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackStandardProblems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +84,7 @@
 				39586F652612AAF10011AC62 /* Algorithms */,
 				39586F712612AB5F0011AC62 /* Notes */,
 				39586F782612B3A50011AC62 /* Solutions */,
+				393106D2263BC4F000209518 /* .gitignore */,
 			);
 			path = "Coding Prep";
 			sourceTree = "<group>";
@@ -89,6 +95,7 @@
 				39586F622612AAF10011AC62 /* Matrix.swift */,
 				39586F632612AAF10011AC62 /* String.swift */,
 				39586F642612AAF10011AC62 /* Heap.swift */,
+				39CB89652639FF5F00E47213 /* Stack.swift */,
 			);
 			path = DS;
 			sourceTree = "<group>";
@@ -97,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				39586F662612AAF10011AC62 /* Array.swift */,
+				39CB8968263A011D00E47213 /* StackStandardProblems.swift */,
 			);
 			path = Algorithms;
 			sourceTree = "<group>";
@@ -183,6 +191,8 @@
 				39586F7E2612E2C50011AC62 /* Uncategorised.swift in Sources */,
 				39586F6C2612AAF10011AC62 /* Array.swift in Sources */,
 				39586F692612AAF10011AC62 /* Matrix.swift in Sources */,
+				39CB89662639FF5F00E47213 /* Stack.swift in Sources */,
+				39CB8969263A011D00E47213 /* StackStandardProblems.swift in Sources */,
 				39586F7A2612B3BA0011AC62 /* Heap Solutions.swift in Sources */,
 				39586F592612AAA90011AC62 /* main.swift in Sources */,
 				39586F6B2612AAF10011AC62 /* Heap.swift in Sources */,
