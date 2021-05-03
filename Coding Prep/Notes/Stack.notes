@@ -1,0 +1,20 @@
+
+- Look at 2 loops with j dependent on i
+
+Class of problems:
+
+Nearest greater/smaller to right/left
+
+	* The big idea is that elements popped from the stack are sure to be never used again.
+	* Refer: https://www.youtube.com/playlist?list=PL_z_8CaSLPWdeOezg68SKkeLN4-T_jNHd
+
+	Algorithm:
+	- Start travelling from right for right and left for left and build a stack
+	- At every element pop the stack until an element with matching condition is found 
+	- This element is the answer for ith cell
+	- Push ith cell on the stack
+
+	Problems based on this idea:
+	- Stock span problem
+	- Maximum area of histogram
+	- Max Area Rectangle in binary matrix

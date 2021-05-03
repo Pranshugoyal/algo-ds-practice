@@ -1,0 +1,13 @@
+Algorithms
+- Radix Sort
+- Binary/AVL Tree
+- Open Addressing
+
+Data Structures
+- Unrolled Linked Lists
+- Skip Lists
+
+Problems:
+- K stacks in Array
+	https://www.youtube.com/watch?v=DxW7VAsdX0o
+	https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
