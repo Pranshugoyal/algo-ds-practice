@@ -181,4 +181,3 @@ def rainWaterTappingDP(list):
 	
 	return waterTapped
 
-print()
