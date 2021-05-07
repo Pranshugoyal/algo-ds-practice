@@ -134,7 +134,6 @@ def longestSubstringWithAllUniqueCharacters(S):
 	while j < len(S):
 		map[S[j]] = map.get(S[j], 0) + 1
 		k = j - i + 1
-		print(S[i:j+1], i, j)
 		if len(map) == k:
 			if k > result[2]:
 				result = (i,j,k)
@@ -171,7 +170,6 @@ def pickToys(S, k):
 	return S[result[0]:result[1]+1]
 
 def minWindowSubstring(S, t):
-	#print(S)
 	targetMap = {}
 	map = {}
 	mapCount = 0
@@ -184,7 +182,6 @@ def minWindowSubstring(S, t):
 	j = 0
 	def updateResult(r):
 		k = j - i + 1
-		#print(i,j,k)
 		if k < r[2]:
 			r = (i,j,k)
 		return r
@@ -196,7 +193,6 @@ def minWindowSubstring(S, t):
 		else:
 			j += 1
 			continue
-		#print(i,j,j-i+1,mapCount,map, S[i:j+1])
 
 		if mapCount >= len(t):
 			if map[S[j]] == targetMap[S[j]]:
@@ -215,22 +211,19 @@ def minWindowSubstring(S, t):
 
 		j += 1
 	
-	#print(i,j,j-i+1,mapCount,map)
 	return S[result[0]:result[1]+1]
 
 def minWindowSubstring2(S, t):
 	map = {}
 	uCharCount = 0
-	result = (0,0,len(S))
+	result = (0,0,len(S)+1)
 	for c in t:
 		map[c] = map.get(c,0) + 1
 	uCharCount = len(map)
 
-	i = 0
-	j = 0
+	i, j = 0, 0
 	def updateResult(r):
 		k = j - i + 1
-		#print(i,j,k)
 		if k < r[2]:
 			r = (i,j,k)
 		return r
@@ -256,4 +249,4 @@ def minWindowSubstring2(S, t):
 	return S[result[0]:result[1]+1]
 
 if __name__ == "__main__":
-	
+	print(minWindowSubstring2("aab", "aab"))
