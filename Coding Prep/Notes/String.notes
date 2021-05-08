@@ -15,3 +15,10 @@ https://www.youtube.com/watch?v=V5-7GzOfADQD
     - Uses a pi(LPS) table on pattern to avoid backtracking
 
 3: Boyer-Moore Algorithm
+
+
+SubString: Contingous part of a string
+SubSequence: Multiple contingous parts of a string joined in order
+SubSet: All possible permutations & combinations of a string
+
+SubSet --> SubSequence --> SubSet
