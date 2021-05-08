@@ -11,8 +11,11 @@ Problems:
 - K stacks in Array
 	https://www.youtube.com/watch?v=DxW7VAsdX0o
 	https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
+- Leetcode 109: Convert Sorted List to Binary Search Tree
 - Use Binary Search to find array rotation with duplicate elements
 	* Leetcode 154: Find Minimum in Rotated Sorted Array II
 - Sliding Window maximum
 	* LeetCode 239: Sliding Window Maximum in O(n)
 	* Efficient methods for all standard problems O(n)
+	* Leetcode 1074: Number of Submatrices That Sum to Target
+	* Leetcode 995: Minimum Number of K Consecutive Bit Flips (Greedy)
