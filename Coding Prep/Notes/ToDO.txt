@@ -2,6 +2,7 @@ Algorithms
 - Radix Sort
 - Binary/AVL Tree
 - Open Addressing
+- Greedy Algorithms
 
 Data Structures
 - Unrolled Linked Lists

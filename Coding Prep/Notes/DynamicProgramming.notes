@@ -1,0 +1,52 @@
+
+- Its a child of recursion
+- Added step is memoisation
+
+Identification:
+	- Some kind of optimisation
+	- Some kind of choice making
+
+Types of problems:
+	1: 0/1 Knapsack
+	2: Unbounded knapsack
+	3: Fibonacci
+	4: Longest common subsequence
+	5: LIS
+	6: Kadane's Algorithm
+	7: Matrix Chain Multiplication
+	8: DP on Trees
+	9: DP on Grid
+	10: Others
+
+1: Knapsack Problem:
+	- 0/1 Knapsack
+	- Unbounded Knapsack
+	- Fractional Knapsack
+
+0/1 Knapsack Problem:
+	- These problems can be done using recursion with elegance. The solution becomes self explanatory, small and simple.
+	- The problem with recursive solution is both time and space complexity. There might be subproblems which the solution may have to solve multiple times. And there's space on the stack.
+	- Avoiding work on repeated subproblems can be achieved through memoisation, but to avoid the space on stack an iterative version is needed.
+	- For the iterative version we build a 2D array containing the complete solution space, and we build it from the beginning to end.
+	- Some variations of the basic knapsack problem can be solved by going over on this solution space without adding time complexity. (Min subset difference)
+
+Unbounded Knapsack Problem:
+	- Main difference here is that there is no limit on how many times you can include any chosen item in the knapsack.
+	- The approach and code is completely similar for both recursive and iterative solutions.
+	- Single difference being that if an item is selected the pool of selection does not shrink whereas the target(weight) to be optimised.
+
+2: Longest Common Subsequence
+	- Longest Common Substring
+	- Print LCS
+	- Shortest Common Supersequence
+	- Print SCS
+	- Min number of insertions and deletions for a --> b
+	- Largest Repeating Subsequence
+	- Length of largest subsequence of which a substring is b
+	- Subsequence Pattern Matching
+	- Count how many times a appears as subsequence in b
+	- Longest Palindromic Subsequence
+	- Longest Palindromic Substring
+	- Count of Palindromic Substring
+	- Min number of deletions in a string to make it a palindrome
+	- Min number of insertions in a string to make it a palindrome
