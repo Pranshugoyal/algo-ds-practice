@@ -44,7 +44,7 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/Projects/Coding\ Prep
+cd ~/Projects/CodingPrep
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -74,9 +74,9 @@ set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 40 + 119) / 238)
 exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
-exe '3resize ' . ((&lines * 33 + 35) / 70)
+exe '3resize ' . ((&lines * 24 + 35) / 70)
 exe 'vert 3resize ' . ((&columns * 77 + 119) / 238)
-exe '4resize ' . ((&lines * 34 + 35) / 70)
+exe '4resize ' . ((&lines * 43 + 35) / 70)
 exe 'vert 4resize ' . ((&columns * 77 + 119) / 238)
 argglobal
 let s:cpo_save=&cpo
@@ -89,17 +89,17 @@ nmap <buffer> <nowait> <silent> % <Plug>NetrwOpenFile
 nmap <buffer> <nowait> <silent> - <Plug>NetrwBrowseUpDir
 nmap <buffer> <nowait> <silent> C <Plug>NetrwSetChgwin
 nmap <buffer> <nowait> <silent> a <Plug>NetrwHide_a
-nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
-nmap <buffer> <nowait> <silent> cB <Plug>NetrwBadd_cB
 nmap <buffer> <nowait> <silent> cb <Plug>NetrwBadd_cb
+nmap <buffer> <nowait> <silent> cB <Plug>NetrwBadd_cB
+nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
 nmap <buffer> <nowait> <silent> gb <Plug>NetrwBookHistHandler_gb
-nnoremap <buffer> <F1> :he netrw-quickhelp
-nmap <buffer> <nowait> <silent> <S-CR> <Plug>NetrwTreeSqueeze
-nnoremap <buffer> <silent> <S-Up> :Pexplore
-nnoremap <buffer> <silent> <S-Down> :Nexplore
-nmap <buffer> <C-H> <Plug>NetrwHideEdit
-nmap <buffer> <nowait> <silent> <C-R> <Plug>NetrwServerEdit
 nmap <buffer> <nowait> <silent> <C-L> <Plug>NetrwRefresh
+nmap <buffer> <nowait> <silent> <C-R> <Plug>NetrwServerEdit
+nmap <buffer> <C-H> <Plug>NetrwHideEdit
+nnoremap <buffer> <silent> <S-Down> :Nexplore
+nnoremap <buffer> <silent> <S-Up> :Pexplore
+nmap <buffer> <nowait> <silent> <S-CR> <Plug>NetrwTreeSqueeze
+nnoremap <buffer> <F1> :he netrw-quickhelp
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal noautoindent
@@ -217,16 +217,16 @@ setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 31 - ((30 * winheight(0) + 34) / 68)
+let s:l = 27 - ((26 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-31
+27
 normal! 0
-lcd ~/Projects/Coding\ Prep
+lcd ~/Projects/CodingPrep
 wincmd w
 argglobal
-if bufexists("~/Projects/Coding\ Prep/Python/main.py") | buffer ~/Projects/Coding\ Prep/Python/main.py | else | edit ~/Projects/Coding\ Prep/Python/main.py | endif
+if bufexists("~/Projects/CodingPrep/Python/DPStandardProblems.py") | buffer ~/Projects/CodingPrep/Python/DPStandardProblems.py | else | edit ~/Projects/CodingPrep/Python/DPStandardProblems.py | endif
 setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
@@ -342,142 +342,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+let s:l = 134 - ((8 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+134
 normal! 0
-lcd ~/Projects/Coding\ Prep
 wincmd w
 argglobal
-if bufexists("~/Projects/Coding\ Prep/Coding\ Prep/Notes/ToDO.txt") | buffer ~/Projects/Coding\ Prep/Coding\ Prep/Notes/ToDO.txt | else | edit ~/Projects/Coding\ Prep/Coding\ Prep/Notes/ToDO.txt | endif
-setlocal noautoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'text'
-setlocal filetype=text
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-set linebreak
-setlocal linebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-set relativenumber
-setlocal relativenumber
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != ''
-setlocal syntax=
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 17 - ((15 * winheight(0) + 16) / 33)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-17
-normal! 024|
-lcd ~/Projects/Coding\ Prep
-wincmd w
-argglobal
-if bufexists("~/Projects/Coding\ Prep/Coding\ Prep/Notes/Stack.notes") | buffer ~/Projects/Coding\ Prep/Coding\ Prep/Notes/Stack.notes | else | edit ~/Projects/Coding\ Prep/Coding\ Prep/Notes/Stack.notes | endif
+if bufexists("~/Projects/CodingPrep/Coding\ Prep/Notes/ToDO.txt") | buffer ~/Projects/CodingPrep/Coding\ Prep/Notes/ToDO.txt | else | edit ~/Projects/CodingPrep/Coding\ Prep/Notes/ToDO.txt | endif
 setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
@@ -594,28 +467,162 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 7 - ((6 * winheight(0) + 17) / 34)
+let s:l = 5 - ((4 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-7
-normal! 0
-lcd ~/Projects/Coding\ Prep
+5
+normal! 03|
+wincmd w
+argglobal
+if bufexists("~/Projects/CodingPrep/Coding\ Prep/Notes/DynamicProgramming.notes") | buffer ~/Projects/CodingPrep/Coding\ Prep/Notes/DynamicProgramming.notes | else | edit ~/Projects/CodingPrep/Coding\ Prep/Notes/DynamicProgramming.notes | endif
+setlocal noautoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != ''
+setlocal filetype=
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+set linebreak
+setlocal linebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+set relativenumber
+setlocal relativenumber
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal smartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != ''
+setlocal syntax=
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 24 - ((23 * winheight(0) + 21) / 43)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+24
+normal! 0141|
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 40 + 119) / 238)
 exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
-exe '3resize ' . ((&lines * 33 + 35) / 70)
+exe '3resize ' . ((&lines * 24 + 35) / 70)
 exe 'vert 3resize ' . ((&columns * 77 + 119) / 238)
-exe '4resize ' . ((&lines * 34 + 35) / 70)
+exe '4resize ' . ((&lines * 43 + 35) / 70)
 exe 'vert 4resize ' . ((&columns * 77 + 119) / 238)
 tabnext 1
-badd +247 ~/Projects/Coding\ Prep/Python/SlidingWindowProblems.py
-badd +13 ~/Projects/Coding\ Prep/Coding\ Prep/Notes/ToDO.txt
-badd +1 ~/Projects/Coding\ Prep/Coding\ Prep/Notes/Stack.notes
-badd +74 ~/Projects/Coding\ Prep/Python/RecursionStandardProblems.py
+badd +1 ~/Projects/Coding\ Prep
+badd +1 ~/Projects/CodingPrep/Python/main.py
+badd +1 ~/Projects/CodingPrep/Coding\ Prep/Notes/ToDO.txt
+badd +7 ~/Projects/CodingPrep/Coding\ Prep/Notes/DynamicProgramming.notes
 badd +1 ~/Projects/Coding\ Prep/Python/main.py
+badd +1 ~/Projects/Coding\ Prep/Coding\ Prep/Notes/ToDO.txt
+badd +1 ~/Projects/Coding\ Prep/Coding\ Prep/Notes/Stack.notes
+badd +247 ~/Projects/Coding\ Prep/Python/SlidingWindowProblems.py
+badd +74 ~/Projects/Coding\ Prep/Python/RecursionStandardProblems.py
 badd +3 ~/Projects/Coding\ Prep/.gitignore
+badd +1 ~/Projects/CodingPrep/Coding\ Prep/Notes/Stack.notes
+badd +4 ~/Projects/CodingPrep/Coding\ Prep/Notes/Recursion.notes
+badd +14 ~/Projects/CodingPrep/Coding\ Prep/Notes/zettelkasten
+badd +1 ~/Projects/CodingPrep
+badd +61 ~/Projects/CodingPrep/Python/DPStandardProblems.py
+badd +4 ~/Projects/CodingPrep/Python/SlidingWindowProblems.py
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
