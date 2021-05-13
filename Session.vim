@@ -89,17 +89,17 @@ nmap <buffer> <nowait> <silent> % <Plug>NetrwOpenFile
 nmap <buffer> <nowait> <silent> - <Plug>NetrwBrowseUpDir
 nmap <buffer> <nowait> <silent> C <Plug>NetrwSetChgwin
 nmap <buffer> <nowait> <silent> a <Plug>NetrwHide_a
-nmap <buffer> <nowait> <silent> cb <Plug>NetrwBadd_cb
-nmap <buffer> <nowait> <silent> cB <Plug>NetrwBadd_cB
 nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
+nmap <buffer> <nowait> <silent> cB <Plug>NetrwBadd_cB
+nmap <buffer> <nowait> <silent> cb <Plug>NetrwBadd_cb
 nmap <buffer> <nowait> <silent> gb <Plug>NetrwBookHistHandler_gb
-nmap <buffer> <nowait> <silent> <C-L> <Plug>NetrwRefresh
-nmap <buffer> <nowait> <silent> <C-R> <Plug>NetrwServerEdit
-nmap <buffer> <C-H> <Plug>NetrwHideEdit
-nnoremap <buffer> <silent> <S-Down> :Nexplore
-nnoremap <buffer> <silent> <S-Up> :Pexplore
-nmap <buffer> <nowait> <silent> <S-CR> <Plug>NetrwTreeSqueeze
 nnoremap <buffer> <F1> :he netrw-quickhelp
+nmap <buffer> <nowait> <silent> <S-CR> <Plug>NetrwTreeSqueeze
+nnoremap <buffer> <silent> <S-Up> :Pexplore
+nnoremap <buffer> <silent> <S-Down> :Nexplore
+nmap <buffer> <C-H> <Plug>NetrwHideEdit
+nmap <buffer> <nowait> <silent> <C-R> <Plug>NetrwServerEdit
+nmap <buffer> <nowait> <silent> <C-L> <Plug>NetrwRefresh
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal noautoindent
@@ -217,12 +217,12 @@ setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 27 - ((26 * winheight(0) + 34) / 68)
+let s:l = 26 - ((25 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-27
-normal! 0
+26
+normal! 03|
 lcd ~/Projects/CodingPrep
 wincmd w
 argglobal
@@ -342,11 +342,16 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 134 - ((8 * winheight(0) + 34) / 68)
+6,125fold
+131,171fold
+177,251fold
+257,277fold
+283,324fold
+let s:l = 332 - ((331 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-134
+332
 normal! 0
 wincmd w
 argglobal
@@ -429,7 +434,7 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 set relativenumber
-setlocal relativenumber
+setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -554,7 +559,7 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 set relativenumber
-setlocal relativenumber
+setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -592,12 +597,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 24 - ((23 * winheight(0) + 21) / 43)
+let s:l = 42 - ((4 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-24
-normal! 0141|
+42
+normal! 05|
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 40 + 119) / 238)
@@ -608,9 +613,10 @@ exe '4resize ' . ((&lines * 43 + 35) / 70)
 exe 'vert 4resize ' . ((&columns * 77 + 119) / 238)
 tabnext 1
 badd +1 ~/Projects/Coding\ Prep
-badd +1 ~/Projects/CodingPrep/Python/main.py
+badd +0 ~/Projects/CodingPrep/Python/DPStandardProblems.py
 badd +1 ~/Projects/CodingPrep/Coding\ Prep/Notes/ToDO.txt
 badd +7 ~/Projects/CodingPrep/Coding\ Prep/Notes/DynamicProgramming.notes
+badd +1 ~/Projects/CodingPrep/Python/main.py
 badd +1 ~/Projects/Coding\ Prep/Python/main.py
 badd +1 ~/Projects/Coding\ Prep/Coding\ Prep/Notes/ToDO.txt
 badd +1 ~/Projects/Coding\ Prep/Coding\ Prep/Notes/Stack.notes
@@ -620,8 +626,6 @@ badd +3 ~/Projects/Coding\ Prep/.gitignore
 badd +1 ~/Projects/CodingPrep/Coding\ Prep/Notes/Stack.notes
 badd +4 ~/Projects/CodingPrep/Coding\ Prep/Notes/Recursion.notes
 badd +14 ~/Projects/CodingPrep/Coding\ Prep/Notes/zettelkasten
-badd +1 ~/Projects/CodingPrep
-badd +61 ~/Projects/CodingPrep/Python/DPStandardProblems.py
 badd +4 ~/Projects/CodingPrep/Python/SlidingWindowProblems.py
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
