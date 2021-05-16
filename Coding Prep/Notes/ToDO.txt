@@ -1,22 +1,37 @@
+
 Algorithms
 - Radix Sort
 - Binary/AVL Tree
 - Open Addressing
 - Greedy Algorithms
+- BFS in use cases outside of tree structures
 
 Data Structures
 - Unrolled Linked Lists
 - Skip Lists
 
+Python:
+- How to use heap with pairs
+
+Resources:
+- Picassos_Shoes (Leetcode user, with visualisations on answers)
+
 Problems:
 - K stacks in Array
 	https://www.youtube.com/watch?v=DxW7VAsdX0o
 	https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
-- Leetcode 109: Convert Sorted List to Binary Search Tree
-- Use Binary Search to find array rotation with duplicate elements
-	* Leetcode 154: Find Minimum in Rotated Sorted Array II
+
 - Sliding Window maximum
 	* LeetCode 239: Sliding Window Maximum in O(n)
 	* Efficient methods for all standard problems O(n)
 	* Leetcode 1074: Number of Submatrices That Sum to Target
 	* Leetcode 995: Minimum Number of K Consecutive Bit Flips (Greedy)
+
+- Dynamic Programming:
+	* Evaluate Expression To True Boolean Parenthesization Memoized (https://www.youtube.com/watch?v=bzXM1Zond9U&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=39&t=151s)
+
+- Leetcode 109: Convert Sorted List to Binary Search Tre7e
+- Leetcode 407: Trapping Rain Water II (https://leetcode.com/problems/trapping-rain-water-ii/discuss/1138028/Python3Visualization-BFS-Solution-With-Explanation)
+- Edit Distance. Convert string A to B using min inserts, deletes and replace
+- Use Binary Search to find array rotation with duplicate elements
+	* Leetcode 154: Find Minimum in Rotated Sorted Array II

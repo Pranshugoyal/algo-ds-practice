@@ -19,6 +19,7 @@ Types of problems:
 	10: Others
 
 1: Knapsack Problem:
+These problems can usually be identified by presence of two(sometimes one) arrays with some given capacity, and choices have to be made from the array until we reach capacity.
 	- 0/1 Knapsack
 	- Unbounded Knapsack
 	- Fractional Knapsack
@@ -36,17 +37,30 @@ Unbounded Knapsack Problem:
 	- Single difference being that if an item is selected the pool of selection does not shrink whereas the target(weight) to be optimised.
 
 2: Longest Common Subsequence
+
+Identify by observing some kind of optimisation using 2 strings.
+Variants:
+	- Print Longest Common Subsequence
 	- Longest Common Substring
-	- Print LCS
 	- Shortest Common Supersequence
-	- Print SCS
+	- Print Shortest Common Supersequence
 	- Min number of insertions and deletions for a --> b
+	- Longest Palindromic Subsequence
 	- Largest Repeating Subsequence
 	- Length of largest subsequence of which a substring is b
 	- Subsequence Pattern Matching
 	- Count how many times a appears as subsequence in b
-	- Longest Palindromic Subsequence
 	- Longest Palindromic Substring
 	- Count of Palindromic Substring
 	- Min number of deletions in a string to make it a palindrome
 	- Min number of insertions in a string to make it a palindrome
+
+3: Matrix Chain Multiplication (MCM)
+
+	- Matrix Chain Multiplication
+	- Print Matrix Chain Multiplication
+	- Evaluate expression to true/Boolean parenthesisation
+	- Min/Max value of expression
+	- Palindrome Partitioning
+	- Scramble String
+	- Egg dropping problem
