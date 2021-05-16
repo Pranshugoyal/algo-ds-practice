@@ -17,9 +17,7 @@ def maxSubarraySum(list, k):
 			maxSum = max(maxSum, lastSum)
 			lastSum -= list[i]
 			i += 1
-			j += 1
-		else:
-			j += 1
+		j += 1
 
 	return maxSum
 
@@ -248,5 +246,3 @@ def minWindowSubstring2(S, t):
 		j += 1
 	return S[result[0]:result[1]+1]
 
-if __name__ == "__main__":
-	print(minWindowSubstring2("aab", "aab"))
