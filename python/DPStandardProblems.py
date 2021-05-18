@@ -391,7 +391,7 @@ def scrambledStringMatching(s1, s2):
 	if len(s1) != len(s2):
 		return False
 	elif s1 == s2:
-		return s1 == s2
+		return True
 	
 	for k in range(1,len(s1)):
 		print("Pairs:", s1[:k], s2[-k:], "and:", s1[k:], s2[:-k])
@@ -403,4 +403,37 @@ def scrambledStringMatching(s1, s2):
 			return True
 
 	return False
+
+def eggDropMinCount(e,f) -> int:
+	import sys
+	import math
+	map = {}
+
+	def eggDroppingMinTrials(e,f) -> int:
+		if e == 0:
+			return sys.maxsize
+		elif e == 1 or f < 2:
+			return f
+
+		if (e,f) in map:
+			return map[(e,f)]
+
+		if e == 2:
+			trials = math.ceil((math.sqrt(1+8*f) - 1)/2)
+			map[(e,f)] = trials
+			return trials
+		
+		minTrials = sys.maxsize
+		minData = 0
+		for k in range(1,f+1):
+			trials = 1 + max(eggDroppingMinTrials(e-1, k-1), eggDroppingMinTrials(e, f-k))
+			if trials < minTrials:
+				minData = k
+			minTrials = min(trials, minTrials)
+		
+		print("Floors:", f, "eggs:", e, "trials:", minTrials, "K:", minData, sep="\t")
+		map[(e,f)] = minTrials
+		return minTrials
+	
+	return eggDroppingMinTrials(e,f)
 
