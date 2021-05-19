@@ -5,10 +5,13 @@ Algorithms
 - Open Addressing
 - Greedy Algorithms
 - BFS in use cases outside of tree structures
+- Quick Select, to find Kth/K largest/smallest element/s
+- Median of medians
 
 Data Structures
 - Unrolled Linked Lists
 - Skip Lists
+- Disjoint Set Data Structures
 
 Python:
 - How to use heap with pairs
@@ -33,5 +36,6 @@ Problems:
 - Leetcode 109: Convert Sorted List to Binary Search Tre7e
 - Leetcode 407: Trapping Rain Water II (https://leetcode.com/problems/trapping-rain-water-ii/discuss/1138028/Python3Visualization-BFS-Solution-With-Explanation)
 - Edit Distance. Convert string A to B using min inserts, deletes and replace
+- Median of two sorted arrays/kth position after merging of two sorted arrays(https://www.geeksforgeeks.org/k-th-element-two-sorted-arrays/) (http://www.algorithmsandme.com/find-kth-smallest-element-in-two-sorted-arrays/)
 - Use Binary Search to find array rotation with duplicate elements
 	* Leetcode 154: Find Minimum in Rotated Sorted Array II

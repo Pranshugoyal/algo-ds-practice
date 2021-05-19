@@ -69,5 +69,9 @@ Variants:
 
 	- Diameter of Binary Tree
 	- Max path sum from any node to any other node
-	- Min path sum from any node to any other node
+	- Min path sum from leaf node to leaf node
 	- Diameter of n-Ary Tree
+
+	Practice:
+		- https://leetcode.com/problems/binary-tree-maximum-path-sum/
+		- https://leetcode.com/problems/path-sum-iii/ (https://leetcode.com/problems/path-sum-iii/discuss/779227/Python-dfs-%2B-hash-table-using-cumulative-sums-explained)
