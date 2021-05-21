@@ -1,7 +1,7 @@
 
 Algorithms
 - Radix Sort
-- Binary/AVL Tree
+- Binary/AVL/Red-Black/Binary-Indexed/Segment Tree
 - Open Addressing
 - Greedy Algorithms
 - BFS in use cases outside of tree structures
@@ -18,6 +18,7 @@ Python:
 
 Resources:
 - Picassos_Shoes (Leetcode user, with visualisations on answers)
+- https://www.geeksforgeeks.org/count-inversions-array-set-3-using-bit/
 
 Problems:
 - K stacks in Array
@@ -33,9 +34,21 @@ Problems:
 - Dynamic Programming:
 	* Evaluate Expression To True Boolean Parenthesization Memoized (https://www.youtube.com/watch?v=bzXM1Zond9U&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=39&t=151s)
 
+- Stock Buy and sell. Find days of buying and selling. (https://practice.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1)
+
+- Largest Number formed from an Array (https://practice.geeksforgeeks.org/problems/largest-number-formed-from-an-array1117/1#)
+
 - Leetcode 109: Convert Sorted List to Binary Search Tre7e
+
 - Leetcode 407: Trapping Rain Water II (https://leetcode.com/problems/trapping-rain-water-ii/discuss/1138028/Python3Visualization-BFS-Solution-With-Explanation)
+
 - Edit Distance. Convert string A to B using min inserts, deletes and replace
+
+- Leetcode 632: Smallest Range Covering Elements from K Lists
+
 - Median of two sorted arrays/kth position after merging of two sorted arrays(https://www.geeksforgeeks.org/k-th-element-two-sorted-arrays/) (http://www.algorithmsandme.com/find-kth-smallest-element-in-two-sorted-arrays/)
+
+- Chocolate Distribution Problem (https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1#)
+
 - Use Binary Search to find array rotation with duplicate elements
 	* Leetcode 154: Find Minimum in Rotated Sorted Array II

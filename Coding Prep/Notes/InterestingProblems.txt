@@ -1,0 +1,8 @@
+
+1: Merge two sorted arrays without extra space, A(n) & B(m), i.e place first n elements of merged array in A and next m in B.
+
+Approach:
+- Find the element which is going to be at position n in the merged array of size n+m. (We can do this in logn as there are methods to find element at Kth position after merging two sorted array).
+- Then using partioning procedure of Quick Sort use this as a pivot and partition both arrays around it. (This needs to be done smartly, as this procedure assumes a continous space, but we need to use indirect methods to make this happen.)
+- After this we have all elements in A which should be in A and elements in B which shiuld be in B.
+- Sort the arrays indivially in place
