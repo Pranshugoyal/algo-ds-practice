@@ -55,7 +55,10 @@ Variants:
 	- Min number of deletions in a string to make it a palindrome
 	- Min number of insertions in a string to make it a palindrome
 
-3: Matrix Chain Multiplication (MCM)
+3: Kadane's Algorithm
+	- Another approach to same problem: https://practice.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1
+
+4: Matrix Chain Multiplication (MCM)
 
 	- Matrix Chain Multiplication
 	- Print Matrix Chain Multiplication
@@ -65,7 +68,7 @@ Variants:
 	- Scramble String
 	- Egg dropping problem
 
-4: Dynamic Programming on Trees
+5: Dynamic Programming on Trees
 
 	- Diameter of Binary Tree
 	- Max path sum from any node to any other node
