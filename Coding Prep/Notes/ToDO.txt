@@ -7,6 +7,7 @@ Algorithms
 - BFS in use cases outside of tree structures
 - Quick Select, to find Kth/K largest/smallest element/s
 - Median of medians
+- Huffman Codes
 
 Data Structures
 - Unrolled Linked Lists
@@ -49,6 +50,10 @@ Problems:
 - Median of two sorted arrays/kth position after merging of two sorted arrays(https://www.geeksforgeeks.org/k-th-element-two-sorted-arrays/) (http://www.algorithmsandme.com/find-kth-smallest-element-in-two-sorted-arrays/)
 
 - Chocolate Distribution Problem (https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1#)
+
+- Longest palindromic substring
+- Recursively remove all adjacent duplicates(GfG)
+- Roman Number to Integer
 
 - Use Binary Search to find array rotation with duplicate elements
 	* Leetcode 154: Find Minimum in Rotated Sorted Array II
