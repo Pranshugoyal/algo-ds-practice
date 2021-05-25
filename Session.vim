@@ -30,6 +30,7 @@ set modelines=0
 set mouse=i
 set path=.,/usr/include,,,Coding\\\ Prep/**,Coding\\\ Prep/,Python/**
 set report=10000
+set ruler
 set scrolloff=4
 set secure
 set shiftwidth=4
@@ -61,10 +62,6 @@ vsplit
 2wincmd h
 wincmd w
 wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
@@ -73,11 +70,8 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 40 + 119) / 238)
-exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
-exe '3resize ' . ((&lines * 24 + 35) / 70)
-exe 'vert 3resize ' . ((&columns * 77 + 119) / 238)
-exe '4resize ' . ((&lines * 43 + 35) / 70)
-exe 'vert 4resize ' . ((&columns * 77 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 113 + 119) / 238)
+exe 'vert 3resize ' . ((&columns * 83 + 119) / 238)
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
@@ -217,16 +211,16 @@ setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 26 - ((25 * winheight(0) + 34) / 68)
+let s:l = 28 - ((27 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-26
+28
 normal! 03|
 lcd ~/Projects/CodingPrep
 wincmd w
 argglobal
-if bufexists("~/Projects/CodingPrep/Python/DPStandardProblems.py") | buffer ~/Projects/CodingPrep/Python/DPStandardProblems.py | else | edit ~/Projects/CodingPrep/Python/DPStandardProblems.py | endif
+if bufexists("~/Projects/CodingPrep/Python/main.py") | buffer ~/Projects/CodingPrep/Python/main.py | else | edit ~/Projects/CodingPrep/Python/main.py | endif
 setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
@@ -342,16 +336,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-6,125fold
-131,171fold
-177,251fold
-257,277fold
-283,324fold
-let s:l = 332 - ((331 * winheight(0) + 34) / 68)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-332
+1
 normal! 0
 wincmd w
 argglobal
@@ -472,161 +461,21 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5 - ((4 * winheight(0) + 12) / 24)
+let s:l = 26 - ((25 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
-normal! 03|
-wincmd w
-argglobal
-if bufexists("~/Projects/CodingPrep/Coding\ Prep/Notes/DynamicProgramming.notes") | buffer ~/Projects/CodingPrep/Coding\ Prep/Notes/DynamicProgramming.notes | else | edit ~/Projects/CodingPrep/Coding\ Prep/Notes/DynamicProgramming.notes | endif
-setlocal noautoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != ''
-setlocal filetype=
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-set linebreak
-setlocal linebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-set relativenumber
-setlocal norelativenumber
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != ''
-setlocal syntax=
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 42 - ((4 * winheight(0) + 21) / 43)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-42
-normal! 05|
+26
+normal! 0
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 40 + 119) / 238)
-exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
-exe '3resize ' . ((&lines * 24 + 35) / 70)
-exe 'vert 3resize ' . ((&columns * 77 + 119) / 238)
-exe '4resize ' . ((&lines * 43 + 35) / 70)
-exe 'vert 4resize ' . ((&columns * 77 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 113 + 119) / 238)
+exe 'vert 3resize ' . ((&columns * 83 + 119) / 238)
 tabnext 1
 badd +1 ~/Projects/Coding\ Prep
-badd +0 ~/Projects/CodingPrep/Python/DPStandardProblems.py
+badd +0 ~/Projects/CodingPrep/Python/main.py
 badd +1 ~/Projects/CodingPrep/Coding\ Prep/Notes/ToDO.txt
-badd +7 ~/Projects/CodingPrep/Coding\ Prep/Notes/DynamicProgramming.notes
-badd +1 ~/Projects/CodingPrep/Python/main.py
-badd +1 ~/Projects/Coding\ Prep/Python/main.py
-badd +1 ~/Projects/Coding\ Prep/Coding\ Prep/Notes/ToDO.txt
-badd +1 ~/Projects/Coding\ Prep/Coding\ Prep/Notes/Stack.notes
-badd +247 ~/Projects/Coding\ Prep/Python/SlidingWindowProblems.py
-badd +74 ~/Projects/Coding\ Prep/Python/RecursionStandardProblems.py
-badd +3 ~/Projects/Coding\ Prep/.gitignore
-badd +1 ~/Projects/CodingPrep/Coding\ Prep/Notes/Stack.notes
-badd +4 ~/Projects/CodingPrep/Coding\ Prep/Notes/Recursion.notes
-badd +14 ~/Projects/CodingPrep/Coding\ Prep/Notes/zettelkasten
-badd +4 ~/Projects/CodingPrep/Python/SlidingWindowProblems.py
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
