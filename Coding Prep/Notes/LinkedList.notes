@@ -17,6 +17,11 @@ Get Kth Node:
 Merging Sorted lists:
 	- Can it be done by creating a new list?
 
+Loop Detection:
+	- There is an edge case when last node connects with first node
+	- In this case the hare and tortoise will always meet at first node and start travelling together is case not handled
+	- Check for condition in first loop if tortoise.next == head. If true break the cycle here and exit from loop 
+
 - List can also be manipulated by modifying data in it instead of always adding deleting nodes.
 See this example: Delete without head pointer https://practice.geeksforgeeks.org/problems/delete-without-head-pointer/1
 Here a node is deleted by copying data of all further nodes into previous node.

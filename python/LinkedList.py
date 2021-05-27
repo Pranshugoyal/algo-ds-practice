@@ -1,8 +1,17 @@
 
 class Node:
-    def __init__(data):
+    def __init__(self, data):
         self.data = data
         self.next = None
+	
+def createList(arr) -> Node:
+	head = Node(arr[0])
+	current = head
+	for n in arr[1:]:
+		current.next = Node(n)
+		current = current.next
+	
+	return (head, current)
 
 def findMid(head):
     # Code here
@@ -244,3 +253,35 @@ def segregate(head):
 			current.data = i
 			current = current.next
 	return head
+
+def removeLoop(head):
+	tortoise = head
+	hare = head
+
+	while hare and hare.next:
+		#print("In loop:", tortoise.data, hare.data)
+		tortoise = tortoise.next
+		hare = hare.next.next
+
+		if tortoise.next is head:
+			#print("In loop:", tortoise.data, hare.data)
+			#print("Full loop found:", tortoise.data, "-->", tortoise.next.data)
+			tortoise.next = None
+			return
+
+		if tortoise is hare:
+			#print("loop found:", tortoise.data, hare.data)
+			break
+	
+	if hare is None or hare.next is None:
+		#print("loop not found:", tortoise.data, hare.data)
+		return
+	
+	hare = head
+	while tortoise.next is not hare.next and hare is not tortoise:
+		#print("In second loop", tortoise.data, hare.data)
+		tortoise = tortoise.next
+		hare = hare.next
+	
+	#print("Link:", tortoise.data, "-->", tortoise.next.data)
+	tortoise.next = None
