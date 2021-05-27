@@ -8,6 +8,8 @@ Algorithms
 - Quick Select, to find Kth/K largest/smallest element/s
 - Median of medians
 - Huffman Codes
+- Floyd Cycle Detection Algorithm
+- Palindrome checking Algorithms
 
 Data Structures
 - Unrolled Linked Lists
@@ -34,12 +36,15 @@ Problems:
 
 - Dynamic Programming:
 	* Evaluate Expression To True Boolean Parenthesization Memoized (https://www.youtube.com/watch?v=bzXM1Zond9U&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=39&t=151s)
+	* Count numbers containing 4 (https://practice.geeksforgeeks.org/problems/count-numbers-containing-43022/1/)
 
 - Stock Buy and sell. Find days of buying and selling. (https://practice.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1)
 
 - Largest Number formed from an Array (https://practice.geeksforgeeks.org/problems/largest-number-formed-from-an-array1117/1#)
 
 - Leetcode 109: Convert Sorted List to Binary Search Tre7e
+
+- Leetcode 287: Find the Duplicate Number
 
 - Leetcode 407: Trapping Rain Water II (https://leetcode.com/problems/trapping-rain-water-ii/discuss/1138028/Python3Visualization-BFS-Solution-With-Explanation)
 
@@ -48,6 +53,7 @@ Problems:
 - Leetcode 632: Smallest Range Covering Elements from K Lists
 
 - Median of two sorted arrays/kth position after merging of two sorted arrays(https://www.geeksforgeeks.org/k-th-element-two-sorted-arrays/) (http://www.algorithmsandme.com/find-kth-smallest-element-in-two-sorted-arrays/)
+- Sort an array by first moving elements around mid, make sure all elements in left half are smaller than all elements in right half, then sort recursively
 
 - Chocolate Distribution Problem (https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1#)
 

@@ -1,0 +1,22 @@
+
+Linked List:
+
+Basic Operations:
+
+Reversing a list:
+	- Use three pointers last, current and next and loop on current
+
+Get middle node:
+	- Use slow and fast pointer approach.
+	- Practice this to get correct code every time	
+
+Get Kth Node:
+	- Decide on indexing, 1 based or 0 based
+	- Decide if Nil should be returned if length < K
+
+Merging Sorted lists:
+	- Can it be done by creating a new list?
+
+- List can also be manipulated by modifying data in it instead of always adding deleting nodes.
+See this example: Delete without head pointer https://practice.geeksforgeeks.org/problems/delete-without-head-pointer/1
+Here a node is deleted by copying data of all further nodes into previous node.
