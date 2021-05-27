@@ -285,3 +285,30 @@ def createLargestNumber(arr):
 	arr.sort(key=functools.cmp_to_key(greater), reverse=True)
 	return "".join(arr)
 
+# https://practice.geeksforgeeks.org/problems/equivalent-sub-arrays3731/1/
+def equivalentSubArrays(arr):
+	map = {}
+	for n in arr:
+		map[n] = map.get(n, 0) + 1
+	
+	TOTAL = len(map)
+	map = {}
+	count = 0
+	i, j = 0,0
+	while j < len(arr):
+		map[arr[j]] = map.get(arr[j], 0) + 1
+
+		if len(map) < TOTAL:
+			j += 1
+		else:
+			while len(map) >= TOTAL and i <= j:
+				if len(map) == TOTAL:
+					count += len(arr) - j
+
+				map[arr[i]] -= 1
+				if map[arr[i]] == 0:
+					map.pop(arr[i])
+				i += 1
+			j +=1
+	return count
+
