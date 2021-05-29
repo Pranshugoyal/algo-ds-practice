@@ -1,5 +1,10 @@
 #
-# Stack.py
+# Stack & Queue.py
+
+################################################################################
+# ----------- Standard Stack problems from Aditya Verma Playlist ------------- #
+################################################################################
+
 # https://www.youtube.com/watch?v=J2X70jj_I1o&list=PL_z_8CaSLPWdeOezg68SKkeLN4-T_jNHd
 
 #Nearest greater to left
@@ -181,3 +186,242 @@ def rainWaterTappingDP(list):
 	
 	return waterTapped
 
+################################################################################
+# ---------------- Must do list Stack & Queue GeeksForGeeks ------------------ #
+################################################################################
+
+from collections import deque
+
+class Node:
+
+	def __init__(self,data):
+		self.data = data
+		self.next = None
+		self.previous = None
+
+def nextLargerElement(arr,n):
+	stack = []
+	result = []
+	
+	for i in reversed(arr):
+		print("Loop start:", i, stack)
+		while len(stack) != 0 and stack[-1] <= i:
+			stack.pop()
+		
+		print("Stack set:", i, stack)
+		if len(stack) == 0:
+			result.append(-1)
+		else:
+			result.append(stack[-1])
+		
+		stack.append(i)
+		print("Loop exit:", i, stack)
+		
+	result.reverse()
+	return result
+
+class MinStack:
+	def __init__(self):
+		self.s=[]
+		self.min = None
+
+	def push(self,x):
+		if len(self.s) == 0:
+			self.s.append(x)
+			self.min = x
+			return
+
+		if x < self.min:
+			t = 2*x - self.min
+			self.min = x
+			self.s.append(t)
+		else:
+			self.s.append(x)
+
+	def pop(self):
+		if len(self.s) == 0:
+			return -1
+		elif len(self.s) == 1:
+			self.min = None
+			return self.s.pop()
+
+		t = self.s.pop()
+		if t < self.min:
+			x = self.min
+			self.min = 2*x - t
+			return x
+		else:
+			return t
+        
+	def getMin(self):
+		return self.min if self.min else -1
+
+class LRUCache:
+      
+    #Constructor for initializing the cache capacity with the given value.  
+	def __init__(self,cap):
+		self.capacity = cap
+		self.cache = {}
+		self.head = None
+		self.tail = None
+        
+    #Function to return value corresponding to the key.
+	def get(self, key):
+		if key not in self.cache:
+			return -1
+        
+		self.moveKeyToTop(key)
+		return self.cache[key][0]
+        
+    #Function for storing key-value pair.   
+	def set(self, key, value):
+		if key in self.cache:
+			node = self.cache[key][1]
+			self.cache[key] = (value, node)
+			self.moveKeyToTop(key)
+		else:
+			self.addKeyToCache(key, value)
+    
+	def moveKeyToTop(self, key):
+		node = self.cache[key][1]
+		if node is self.tail:
+			return
+
+		p = node.previous
+		n = node.next
+		n.previous = p
+		if p:
+			p.next = n
+		else:
+			self.head = n
+
+		self.tail.next = node
+		node.previous = self.tail
+		node.next = None
+		self.tail = node
+	
+	def addKeyToCache(self, key, value):
+		if len(self.cache) == self.capacity:
+			lruKey = self.head.data
+			self.cache.pop(lruKey)
+			if self.head.next:
+				self.head = self.head.next
+				self.head.previous = None
+			else:
+				self.head = None
+				self.tail = None
+
+		self.cache[key] = (value, self.addNodeForKey(key))
+	
+	def addNodeForKey(self, key):
+		node = Node(key)
+		if self.tail is None:
+			self.head = node
+			self.tail = node
+		else:
+			self.tail.next = node
+			node.previous = self.tail
+			self.tail = node
+		return node
+
+def max_of_subarrays(arr,n,k):
+	result = []
+	q = deque()
+	i,j = 0,0
+	while j < n:
+		while len(q) > 0 and q[0] < arr[j]:
+			q.popleft()
+		if len(q) > 0:
+			while q[-1] < arr[j]:
+				q.pop()
+		q.append(arr[j])
+
+		if j - i + 1 == k:
+			result.append(q[0])
+			if q[0] == arr[i]:
+				q.popleft()
+			i += 1
+		j += 1
+
+	return result
+
+#https://practice.geeksforgeeks.org/problems/rotten-oranges2536/1
+def orangesRotting(grid):
+	def isValid(r,c) -> bool:
+		nonlocal grid
+		return r >=0 and r < len(grid) and c >= 0 and c < len(grid[0])
+
+	def rotNeighbours(r,c):
+		nonlocal grid
+		neighbours = [(0,1),(0,-1),(1,0),(-1,0)]
+		nextRotten = []
+		for d in neighbours:
+			cell = (r+d[0], c+d[1])
+			if isValid(cell[0], cell[1]) and grid[cell[0]][cell[1]] == 1:
+				grid[cell[0]][cell[1]] = 2 
+				nextRotten.append(cell)
+		return nextRotten
+
+	q = deque()
+	for r in range(len(grid)):
+		for c in range(len(grid[0])):
+			if grid[r][c] == 2:
+				q.append((r,c))
+
+	days = 0
+	while len(q) > 0:
+		q.append(None)
+		while q[0] is not None:
+			rottenIndex = q.popleft()
+			rn = rotNeighbours(rottenIndex[0], rottenIndex[1])
+			for n in rn:
+				q.append(n)
+		q.popleft()
+		if len(q) > 0:
+			days += 1
+	
+	for r in range(len(grid)):
+		for c in range(len(grid[0])):
+			if grid[r][c] == 1:
+				days = -1
+	
+	return days
+
+def tour(lis, n):
+	remainingGas = 0
+	i,j,len = 0,0,0
+	while len < n and i < n:
+		len += 1
+		remainingGas += lis[j][0] - lis[j][1]
+		#print("End updated:", i,j,len,remainingGas)
+
+		while remainingGas < 0 and i < n and len > 0:
+			remainingGas -= lis[i][0] - lis[i][1]
+			i += 1
+			len -= 1
+			#print("Start updated:", i,j,len,remainingGas)
+
+		j = (j+1)%n
+	
+	#print("Loop over", i,j,len,remainingGas)
+	if len == n and remainingGas >= 0:
+		return i
+	else:
+		return -1
+
+def firstNonRepeating(A):
+	countMap = {}
+	q = deque()
+	result = ""
+
+	for c in A:
+		if c in countMap:
+			countMap[c] += 1
+			while len(q) > 0 and countMap[q[0]] > 1:
+				q.popleft()
+		else:
+			countMap[c] = 1
+			q.append(c)
+
+		result += q[0] if len(q) > 0 else "#"
+	return result
