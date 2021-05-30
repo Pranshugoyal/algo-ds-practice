@@ -52,6 +52,8 @@ Problems:
 
 - Leetcode 632: Smallest Range Covering Elements from K Lists
 
+- Leetcode 124: Binary Tree Maximum Path Sum
+
 - Median of two sorted arrays/kth position after merging of two sorted arrays(https://www.geeksforgeeks.org/k-th-element-two-sorted-arrays/) (http://www.algorithmsandme.com/find-kth-smallest-element-in-two-sorted-arrays/)
 - Sort an array by first moving elements around mid, make sure all elements in left half are smaller than all elements in right half, then sort recursively
 
@@ -60,6 +62,7 @@ Problems:
 - Longest palindromic substring
 - Recursively remove all adjacent duplicates(GfG)
 - Roman Number to Integer
+- Different traversals used to serialize a (Binary) Tree
 
 - Use Binary Search to find array rotation with duplicate elements
 	* Leetcode 154: Find Minimum in Rotated Sorted Array II
