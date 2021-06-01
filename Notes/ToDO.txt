@@ -38,6 +38,11 @@ Problems:
 	* Evaluate Expression To True Boolean Parenthesization Memoized (https://www.youtube.com/watch?v=bzXM1Zond9U&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=39&t=151s)
 	* Count numbers containing 4 (https://practice.geeksforgeeks.org/problems/count-numbers-containing-43022/1/)
 
+- Heap:
+	* https://leetcode.com/problems/finding-mk-average/
+		(https://leetcode.com/problems/finding-mk-average/discuss/1154068/Python-4-heaps-one-list-O(n-log-n)-explained)
+	* https://leetcode.com/problems/sliding-window-median/
+
 - Stock Buy and sell. Find days of buying and selling. (https://practice.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1)
 
 - Largest Number formed from an Array (https://practice.geeksforgeeks.org/problems/largest-number-formed-from-an-array1117/1#)
