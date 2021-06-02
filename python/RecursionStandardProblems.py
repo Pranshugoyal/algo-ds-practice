@@ -4,6 +4,10 @@
 # https://www.youtube.com/playlist?list=PL_z_8CaSLPWeT1ffjiImo0sYTcnLzo-wY
 #
 
+################################################################################
+# -------------------- Recursion Problems/Aditya Verma ----------------------- #
+################################################################################
+
 def sortStackUsingRecursion(stack):
 	if len(stack) < 2:
 		return stack
@@ -71,4 +75,121 @@ def josephusProblem(n, k):
 		return josephusProblemR(arr,next,k)
 
 	return josephusProblemR(arr, 0, k-1)	
+
+################################################################################
+# --------------------------- Must Do GeeksForGeeks -------------------------- #
+################################################################################
+
+from collections import deque
+import functools
+
+def floodFill(image, sr, sc, newColor):
+	
+	startColor = image[sr][sc]
+	def shouldPaint(r,c):
+		nonlocal image, startColor, newColor
+
+		if r < 0 or r >= len(image):
+			return False
+
+		if c < 0 or c >= len(image[0]):
+			return False
+
+		color = image[r][c]
+		return color == startColor and color != newColor
+	
+	def getNeighbours(r, c):
+		directions = [(0,1), (1,0), (0,-1), (-1,0)]
+		neighbours = []
+		for d in directions:
+			neighbours.append((r+d[0], c+d[1]))
+		return neighbours
+	
+	# BFS
+	q = deque([(sr, sc)])
+	cell = None
+	while len(q) > 0:
+		cell = q.popleft()
+		if shouldPaint(cell[0], cell[1]):
+			image[cell[0]][cell[1]] = newColor
+			for n in getNeighbours(cell[0], cell[1]):
+				q.append(n)
+	
+	# DFS
+	image[sr][sc] = newColor
+	for n in getValidNeighbours(sr,sc):
+		self.floodFill(image, n[0], n[1], newColor)
+	return image
+
+def combinationSum(A, N, B):
+	if len(A) == 0:
+		return []
+	elif len(A) == 1:
+		return A if A[0] == B else []
+	
+	tail = A[-1]
+	head = A[:-1]
+	solutions = combinationSum(head, N-1, B)
+	if tail == B:
+		solutions.append([tail])
+	elif tail < B:
+		for s in combinationSum(head, N-1, B-tail):
+			solutions.append([tail] + s)
+	
+	unique = []
+	for s in solutions:
+		if s not in unique:
+			unique.append(s)
+	solutions = unique
+
+	for s in solutions:
+		s.sort()
+	solutions.sort()
+	return solutions
+
+def optimalKeys(N):
+	@functools.lru_cache(maxsize=None)
+	def keysUtil(printed, selected, clipboard, keyStrokesLeft) -> int:
+		if keyStrokesLeft == 0:
+			return printed
+
+		typeA = keysUtil(printed+1, 0, clipboard, keyStrokesLeft-1)
+		selectText = keysUtil(printed, printed, clipboard, keyStrokesLeft-1)
+		copyText = keysUtil(printed, 0, selected, keyStrokesLeft-1)
+		pasteClipboard = keysUtil(printed+clipboard, 0, clipboard, keyStrokesLeft-1)
+
+		return max(typeA, pasteClipboard, copyText, selectText)
+
+	@functools.lru_cache(maxsize=None)
+	def keysUtilIter(n):
+		if n <= 6:
+			return n
+		
+		maxA = 0
+		for i in range(n-3, -1, -1):
+			maxA = max(maxA, keysUtilIter(i)*(n-i-1))
+		return maxA
+
+	return keysUtilIter(N)
+
+def josephus(n,k):
+	def nextManStanding(arr, p, k) -> int:
+		count = 1
+		while count < k:
+			if arr[p+1]:
+				count += 1
+			p = (p+1)%len(arr)
+		return p
+
+	arr = [i+1 for i in range(n)]
+	nextMan = 0
+	for kills in range(n-1):
+		kill = nextManStanding(arr,nextMan,k)
+		arr[kill] = None
+		nextMan = kill
+		while not arr[nextMan]:
+			nextMan = (nextMan + 1)%n
+		#print(arr, kill, nextMan)
+
+	return arr[nextMan]
 
