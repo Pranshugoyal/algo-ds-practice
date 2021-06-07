@@ -1,0 +1,6 @@
+
+Set operations:
+	| for union.
+	& for intersection.
+	– for difference
+	^ for symmetric difference
