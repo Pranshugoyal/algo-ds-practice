@@ -1,6 +1,5 @@
 Algorithms
 - Radix Sort
-- Binary/AVL/Red-Black/Binary-Indexed/Segment Tree
 - Open Addressing
 - Greedy Algorithms
 - BFS in use cases outside of tree structures
@@ -9,28 +8,29 @@ Algorithms
 - Huffman Codes
 - Floyd Cycle Detection Algorithm
 - Palindrome checking Algorithms
+- Detect Cycle in a Directed Graph using BFS
 
 Data Structures
 - Unrolled Linked Lists
 - Skip Lists
+- Binary/AVL/Red-Black/Binary-Indexed Tree
+- Interval/Segment Tree
+	- https://leetcode.com/problems/merge-intervals/discuss/21452/Share-my-interval-tree-solution-no-sorting
 - Disjoint Set Data Structures
+	- Union By Rank and Path Compression
 
 Python:
 - How to use heap with pairs
-Set operations:
-	| for union.
-	& for intersection.
-	– for difference
-	^ for symmetric difference
 
 Resources:
 - Picassos_Shoes (Leetcode user, with visualisations on answers)
 - https://www.geeksforgeeks.org/count-inversions-array-set-3-using-bit/
 
 Problems:
-- K stacks in Array
-	https://www.youtube.com/watch?v=DxW7VAsdX0o
-	https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
+- Stack
+	- K stacks in Array
+		https://www.youtube.com/watch?v=DxW7VAsdX0o
+		https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
 
 - Sliding Window maximum
 	* LeetCode 239: Sliding Window Maximum in O(n)
@@ -41,6 +41,8 @@ Problems:
 - Dynamic Programming:
 	* Evaluate Expression To True Boolean Parenthesization Memoized (https://www.youtube.com/watch?v=bzXM1Zond9U&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=39&t=151s)
 	* Count numbers containing 4 (https://practice.geeksforgeeks.org/problems/count-numbers-containing-43022/1/)
+	* Edit Distance. Convert string A to B using min inserts, deletes and replace
+	* Leetcode 124: Binary Tree Maximum Path Sum
 
 - Two Pointer Algorithms
 	* Swapping pairs make sum equal (https://practice.geeksforgeeks.org/problems/swapping-pairs-make-sum-equal/0)
@@ -51,27 +53,45 @@ Problems:
 
 - Heap:
 	* https://leetcode.com/problems/sliding-window-median/
+		Hardle-Steiger Algorithm for moving Median (https://aakinshin.net/posts/partitioning-heaps-quantile-estimator/)
 	* https://leetcode.com/problems/finding-mk-average/
 		Solution: https://leetcode.com/problems/finding-mk-average/discuss/1154068/Python-4-heaps-one-list-O(n-log-n)-explained
 
 - Binary Search
 	* Find array rotation with duplicate elements, Leetcode 154: Find Minimum in Rotated Sorted Array II
+	* Leetcode 109: Convert Sorted List to Binary Search Tree
 
-- Stock Buy and sell. Find days of buying and selling. (https://practice.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1)
+- Greedy:
+	- Swap all occurrences of two characters to get lexicographically smallest string (https://practice.geeksforgeeks.org/problems/choose-and-swap0531/1#)
+	- Minimize the maximum difference between the heights
+		- https://stackoverflow.com/a/65880544/5952189
+		- https://www.geeksforgeeks.org/minimize-the-maximum-difference-between-the-heights/
+	- Minimize the sum of product of two arrays with permutations allowed
+		- https://www.geeksforgeeks.org/minimize-sum-product-two-arrays-permutations-allowed/
+		- https://practice.geeksforgeeks.org/problems/minimize-the-sum-of-product/0
+		- https://stackoverflow.com/a/28334813/5952189
+		- https://www.wikiwand.com/en/Rearrangement_inequality
+	- Geek collects the balls
+		- https://practice.geeksforgeeks.org/problems/geek-collects-the-balls5515/1#
+		- https://hackerranksolutionc.blogspot.com/2019/02/collects-balls-between-two-roads.html
 
-- Largest Number formed from an Array (https://practice.geeksforgeeks.org/problems/largest-number-formed-from-an-array1117/1#)
+- String:
+	- Swap characters in a String (https://www.geeksforgeeks.org/swap-characters-in-a-string/)
 
-- Leetcode 109: Convert Sorted List to Binary Search Tree
+- Array
+	- Largest Number formed from an Array (https://practice.geeksforgeeks.org/problems/largest-number-formed-from-an-array1117/1#)
+	- Stock Buy and sell. Find days of buying and selling. (https://practice.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1)
 
-- Leetcode 287: Find the Duplicate Number
+- Tree
+	- Longest consecutive sequence in Binary tree
+		- https://www.geeksforgeeks.org/longest-consecutive-sequence-binary-tree/
+
+- Swap Sort
+	- Leetcode 287: Find the Duplicate Number
 
 - Leetcode 407: Trapping Rain Water II (https://leetcode.com/problems/trapping-rain-water-ii/discuss/1138028/Python3Visualization-BFS-Solution-With-Explanation)
 
-- Edit Distance. Convert string A to B using min inserts, deletes and replace
-
 - Leetcode 632: Smallest Range Covering Elements from K Lists
-
-- Leetcode 124: Binary Tree Maximum Path Sum
 
 - Leetcode 686: Repeated String Match
 
@@ -81,4 +101,3 @@ Problems:
 - Recursively remove all adjacent duplicates(GfG)
 - Roman Number to Integer
 - Different traversals used to serialize a (Binary) Tree
-
