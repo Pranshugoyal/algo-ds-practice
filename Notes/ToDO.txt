@@ -43,6 +43,15 @@ Problems:
 	* Count numbers containing 4 (https://practice.geeksforgeeks.org/problems/count-numbers-containing-43022/1/)
 	* Edit Distance. Convert string A to B using min inserts, deletes and replace
 	* Leetcode 124: Binary Tree Maximum Path Sum
+	* Egg Dropping Problem
+	* Max length chain (https://practice.geeksforgeeks.org/problems/max-length-chain/1#)
+		- Interesting problem as it can be best solved by greedy but dp solutions are available including one one LCS method
+		- Other interesting solution: https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
+	* Longest increasing subsequence in an Array in NLogN:
+		- https://stackoverflow.com/a/2631810/5952189
+	* Minimum number of jumps 
+		- https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1#
+		- https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
 
 - Two Pointer Algorithms
 	* Swapping pairs make sum equal (https://practice.geeksforgeeks.org/problems/swapping-pairs-make-sum-equal/0)
@@ -63,6 +72,7 @@ Problems:
 
 - Greedy:
 	- Swap all occurrences of two characters to get lexicographically smallest string (https://practice.geeksforgeeks.org/problems/choose-and-swap0531/1#)
+	- How to check if a currency system can give correcy answer using greedy for minimum coins required
 	- Minimize the maximum difference between the heights
 		- https://stackoverflow.com/a/65880544/5952189
 		- https://www.geeksforgeeks.org/minimize-the-maximum-difference-between-the-heights/
@@ -81,6 +91,7 @@ Problems:
 - Array
 	- Largest Number formed from an Array (https://practice.geeksforgeeks.org/problems/largest-number-formed-from-an-array1117/1#)
 	- Stock Buy and sell. Find days of buying and selling. (https://practice.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1)
+	- Min of last n numbers in a stream
 
 - Tree
 	- Longest consecutive sequence in Binary tree

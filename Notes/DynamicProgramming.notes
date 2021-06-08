@@ -6,6 +6,9 @@ Identification:
 	- Some kind of optimisation
 	- Some kind of choice making
 
+Observations:
+- In problems where we want to accumulate to a desired goal, try to reduce the dimensions of the problem. i.e instead of providing all the data to a recursive call to take the operation forward think opposite, and ask the call to bring it to a state so that its trivial to reach the goal from there. i.e Instead of going from beginning to destination we can start moving from the destination to initial position and keep track of the cost of jumps.
+
 Types of problems:
 	1: 0/1 Knapsack
 	2: Unbounded knapsack
