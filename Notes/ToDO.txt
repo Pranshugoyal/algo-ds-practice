@@ -67,6 +67,10 @@ Problems:
 		Solution: https://leetcode.com/problems/finding-mk-average/discuss/1154068/Python-4-heaps-one-list-O(n-log-n)-explained
 
 - Binary Search
+	* K-th Element of Two Sorted Arrays
+		- https://www.geeksforgeeks.org/k-th-element-two-sorted-arrays/
+		- https://www.baeldung.com/java-kth-smallest-element-in-sorted-arrays
+		- http://www.algorithmsandme.com/find-kth-smallest-element-in-two-sorted-arrays/
 	* Find array rotation with duplicate elements, Leetcode 154: Find Minimum in Rotated Sorted Array II
 	* Leetcode 109: Convert Sorted List to Binary Search Tree
 
