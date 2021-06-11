@@ -105,6 +105,9 @@ Problems:
 	- Leetcode 287: Find the Duplicate Number
 
 - Bit Manipulation:
+	- Swap all odd and even bits
+	- Maximum subset XOR
+		- https://practice.geeksforgeeks.org/problems/maximum-subset-xor/1
 	- Find the element that appears once
 		- https://www.geeksforgeeks.org/find-the-element-that-appears-once/
 
