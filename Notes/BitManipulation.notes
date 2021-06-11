@@ -1,0 +1,27 @@
+
+Kth Bit:
+Get: x & (1<<k) != 0
+Set: x |= (1 << k)
+Unset: x &= ~(1 << k)
+Toggle: x ^= (1 << k)
+
+Rightmost set Bit:
+Get: x & -x
+Unset: x &= ~(x&-x)
+
+Rightmost unset Bit:
+Get: ~n & (n+1)
+Set: n |= ~n & (n+1)
+
+Check if number is power of 2:
+x == x&-x
+x & x-1 == 0
+
+Two's complement of x, i.e. -x = ~(x-1) = ~x+1
+Unset lowest set bit: x & (x-1)
+
+
+
+Source:
+	- https://www.geeksforgeeks.org/bitwise-hacks-for-competitive-programming/
+	- https://www.geeksforgeeks.org/bit-tricks-competitive-programming/

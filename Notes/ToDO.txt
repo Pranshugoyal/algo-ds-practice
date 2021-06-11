@@ -104,6 +104,10 @@ Problems:
 - Swap Sort
 	- Leetcode 287: Find the Duplicate Number
 
+- Bit Manipulation:
+	- Find the element that appears once
+		- https://www.geeksforgeeks.org/find-the-element-that-appears-once/
+
 - Leetcode 407: Trapping Rain Water II (https://leetcode.com/problems/trapping-rain-water-ii/discuss/1138028/Python3Visualization-BFS-Solution-With-Explanation)
 
 - Leetcode 632: Smallest Range Covering Elements from K Lists
