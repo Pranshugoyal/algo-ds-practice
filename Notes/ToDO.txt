@@ -53,6 +53,9 @@ Problems:
 		- https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1#
 		- https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
 
+- Backtracking
+	* Leetcode 1723: Find Minimum Time to Finish All Jobs
+
 - Two Pointer Algorithms
 	* Swapping pairs make sum equal (https://practice.geeksforgeeks.org/problems/swapping-pairs-make-sum-equal/0)
 	* Median of two sorted arrays/kth position after merging of two sorted arrays
