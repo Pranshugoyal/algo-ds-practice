@@ -45,40 +45,48 @@ def countTriplet(arr, n):
 	return count
 
 def maxSubArraySum(a,size):
-	prefixSumArray = [a[0]]
-	for i in a[1:]:
-		prefixSumArray.append(i+prefixSumArray[-1])
 
-	minSumArray = [min(0, prefixSumArray[0])]
-	for s in prefixSumArray[1:]:
-		if s < minSumArray[-1]:
-			minSumArray.append(s)
-		else:
-			minSumArray.append(minSumArray[-1])
+    def maxSubArrayPrefixSum(a):
+        prefixSumArray = [a[0]]
+        for i in a[1:]:
+            prefixSumArray.append(i+prefixSumArray[-1])
 
-	import sys
-	maxSum = -sys.maxsize
-	for i in reversed(range(size)):
-		cs = prefixSumArray[i] - minSumArray[i]
-		if cs == 0:
-			maxSum = max(maxSum, a[i])
-		else:
-			maxSum = max(maxSum, cs)
+        minSumArray = [min(0, prefixSumArray[0])]
+        for s in prefixSumArray[1:]:
+            if s < minSumArray[-1]:
+                minSumArray.append(s)
+            else:
+                minSumArray.append(minSumArray[-1])
 
-	return maxSum
+        import sys
+        maxSum = -sys.maxsize
+        for i in reversed(range(size)):
+            cs = prefixSumArray[i] - minSumArray[i]
+            if cs == 0:
+                maxSum = max(maxSum, a[i])
+            else:
+                maxSum = max(maxSum, cs)
+        return maxSum
 
-def maxSubArraySum2(a,size):
-	currentSum = a[0]
-	minSum = min(0,a[0])
-	maxSubArraySum = a[0]
+    def maxSubarraySum(arr):
+        currentSum = 0
+        minSum = 0
+        maxSubSum = arr[0]
 
-	for num in a[1:]:
-		currentSum += num
-		minSum = min(minSum, currentSum)
-		cs = currentSum - minSum
-		maxSubArraySum = max(maxSubArraySum, num if cs == 0 else cs)
+        for n in arr:
+            currentSum += n
+            maxSubSum = max(currentSum-minSum, maxSubSum)
+            minSum = min(minSum, currentSum)
+        return maxSubSum
 
-	return maxSubArraySum
+    def kadanesMaxSubarraySum(arr):
+        maxSum, lastSum = arr[0], 0
+        for n in arr:
+            lastSum = max(lastSum+n, n)
+            maxSum = max(maxSum, lastSum)
+        return maxSum
+    
+    return maxSubarraySum(arr)
 
 def partition(A,B):
 	i,j,k = 0,0,len(A)-1
