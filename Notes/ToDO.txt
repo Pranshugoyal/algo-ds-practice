@@ -1,33 +1,33 @@
 Algorithms
-- Radix Sort
-- Open Addressing
-- Greedy Algorithms
-- BFS in use cases outside of tree structures
-- Quick Select, to find Kth/K largest/smallest element/s
-- Median of medians
-- Huffman Codes
-- Floyd Cycle Detection Algorithm
-- Palindrome checking Algorithms
-- Detect Cycle in a Directed Graph using BFS
-- Strongly connected components in a directed graph (Kosaraju's) 
-- Implenting Dijkstra efficiently using modifiable heap
-- Euler Circuit in a Directed Graph
+	- Radix Sort
+	- Open Addressing
+	- Greedy Algorithms
+	- BFS in use cases outside of tree structures
+	- Quick Select, to find Kth/K largest/smallest element/s
+	- Median of medians
+	- Huffman Codes
+	- Floyd Cycle Detection Algorithm
+	- Palindrome checking Algorithms
+	- Detect Cycle in a Directed Graph using BFS
+	- Strongly connected components in a directed graph (Kosaraju's) 
+	- Implenting Dijkstra efficiently using modifiable heap
+	- Euler Circuit in a Directed Graph
+	- Johnson's algorithm for shortest path with priority queue
 
 Data Structures
-- Unrolled Linked Lists
-- Skip Lists
-- Binary/AVL/Red-Black/Binary-Indexed Tree
-- Interval/Segment Tree
-	- https://leetcode.com/problems/merge-intervals/discuss/21452/Share-my-interval-tree-solution-no-sorting
-- Disjoint Set Data Structures
-	- Union By Rank and Path Compression
+	- Unrolled Linked Lists
+	- Skip Lists
+	- Binary/AVL/Red-Black/Binary-Indexed Tree
+	- Interval/Segment Tree
+		- https://leetcode.com/problems/merge-intervals/discuss/21452/Share-my-interval-tree-solution-no-sorting
+	- Disjoint Set Data Structures
+		- Union By Rank and Path Compression
 
 Python:
 - How to use heap with pairs
 
 Resources:
 - Picassos_Shoes (Leetcode user, with visualisations on answers)
-- https://www.geeksforgeeks.org/count-inversions-array-set-3-using-bit/
 
 Problems:
 - Stack
@@ -55,6 +55,7 @@ Problems:
 	* Minimum number of jumps 
 		- https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1#
 		- https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
+	* Longest palindromic substring
 
 - Backtracking
 	* Leetcode 1723: Find Minimum Time to Finish All Jobs
@@ -71,6 +72,8 @@ Problems:
 		Hardle-Steiger Algorithm for moving Median (https://aakinshin.net/posts/partitioning-heaps-quantile-estimator/)
 	* https://leetcode.com/problems/finding-mk-average/
 		Solution: https://leetcode.com/problems/finding-mk-average/discuss/1154068/Python-4-heaps-one-list-O(n-log-n)-explained
+	* Leetcode 407: Trapping Rain Water II (https://leetcode.com/problems/trapping-rain-water-ii/discuss/1138028/Python3Visualization-BFS-Solution-With-Explanation)
+	* Leetcode 632: Smallest Range Covering Elements from K Lists
 
 - Graph:
 	* Minimum Swaps needed to sort an array (https://practice.geeksforgeeks.org/problems/minimum-swaps/1)
@@ -102,6 +105,10 @@ Problems:
 
 - String:
 	- Swap characters in a String (https://www.geeksforgeeks.org/swap-characters-in-a-string/)
+	- Leetcode 686: Repeated String Match
+	- Roman Number to Integer
+	- Recursively remove all adjacent duplicates
+		- https://www.geeksforgeeks.org/recursively-remove-adjacent-duplicates-given-string/
 
 - Array
 	- Largest Number formed from an Array (https://practice.geeksforgeeks.org/problems/largest-number-formed-from-an-array1117/1#)
@@ -111,6 +118,9 @@ Problems:
 - Tree
 	- Longest consecutive sequence in Binary tree
 		- https://www.geeksforgeeks.org/longest-consecutive-sequence-binary-tree/
+	- Count inversions in an array
+		- https://www.geeksforgeeks.org/count-inversions-array-set-3-using-bit/
+	- Different traversals used to serialize a (Binary) Tree
 
 - Swap Sort
 	- Leetcode 287: Find the Duplicate Number
@@ -121,16 +131,3 @@ Problems:
 		- https://practice.geeksforgeeks.org/problems/maximum-subset-xor/1
 	- Find the element that appears once
 		- https://www.geeksforgeeks.org/find-the-element-that-appears-once/
-
-- Leetcode 407: Trapping Rain Water II (https://leetcode.com/problems/trapping-rain-water-ii/discuss/1138028/Python3Visualization-BFS-Solution-With-Explanation)
-
-- Leetcode 632: Smallest Range Covering Elements from K Lists
-
-- Leetcode 686: Repeated String Match
-
-- Chocolate Distribution Problem (https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1#)
-
-- Longest palindromic substring
-- Recursively remove all adjacent duplicates(GfG)
-- Roman Number to Integer
-- Different traversals used to serialize a (Binary) Tree
