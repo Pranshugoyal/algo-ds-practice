@@ -9,6 +9,9 @@ Algorithms
 - Floyd Cycle Detection Algorithm
 - Palindrome checking Algorithms
 - Detect Cycle in a Directed Graph using BFS
+- Strongly connected components in a directed graph (Kosaraju's) 
+- Implenting Dijkstra efficiently using modifiable heap
+- Euler Circuit in a Directed Graph
 
 Data Structures
 - Unrolled Linked Lists
@@ -68,6 +71,11 @@ Problems:
 		Hardle-Steiger Algorithm for moving Median (https://aakinshin.net/posts/partitioning-heaps-quantile-estimator/)
 	* https://leetcode.com/problems/finding-mk-average/
 		Solution: https://leetcode.com/problems/finding-mk-average/discuss/1154068/Python-4-heaps-one-list-O(n-log-n)-explained
+
+- Graph:
+	* Minimum Swaps needed to sort an array (https://practice.geeksforgeeks.org/problems/minimum-swaps/1)
+	* Circle of Strings (https://practice.geeksforgeeks.org/problems/circle-of-strings/0)
+	* Minimum Cost Path (https://practice.geeksforgeeks.org/problems/minimum-cost-path/0)
 
 - Binary Search
 	* K-th Element of Two Sorted Arrays
