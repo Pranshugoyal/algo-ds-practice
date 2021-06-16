@@ -320,3 +320,26 @@ def equivalentSubArrays(arr):
 			j +=1
 	return count
 
+#https://practice.geeksforgeeks.org/problems/minimum-swaps/1
+def minSwaps(nums):
+    nSorted = sorted(nums)
+    h = {}
+
+    for i in range(len(nums)):
+        h[nums[i]] = i
+
+    def correct(i):
+        c = h[nSorted[i]]
+        nums[i], nums[c] = nums[c], nums[i]
+        h[nums[i]] = i
+        h[nums[c]] = c
+
+    swaps = 0
+    for i in range(len(nums)):
+        if nums[i] == nSorted[i]:
+            continue
+
+        swaps += 1
+        correct(i)
+    return swaps
+
