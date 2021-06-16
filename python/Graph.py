@@ -194,6 +194,7 @@ def dijkstra(V, adj, S):
 
     return distance
 
+#Bellman-Ford
 #https://practice.geeksforgeeks.org/problems/negative-weight-cycle3504/1#
 def isNegativeWeightCycle(n, edges):
     cost = [None]*n
@@ -402,11 +403,3 @@ def floydWarshall(matrix):
             if mc[i][j] == sys.maxsize:
                 mc[i][j] = -1
     matrix = mc
-
-m = [[0,1,43], [1,0,6], [-1,-1,0]]
-for row in m:
-    print(row)
-floydWarshall(m)
-print()
-for row in m:
-    print(row)
