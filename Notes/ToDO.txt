@@ -56,6 +56,7 @@ Problems:
 		- https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1#
 		- https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
 	* Longest palindromic substring
+	* Binary Strings with at most K Consecutive One (https://algocademy.com/app/#problem/binary-strings-with-at-most-k-consecutive-ones/lang/py/solution/1-1/tab/solution-hints/noredirect/true)
 
 - Backtracking
 	* Leetcode 1723: Find Minimum Time to Finish All Jobs
@@ -79,6 +80,7 @@ Problems:
 	* Minimum Swaps needed to sort an array (https://practice.geeksforgeeks.org/problems/minimum-swaps/1)
 	* Circle of Strings (https://practice.geeksforgeeks.org/problems/circle-of-strings/0)
 	* Minimum Cost Path (https://practice.geeksforgeeks.org/problems/minimum-cost-path/0)
+	* Alien Dictionary (https://practice.geeksforgeeks.org/problems/alien-dictionary/1)
 
 - Binary Search
 	* K-th Element of Two Sorted Arrays
