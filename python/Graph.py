@@ -90,10 +90,12 @@ def detectCycleInUndirectedGraph(V, adj) -> bool:
                 return True
     return False
 
+#https://www.geeksforgeeks.org/union-find/
 def detectCycleUndirectedGraphUnionFind(V, adj):
     from UnionFind import UnionFind
     uf = UnionFind([i for i in range(V)])
 
+    #Making sure edges are only explored once
     edges = []
     for v in range(V):
         for u in adj[v]:
@@ -192,6 +194,9 @@ def dijkstra(V, adj, S):
                 distance[u] = min(distance[u], distance[v] + d)
         v = nextVertex()
 
+    for i,d in enumerate(distance):
+        if d == sys.maxsize:
+            distance[i] = None
     return distance
 
 #Bellman-Ford
@@ -383,6 +388,17 @@ def areStringsInCircle(A):
         adj.append(edges)
     return detectCycleDirectedGraph(len(A), adj)
 
+#https://practice.geeksforgeeks.org/problems/circle-of-strings4530/1#
+def isCircle(A):
+    adj = []
+    for i in range(26):
+        adj.append([])
+
+    for s in A:
+        adj[ord(s[0])-ord('a')].append(ord(s[-1])-ord('a'))
+    return eulerianCircuitInDirectedGraph(len(adj), adj)
+
+#https://practice.geeksforgeeks.org/problems/implementing-floyd-warshall/0
 def floydWarshall(matrix):
     n = len(matrix)
     mc = matrix.copy()
@@ -395,11 +411,330 @@ def floydWarshall(matrix):
     for k in range(n):
         for i in range(n):
             for j in range(n):
-                matrix[i][j] = min(mc[i][j], mc[i][k] + mc[k][j])
-        mc = matrix
+                mc[i][j] = min(mc[i][j], mc[i][k] + mc[k][j])
 
     for i in range(n):
         for j in range(n):
             if mc[i][j] == sys.maxsize:
                 mc[i][j] = -1
-    matrix = mc
+    return mc
+
+#https://practice.geeksforgeeks.org/problems/alien-dictionary/1#
+def alienDictionary(dict, K):
+    adj = []
+    for i in range(K):
+        adj.append(set())
+
+    for i in range(len(dict)-1):
+        w1, w2 = dict[i], dict[i+1]
+        k = min(len(w1), len(w2))
+        for j in range(k):
+            if w1[j] != w2[j]:
+                adj[ord(w1[j])-ord('a')].add(ord(w2[j])-ord('a'))
+                break
+
+    s = topologicalSort(K, adj)
+    print(adj, s)
+    ans = ""
+    for i in s:
+        ans += chr(i+ord('a'))
+    return ans
+
+#https://practice.geeksforgeeks.org/problems/snake-and-ladder-problem4816/1
+def snakeAndLadderMinThrows(N, arr, source=1, destination=30):
+    snl = {}
+    for i in range(N):
+        snl[arr[2*i]] = arr[2*i+1] 
+
+    adj = [[]]
+    for i in range(1, 31):
+        l = []
+        if i in snl:
+            adj.append(l)
+            continue
+        for d in range(i+1, min(i+6,30)+1):
+            if d in snl:
+                l.append(snl[d])
+            else:
+                l.append(d)
+        adj.append(l)
+
+    q = deque()
+    visited = set()
+    q.append(source)
+    visited.add(source)
+    steps = 0
+    while len(q) > 0:
+        q.append(None)
+        while q[0] is not None:
+            v = q.popleft()
+            if v == destination:
+                return steps
+
+            for u in adj[v]:
+                if u not in visited:
+                    visited.add(u)
+                    q.append(u)
+        q.popleft()
+        steps += 1
+    return -1
+
+################################################################################
+# -------------------------------- GfG Practice ------------------------------ #
+################################################################################
+
+#https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
+def kosaraju(V, adj):
+
+    #This is topological sorting in reverse order
+    def getTravelSequence(v, stack):
+        visited.add(v)
+        for u in adj[v]:
+            if u in visited:
+                continue
+            getTravelSequence(u, stack)
+        stack.append(v)
+        return stack
+
+    def getTranspose(adj):
+        tadj = [[] for i in range(V)]
+        for v in range(V):
+            for u in adj[v]:
+                tadj[u].append(v)
+        return tadj
+
+    def getDfsTree(v, adj, comp):
+        visited.add(v)
+        comp.add(v)
+        for u in adj[v]:
+            if u in visited:
+                continue
+            getDfsTree(u,adj,comp)
+        return comp
+
+    visited = set()
+    stack = []
+    for i in range(V):
+        if i not in visited:
+            getTravelSequence(i, stack)
+    visited = set()
+    transpose = getTranspose(adj)
+    components = []
+    while len(stack) > 0:
+        v = stack.pop()
+        if v in visited:
+            continue
+        components.append(getDfsTree(v, transpose, set()))
+    return len(components)
+
+#https://practice.geeksforgeeks.org/problems/euler-circuit-and-path/1
+def eulerianPathAndCircuit(V, adj):
+    def dfsUtil(v, visited):
+        visited.add(v)
+        for u in adj[v]:
+            if u not in visited:
+                dfsUtil(u, visited)
+        return visited
+
+    def isConnected():
+        source = None
+        for v in range(V):
+            if len(adj) > 0:
+                source = v
+                break
+
+        if source is None:
+            return True
+
+        visited = dfsUtil(source, set())
+
+        for v in range(V):
+            if v not in visited and (adj[v]) > 0:
+                return False
+        return True
+
+    if not isConnected():
+        return 0
+
+    oddDegree = 0
+    for v in range(V):
+        oddDegree += len(adj[v])%2
+
+    if oddDegree == 0:
+        return 2
+    elif oddDegree == 2:
+        return 1
+    else:
+        return 0
+
+def eulerianCircuitInDirectedGraph(V, adj):
+    def isStronglyConnected() -> bool:
+        stack = []
+        visited = set()
+        def dfsTopoSort(v, sort):
+            visited.add(v)
+            for u in adj[v]:
+                if u not in visited:
+                    dfsTopoSort(u, sort)
+            if sort:
+                stack.append(v)
+
+        def allVisited():
+            for v in range(V):
+                if len(adj[v]) > 0 and v not in visited:
+                    return False
+            return True
+
+        for v in range(V):
+            if len(adj[v]) > 0:
+                dfsTopoSort(v, True)
+                break
+
+        if len(visited) == 0:
+            return True
+
+        if not allVisited():
+            return False
+
+        transpose = []
+        for i in range(V):
+            transpose.append([])
+        for v in range(V):
+            for u in adj[v]:
+                transpose[u].append(v)
+
+        visited = set()
+        dfsTopoSort(stack[-1], False)
+        return allVisited()
+
+    if not isStronglyConnected():
+        return False
+
+    indegree = [0]*V
+    for v in range(V):
+        for u in adj[v]:
+            indegree[u] += 1
+
+    for v in range(V):
+        if len(adj[v]) != indegree[v]:
+            return False
+    return True
+
+#https://www.geeksforgeeks.org/johnsons-algorithm-for-all-pairs-shortest-paths-implementation/
+def johnsonsAlgorithm(V, adj):
+
+    def runUpdateCycle(h):
+        for v in range(len(h)):
+            for edge in adj[v]:
+                u,w = edge[0],edge[1]
+                h[u] = min(h[u], h[v]+w)
+
+    def reweightEdges(h):
+        for v in range(len(h)):
+            for i, edge in enumerate(adj[v]):
+                u,w = edge[0], edge[1]
+                adj[v][i] = (u, w+h[v]-h[u])
+
+    adj.append([(i,0) for i in range(V)])
+    h = [0]*(V+1)
+
+    for _ in range(V):
+        runUpdateCycle(h)
+    
+    h.pop()
+    adj.pop()
+    reweightEdges(h)
+
+    d = []
+    for v in range(V):
+        d.append(dijkstra(V, adj, v))
+    return d
+
+#https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1#
+#https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/
+def kruksalMST(V, adj):
+    from UnionFind import UnionFind
+
+    edges = []
+    for v in range(V):
+        for u,w in adj[v]:
+            edges.append((v,u,w))
+    edges.sort(key=lambda x:x[2])
+
+    uf = UnionFind(list(range(V)))
+    mst = []
+    for edge in edges:
+        v,u,_ = edge
+        if uf.areDisjoint(v,u):
+            mst.append(edge)
+            uf.union(v,u)
+        if len(mst) == V-1:
+            break
+    mst.sort(key=lambda x:x[0])
+    return mst
+
+#https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1#
+#https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/
+def primsMST(V, adj):
+    cost = [sys.maxsize]*V
+    parent = [-1]*V
+
+    #The graph has to be undirected, this is to ensure that
+    for v in range(V):
+        adj[v] = set(adj[v])
+
+    for v in range(V):
+        for u,w in adj[v]:
+            adj[u].add((v,w))
+
+    def getNextVertex(mst):
+        minCost = sys.maxsize
+        nv = None
+        for v in range(V):
+            if v not in mst and cost[v] < minCost:
+                minCost = cost[v]
+                nv = v
+        return nv
+
+    mst = set()
+    source = 0
+    cost[0] = source
+    v = source
+    while v is not None:
+        mst.add(v)
+        for u,w in adj[v]:
+            if u not in mst and cost[u] >= w:
+                cost[u] = w
+                parent[u] = v
+        v = getNextVertex(mst)
+    
+    edges = []
+    for v in mst:
+        if parent[v] != -1:
+            edges.append((parent[v], v, cost[v]))
+    edges.sort(key=lambda x:x[0])
+    return edges
+
+def comparePrimAndKruksal():
+    def mstCost(mst):
+        esum = 0
+        for edge in mst:
+            esum += edge[2]
+        return esum
+
+    adj = [
+        [(1,4), (7,8)],
+        [(0,4), (2,8), (7,11)],
+        [(1,8), (3,7), (5,4)],
+        [(4,9), (5,14)],
+        [],
+        [(4,10)],
+        [(5,2)],
+        [(0,8), (6,1), (8,7)],
+        [(2,2), (6,6)]
+    ]
+    kruksal = kruksalMST(len(adj), adj)
+    prims = primsMST(len(adj), adj)
+    print("Kruksal:", kruksal, "\nPrims:\t", prims)
+    print(mstCost(kruksal), mstCost(prims))
+
