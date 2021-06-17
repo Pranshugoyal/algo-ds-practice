@@ -11,7 +11,7 @@ Topics:
 			- Directed/Undirected graph ✔︎
 			- DFS ✔︎
 			- BFS
-			- Union-Find Algorithm
+			- Union-Find Algorithm ✔︎
 	- Topological Sort
 		- Kahn's BFS Algorithm ✔︎
 		- Using DFS ✔︎
@@ -24,7 +24,7 @@ Topics:
 		- Johnson’s ✔︎
 		- Floyd-Warshell ✔︎
 	- Minimum Spanning Tree
-		- Prim's Algorithm
+		- Prim's Algorithm ✔︎
 		- Kruksal's Algorithm ✔︎
 		- Boruvka's Algorithm
 	- Connectivity
@@ -38,7 +38,7 @@ Topics:
 			- Tarjan's Algorithm
 	- Euler Circuits
 		- If Euler Circuit/Path exists ✔︎
-		- Euler Circuit in a Directed Graph
+		- Euler Circuit in a Directed Graph ✔︎
 		- Fleury’s Algorithm
 		- Hierholzer’s Algorithm
 	- Maximum Flow
