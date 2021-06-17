@@ -1,0 +1,61 @@
+
+Topics:
+
+	- Traversal
+		- BFS ✔︎
+		- DFS ✔︎
+		- Shortest Path using BFS ✔︎
+		- Find Connected Components ✔︎
+		- Transitive closure of a graph ✔︎
+		- Cycle detection
+			- Directed/Undirected graph ✔︎
+			- DFS ✔︎
+			- BFS
+			- Union-Find Algorithm
+	- Topological Sort
+		- Kahn's BFS Algorithm ✔︎
+		- Using DFS ✔︎
+		- Longest Path ✔︎
+	- Shortest Path Algorithms
+		- Dijkstra ✔︎
+			- Dial's Variation
+		- Bellman-Ford ✔︎
+			- Topological sort variation for DAG
+		- Johnson’s ✔︎
+		- Floyd-Warshell ✔︎
+	- Minimum Spanning Tree
+		- Prim's Algorithm
+		- Kruksal's Algorithm ✔︎
+		- Boruvka's Algorithm
+	- Connectivity
+		- Cut Vertex/Articulation Points
+		- Cut Edges/Bridges
+		- Biconnected graph
+		- Bipartite Graph
+			- Hungarian Algorithm
+		- Strongly connected components
+			- Kosraju's Algorithm ✔︎
+			- Tarjan's Algorithm
+	- Euler Circuits
+		- If Euler Circuit/Path exists ✔︎
+		- Euler Circuit in a Directed Graph
+		- Fleury’s Algorithm
+		- Hierholzer’s Algorithm
+	- Maximum Flow
+		- Ford-Fulkerson Algorithm
+	- Planar Graphs
+	- Hamiltonian Path/Cycle
+	- Hard Problems
+		- Travelling Sales Man Problem
+		- Graph Coloring
+
+
+
+
+Resources:
+
+- Basics from NPTEL:
+	https://nptel.ac.in/courses/106/106/106106131/
+
+- Kosaraju:
+	https://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/GraphAlgor/strongComponent.htm
