@@ -1,53 +1,58 @@
 
 Topics:
 
-	- Traversal
-		- BFS ✔︎
+- Traversal
+	- BFS ✔︎
+	- DFS ✔︎
+	- Shortest Path using BFS ✔︎
+	- Find Connected Components ✔︎
+	- Transitive closure of a graph ✔︎
+	- Cycle detection
+		- Directed/Undirected graph ✔︎
 		- DFS ✔︎
-		- Shortest Path using BFS ✔︎
-		- Find Connected Components ✔︎
-		- Transitive closure of a graph ✔︎
-		- Cycle detection
-			- Directed/Undirected graph ✔︎
-			- DFS ✔︎
-			- BFS
-			- Union-Find Algorithm ✔︎
-	- Topological Sort
-		- Kahn's BFS Algorithm ✔︎
-		- Using DFS ✔︎
-		- Longest Path ✔︎
-	- Shortest Path Algorithms
-		- Dijkstra ✔︎
-			- Dial's Variation
-		- Bellman-Ford ✔︎
-			- Topological sort variation for DAG
-		- Johnson’s ✔︎
-		- Floyd-Warshell ✔︎
-	- Minimum Spanning Tree
-		- Prim's Algorithm ✔︎
-		- Kruksal's Algorithm ✔︎
-		- Boruvka's Algorithm
-	- Connectivity
-		- Cut Vertex/Articulation Points
-		- Cut Edges/Bridges
-		- Biconnected graph
-		- Bipartite Graph
-			- Hungarian Algorithm
-		- Strongly connected components
-			- Kosraju's Algorithm ✔︎
-			- Tarjan's Algorithm
-	- Euler Circuits
-		- If Euler Circuit/Path exists ✔︎
-		- Euler Circuit in a Directed Graph ✔︎
-		- Fleury’s Algorithm
-		- Hierholzer’s Algorithm
-	- Maximum Flow
-		- Ford-Fulkerson Algorithm
-	- Planar Graphs
-	- Hamiltonian Path/Cycle
-	- Hard Problems
-		- Travelling Sales Man Problem
-		- Graph Coloring
+		- BFS
+		- Union-Find Algorithm ✔︎
+- Topological Sort
+	- Kahn's BFS Algorithm ✔︎
+	- Using DFS ✔︎
+	- Longest Path ✔︎
+- Shortest Path
+	- Dijkstra Algorithm ✔︎
+		- Dial's Variation
+	- Bellman-Ford Algorithm ✔︎
+		- Topological sort variation for DAG ✔︎
+	- Johnson’s Algorithm ✔︎
+	- Floyd-Warshell Algorithm ✔︎
+- Minimum Spanning Tree
+	- Prim's Algorithm ✔︎
+	- Kruksal's Algorithm ✔︎
+	- Boruvka's Algorithm
+- Connectivity
+	- Cut Vertex/Articulation Points ✔︎
+	- Cut Edges/Bridges ✔︎
+	- Biconnected graph ✔︎
+	- Biconnected Components
+	- Bipartite Graph ✔︎
+	- Strongly connected components
+		- Kosraju's Algorithm ✔︎
+		- Tarjan's Algorithm ✔︎
+- Euler Circuits
+	- Euler Circuit/Path in Undirected Graph ✔︎
+	- Euler Circuit in Directed Graph ✔︎
+	- Fleury’s Algorithm
+	- Hierholzer’s Algorithm
+- Maximum Flow
+	- Ford-Fulkerson Algorithm
+	- Dinc's Algorithm
+- Assignment Problem
+	- Hungarian Algorithm
+- Planar Graphs
+- Hamiltonian Path/Cycle
+- Hard Problems
+	- Travelling Sales Man Problem
+	- Smallest Vertex Cover/Largest independent set
+	- Graph Coloring
+	- Steiner Tree
 
 
 
@@ -59,3 +64,8 @@ Resources:
 
 - Kosaraju:
 	https://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/GraphAlgor/strongComponent.htm
+
+- Articulation Point:
+	https://eecs.wsu.edu/~holder/courses/CptS223/spr08/slides/graphapps.pdf
+	https://web.archive.org/web/20161130155755/https://www.eecs.wsu.edu/~holder/courses/CptS223/spr08/slides/graphapps.pdf
+
