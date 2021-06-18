@@ -484,7 +484,7 @@ def snakeAndLadderMinThrows(N, arr, source=1, destination=30):
 ################################################################################
 
 #https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
-def kosaraju(V, adj):
+def kosarajuSCC(V, adj):
 
     #This is topological sorting in reverse order
     def getTravelSequence(v, stack):
@@ -526,6 +526,42 @@ def kosaraju(V, adj):
             continue
         components.append(getDfsTree(v, transpose, set()))
     return len(components)
+
+#https://www.geeksforgeeks.org/tarjan-algorithm-find-strongly-connected-components/
+#https://practice.geeksforgeeks.org/problems/strongly-connected-component-tarjanss-algo-1587115621/1
+def tarjanSCC(V, adj):
+    counter = 0
+    low, disc = [None]*V, [None]*V
+    stack, inStack = [], set()
+    scc = []
+
+    def dfsUtil(v):
+        nonlocal counter
+        low[v], disc[v] = counter, counter
+        counter += 1
+        stack.append(v)
+        inStack.add(v)
+
+        for u in adj[v]:
+            if disc[u] is None:
+                dfsUtil(u)
+                low[v] = min(low[v], low[u])
+            elif u in inStack:
+                low[v] = min(low[v], disc[u])
+
+        #Check head
+        if low[v] == disc[v]:
+            i = stack.index(v)
+            #Empty inStack in batch and not individually
+            for u in stack[i:]:
+                inStack.remove(u)
+            scc.append(sorted(stack[i:]))
+            stack[i:] = []
+
+    for v in range(V):
+        if disc[v] is None:
+            dfsUtil(v)
+    return scc
 
 #https://practice.geeksforgeeks.org/problems/euler-circuit-and-path/1
 def eulerianPathAndCircuit(V, adj):
@@ -737,4 +773,50 @@ def comparePrimAndKruksal():
     prims = primsMST(len(adj), adj)
     print("Kruksal:", kruksal, "\nPrims:\t", prims)
     print(mstCost(kruksal), mstCost(prims))
+
+#https://eecs.wsu.edu/~holder/courses/CptS223/spr08/slides/graphapps.pdf
+#https://practice.geeksforgeeks.org/problems/biconnected-graph2528/1#
+def findArticulationPoints(V, adj):
+    disc, low, ap = {}, {}, set()
+    parent, counter = [None]*V, 0
+    def dfsAP(v):
+        nonlocal counter
+        disc[v] = counter
+        low[v] = disc[v]
+        counter += 1
+
+        child = 0
+        for u in adj[v]:
+            if u not in disc:
+                child += 1
+                parent[u] = v
+                dfsAP(u)
+                if low[u] >= disc[v] and parent[v] is not None:
+                    ap.add(v)
+                low[v] = min(low[v], low[u])
+            elif u != parent[v]:
+                low[v] = min(low[v], disc[u])
+
+        if child > 1 and parent[v] is None:
+            ap.add(v)
+    dfsAP(2)
+    return ap
+
+#https://practice.geeksforgeeks.org/problems/bipartite-graph/1
+def isBipartiteGraph(V, adj):
+    visited = {}
+
+    def addToGroup(v, g):
+        visited[v] = g
+        gt = 1 if g == 0 else 0
+
+        for u in adj[v]:
+            if u not in visited:
+                if not addToGroup(u, gt):
+                    return False
+            elif visited[u] != gt:
+                return False
+        return True
+
+    return addToGroup(0, 0)
 
