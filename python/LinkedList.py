@@ -239,6 +239,28 @@ def isListPalindrome(head):
 		current = current.next
 	return number == reversedNumber
 
+def checkLinkedListPalindrome(head):
+    slow, fast = head, head
+    stack = [head.data]
+    while fast.next and fast.next.next:
+        slow = slow.next
+        fast = fast.next.next
+        stack.append(slow.data)
+
+    if fast.next is None:
+        #Odd no. of elements
+        stack.pop()
+
+    #Bring slow to first element of right half
+    slow = slow.next
+    while slow is not None:
+        if slow.data == stack[-1]:
+            slow = slow.next
+            stack.pop()
+        else:
+            return False
+    return True
+
 def segregate(head):
 	counts = [0,0,0]
 	current = head
@@ -285,3 +307,4 @@ def removeLoop(head):
 	
 	#print("Link:", tortoise.data, "-->", tortoise.next.data)
 	tortoise.next = None
+

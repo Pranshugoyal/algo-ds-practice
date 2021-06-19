@@ -19,7 +19,7 @@ Merging Sorted lists:
 
 Loop Detection:
 	- There is an edge case when last node connects with first node
-	- In this case the hare and tortoise will always meet at first node and start travelling together is case not handled
+	- In this case the hare and tortoise will always meet at first node and start travelling together if not handled
 	- Check for condition in first loop if tortoise.next == head. If true break the cycle here and exit from loop 
 
 - List can also be manipulated by modifying data in it instead of always adding deleting nodes.
