@@ -1,23 +1,15 @@
 Algorithms
 	- Radix Sort
-	- Open Addressing
-	- Greedy Algorithms
-	- BFS in use cases outside of tree structures
 	- Quick Select, to find Kth/K largest/smallest element/s
 	- Median of medians
 	- Huffman Codes
-	- Floyd Cycle Detection Algorithm
-	- Palindrome checking Algorithms
-	- Detect Cycle in a Directed Graph using BFS
-	- Strongly connected components in a directed graph (Kosaraju's) 
 	- Implenting Dijkstra efficiently using modifiable heap
-	- Euler Circuit in a Directed Graph
 	- Johnson's algorithm for shortest path with priority queue
 
 Data Structures
 	- Unrolled Linked Lists
 	- Skip Lists
-	- Binary/AVL/Red-Black/Binary-Indexed Tree
+	- Self Balancing BST: Binary/AVL/Red-Black/Binary-Indexed Tree
 	- Interval/Segment Tree
 		- https://leetcode.com/problems/merge-intervals/discuss/21452/Share-my-interval-tree-solution-no-sorting
 	- Disjoint Set Data Structures
@@ -57,6 +49,8 @@ Problems:
 		- https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
 	* Longest palindromic substring
 	* Binary Strings with at most K Consecutive One (https://algocademy.com/app/#problem/binary-strings-with-at-most-k-consecutive-ones/lang/py/solution/1-1/tab/solution-hints/noredirect/true)
+	* Interleaving Strings: https://leetcode.com/problems/interleaving-string/discuss/31888/1ms-tiny-DFS-beats-94.57
+	* Partition array into k equal sub sets https://www.geeksforgeeks.org/partition-set-k-subsets-equal-sum/
 
 - Backtracking
 	* Leetcode 1723: Find Minimum Time to Finish All Jobs
@@ -123,6 +117,7 @@ Problems:
 	- Count inversions in an array
 		- https://www.geeksforgeeks.org/count-inversions-array-set-3-using-bit/
 	- Different traversals used to serialize a (Binary) Tree
+    - Iterative traversals es. PostOrder
 
 - Swap Sort
 	- Leetcode 287: Find the Duplicate Number
