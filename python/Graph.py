@@ -113,7 +113,7 @@ def detectCycleUndirectedGraphUnionFind(V, adj):
     return False
 
 #https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
-def detectCycleDirectedGraph(V, adj):
+def detectCycleDirectedGraphDFS(V, adj):
     def performDFS(v):
         visited.add(v)
         recStack.add(v)
@@ -134,6 +134,30 @@ def detectCycleDirectedGraph(V, adj):
             if performDFS(v):
                 return True
     return False
+
+#https://www.geeksforgeeks.org/detect-cycle-in-a-directed-graph-using-bfs/
+def detectCycleDirectedGraphBFS(V, adj):
+    indegree = [0]*V
+    for v in adj:
+        for u in adj[v]:
+            indegree[u] += 1
+
+    q = deque()
+    for v, id in enumerate(indegree):
+        if id == 0:
+            q.append(v)
+
+    bfsCount = 0
+    while len(q) > 0:
+        v = q.popleft()
+        bfsCount += 1
+
+        for u in adj[v]:
+            indegree[u] -= 1
+            if indegree[u] == 0:
+                q.append(u)
+
+    return bfsCount != V
 
 #https://practice.geeksforgeeks.org/problems/find-the-number-of-islands/1
 #https://leetcode.com/problems/number-of-islands/
@@ -819,4 +843,3 @@ def isBipartiteGraph(V, adj):
         return True
 
     return addToGroup(0, 0)
-
