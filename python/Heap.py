@@ -174,15 +174,19 @@ class StreamPartitioner:
     def delete(self, v):
         if v in self.lh:
             self.lh.deleteValue(v)
+            self.lSum -= v
         elif v in self.rh:
             self.rh.deleteValue(v)
+            self.rSum -= v
         self.balance()
 
     def insert(self, v):
         if v >= self.rh.peek():
             self.rh.push(v)
+            self.rSum += v
         else:
             self.lh.push(v)
+            self.lSum += v
         self.balance()
 
     def balance(self):
