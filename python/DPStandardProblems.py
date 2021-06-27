@@ -438,11 +438,6 @@ def eggDropMinCount(e,f) -> int:
 	return eggDroppingMinTrials(e,f)
 
 ################################################################################
-# ---------------------------------- DP on Trees ----------------------------- #
-################################################################################
-
-
-################################################################################
 # --------------------------- DP GfG Must Do List ---------------------------- #
 ################################################################################
 
@@ -838,4 +833,38 @@ def optimalStrategyOfGameDP(arr, n):
 def shortestCommonSupersequence(X,Y):
 	lcsCount = longestCommonSubsequence(X,Y)
 	return len(X) + len(Y) - lcsCount
+
+#https://practice.geeksforgeeks.org/problems/flip-bits0240/1#
+def maxOnes(a, n):
+    ones, currSum, minSum, maxZeroes = 0, 0, 0, 0
+    for b in a:
+        ones += 1 if b == 1 else 0
+        currSum += 1 if b == 0 else -1
+        maxZeroes = max(maxZeroes, currSum-minSum)
+        minSum = min(minSum, currSum)
+    return ones+maxZeroes
+
+#https://leetcode.com/problems/house-robber/
+def rob(nums) -> int:
+    from functools import lru_cache
+    @lru_cache(maxsize=None)
+    def robCached(n):
+        if n == 0:
+            return 0
+        elif n == 1:
+            return nums[0]
+        elif n == 2:
+            return max(nums[:2])
+
+        tl = nums[n-1] + robCached(n-2)
+        ll = robCached(n-1)
+        return max(ll, tl)
+
+    return robCached(len(nums))
+
+#https://leetcode.com/problems/house-robber-ii/
+def robCircular(nums):
+    tl = nums[-1] + rob(nums[1:-2])
+    ll = rob(nums[:-1])
+    return max(tl, ll)
 
