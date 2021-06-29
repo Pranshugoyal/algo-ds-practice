@@ -3,7 +3,7 @@
 # --------------------- Tree must do list from GeeksforGeeks ----------------- #
 ################################################################################
 
-from collections import deque
+from collections import deque, defaultdict
 
 class Node:
     def __init__(self, data):
@@ -616,3 +616,373 @@ def diagnolViewOfTree(root):
 
     diagUtil(root,0)
     return [item for sublist in res for item in sublist]
+
+#https://practice.geeksforgeeks.org/problems/transform-to-sum-tree/1
+def toSumTree(root):
+    def sumUtil(root):
+        if not root:
+            return 0
+
+        l = sumUtil(root.left)
+        r = sumUtil(root.right)
+        d = root.data
+        root.data = l+r
+        return root.data + d
+
+    sumUtil(root)
+
+#https://practice.geeksforgeeks.org/problems/construct-tree-1/1
+def buildtree(inorder, preorder, n):
+    if n <= 0:
+        return None
+    elif n == 1:
+        return Node(inorder[0])
+
+    root = Node(preorder[0])
+    mid = inorder.index(root.data)
+    root.left = buildtree(inorder[:mid], preorder[1:mid+1], mid)
+    root.right = buildtree(inorder[mid+1:], preorder[mid+1:], n-mid-1)
+    return root
+
+#https://www.geeksforgeeks.org/minimum-swap-required-convert-binary-tree-binary-search-tree
+def swapsToMakeBST(root):
+    def inOrder(root, a):
+        if not root:
+            return
+
+        inOrder(root.left, a)
+        a.add(root.data)
+        inOrder(root.right, a)
+        return a
+
+    def swapsToSort(a):
+        n = len(a)
+        target = sorted(a.copy())
+        hm = {}
+        for i in range(n):
+            hm[a[i]] = i
+
+        swaps = 0
+        for i in range(len(a)):
+            while a[i] != target[i]:
+                j = hm[target[i]]
+                a[i], a[j] = a[j], a[i]
+                hm[a[i]] = i
+                hm[a[j]] = j
+                swaps += 1
+        return swaps
+
+    return swapsToSort(inOrder(root, []))
+
+#https://practice.geeksforgeeks.org/problems/sum-tree/1
+def isSumTree(root):
+    def util(r):
+        if not r:
+            return (True, 0)
+        elif not r.left and not r.right:
+            return (True, r.data)
+
+        il, ls = util(r.left)
+        ir, rs = util(r.right)
+
+        if ls+rs == r.data:
+            return (il and ir, ls+rs+r.data)
+        else:
+            return (False, ls+rs+r.data)
+
+    return 1 if util(root)[0] else 0
+
+#https://practice.geeksforgeeks.org/problems/leaf-at-same-level/1
+def areLeavesOnSameLevel(root):
+    leaves = set()
+    def util(r, l):
+        if not r:
+            return
+        elif len(leaves) > 1:
+            return
+        elif not r.left and not r.right:
+            leaves.add(l)
+            return
+        else:
+            util(r.left, l+1)
+            util(r.right, l+1)
+
+    util(root, 0)
+    return len(leaves) == 1
+
+#https://practice.geeksforgeeks.org/problems/duplicate-subtree-in-binary-tree/1
+def findDuplicateSubtree(root):
+    sumMap = {}
+
+    def addToMap(s, node):
+        if s not in sumMap:
+            sumMap[s] = []
+        sumMap[s].append(node)
+
+    def sumUtil(root):
+        if not root:
+            return 0
+        elif not root.left and not root.right:
+            return root.data
+        
+        s = sumUtil(root.left) + sumUtil(root.right) + root.data
+        addToMap(s, root)
+        return s
+
+    def areSimilar(r1, r2):
+        if not r1 and not r2:
+            return True
+        elif not r1 or not r2:
+            return False
+        elif r1.data != r2.data:
+            return False
+
+        return areSimilar(r1.left, r2.left) and areSimilar(r1.right, r2.right)
+
+    sumUtil(root)
+    dupFound = False
+    for key, nodes in sumMap.items():
+        n = len(nodes)
+        if n == 1:
+            continue
+
+        for i in range(n):
+            for j in range(i+1, n):
+                if areSimilar(nodes[i], nodes[j]):
+                    dupFound = True
+                    break
+            if dupFound:
+                break
+
+    return 1 if dupFound else 0
+
+#https://practice.geeksforgeeks.org/problems/check-if-subtree/1
+#https://leetcode.com/problems/subtree-of-another-tree/submissions/
+def isSubTree(s, T):
+    def areSimilar(r1, r2):
+        if not r1 and not r2:
+            return True
+        elif not r1 or not r2:
+            return False
+        elif r1.data != r2.data:
+            return False
+        else:
+            return areSimilar(r1.left, r2.left) and areSimilar(r1.right, r2.right)
+    
+    def subtreeUtil(root):
+        if not root:
+            return False
+        elif areSimilar(root, s):
+            return True
+        else:
+            return subtreeUtil(root.left) or subtreeUtil(root.right)
+    
+    return subtreeUtil(T)
+
+#https://practice.geeksforgeeks.org/problems/sum-of-the-longest-bloodline-of-a-tree/1
+def sumOfLongRootToLeafPath(root):
+    def sumLevelUtil(root, l):
+        if not root:
+            return (0, l-1)
+
+        ls, ll = sumLevelUtil(root.left, l+1)
+        rs, rl = sumLevelUtil(root.right, l+1)
+
+        if ll > rl:
+            return (ls+root.data, ll)
+        elif rl > ll:
+            return (rs+root.data, rl)
+        else:
+            return (max(rs, ls)+root.data, ll)
+
+    return sumLevelUtil(root, 0)[0]
+
+#https://leetcode.com/problems/most-frequent-subtree-sum/
+def findFrequentTreeSum(root):
+    map = {}
+
+    def sumUtil(root):
+        if not root:
+            return 0
+
+        s = sumUtil(root.left) + sumUtil(root.right) + root.data
+        map[s] = map.get(s, 0) + 1
+        return s
+
+    sumUtil(root)
+    ms, mf = [], 0
+    for s, f in map.items():
+        if f == mf:
+            ms.append(s)
+        elif f > mf:
+            ms, mf = [s], f
+    return ms
+
+#https://www.geeksforgeeks.org/maximum-sum-nodes-binary-tree-no-two-adjacent/
+def maxSumSubset(root):
+    nodeIndex = {}
+    count = 0
+    def dfs(root):
+        if not root:
+            return
+
+        nonlocal count
+        nodeIndex[root] = count
+        count += 1
+        dfs(root.left)
+        dfs(root.right)
+
+    dfs(root)
+    n = len(nodeIndex)
+    maxSelected, maxUnselected = [None]*n, [None]*n
+    
+    def maxSubset(root, choice):
+        if not root:
+            return 0
+
+        if choice and maxSelected[nodeIndex[root]] is not None:
+            return maxSelected[nodeIndex[root]] 
+        elif not choice and maxUnselected[nodeIndex[root]] is not None:
+            return maxUnselected[nodeIndex[root]] 
+
+        s = maxSubset(root.left, True) + maxSubset(root.right, True)
+        maxUnselected[nodeIndex[root]] = s
+        if choice:
+            s2 = maxSubset(root.left, False) + maxSubset(root.right, False) + root.data
+            s = max(s, s2)
+            maxSelected[nodeIndex[root]] = s
+        return s
+
+    return maxSubset(root, True)
+
+#https://leetcode.com/problems/path-sum-iii/
+def kPathSum(root, k):
+    prefixPaths = defaultdict(int)
+    prefixPaths[0] = 1
+    
+    def dfsUtil(root, prefix):
+        if not root:
+            return 0
+
+        s = prefix + root.val
+        count = prefixPaths[s-k]
+        prefixPaths[s] += 1
+
+        count += dfsUtil(root.left, s)
+        count += dfsUtil(root.right, s)
+        prefixPaths[s] -= 1
+
+        return count
+
+    return dfsUtil(root, 0)
+
+def findPathTo(root, n, path):
+    if not root:
+        return []
+
+    path.append(root)
+    if root.data == n:
+        return path
+
+    l = findPathTo(root.left, n, path)
+    if len(l) > 0:
+        return l
+
+    r = findPathTo(root.right, n, path)
+    if len(r) > 0:
+        return r
+
+    path.pop()
+    return []
+
+#https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1
+def findlca(root, n1, n2):
+    p1 = findPathTo(root, n1, [])
+    p2 = findPathTo(root, n2, [])
+    match = None
+    for i in range(min(len(p1), len(p2))):
+        if p1[i] is p2[i]:
+            match = p1[i]
+        else:
+            break
+    return match
+
+#https://practice.geeksforgeeks.org/problems/min-distance-between-two-given-nodes-of-a-binary-tree/1#
+def findDist(root,a,b):
+    p1 = findPathTo(root, a, [])
+    p2 = findPathTo(root, b, [])
+    match = None
+    for i in range(min(len(p1), len(p2))):
+        if p1[i] is p2[i]:
+            match = i + 1
+        else:
+            break
+
+    return len(p1) + len(p2) - 2*match
+
+#https://www.geeksforgeeks.org/kth-ancestor-node-binary-tree-set-2/
+def kthAncestorOfNode(root, node, k):
+    parent = {}
+    def dfsUtil(root):
+        if not root:
+            return
+
+        if root.data == node:
+            return
+
+        if root.left:
+            parent[root.left.data] = root.data
+            dfsUtil(root.left)
+
+        if root.right:
+            parent[root.right.data] = root.data
+            dfsUtil(root.right)
+
+    dfsUtil(root)
+    if node not in parent:
+        return -1
+
+    ans = node
+    for i in range(k):
+        ans = parent.get(ans, -1)
+    return ans
+
+    path = findPathTo(root, node, [])
+    if k+1 > len(path):
+        return -1
+    else:
+        return path[-(k+1)]
+
+#https://practice.geeksforgeeks.org/problems/duplicate-subtrees/1
+def findDuplicateSubtrees(root):
+    hashes, dupes = defaultdict(int), []
+    def hashTree(root):
+        if not root:
+            return ""
+
+        l = hashTree(root.left)
+        r = hashTree(root.right)
+        s = "(" + l + str(root.data) + r + ")"
+        
+        if hashes[s] == 1:
+            dupes.append(root)
+        hashes[s] += 1
+        return s
+
+    hashTree(root)
+    return dupes
+
+#https://practice.geeksforgeeks.org/problems/check-if-tree-is-isomorphic/1
+def areIsomorphic(r1, r2):
+    if r1 is None and r2 is None:
+        return True
+    elif not r1 or not r2:
+        return False
+    elif r1.data != r2.data:
+        return False
+    else:
+        if areIsomorphic(r1.left, r2.left) and areIsomorphic(r1.right, r2.right):
+            return True
+        if areIsomorphic(r1.left, r2.right) and areIsomorphic(r1.right, r2.left):
+            return True
+        return False
