@@ -343,3 +343,41 @@ def minSwaps(nums):
         correct(i)
     return swaps
 
+################################################################################
+# ------------------------------ Interval Operations ------------------------- #
+################################################################################
+
+#https://www.geeksforgeeks.org/merging-intervals/
+def mergeIntervals(intervals):
+    intervals.sort(key=lambda x: x[0])
+    merged = [intervals[0]]
+    for i in intervals[1:]:
+        s, e = i[0], i[1]
+        ls, le = merged[-1][0], merged[-1][1]
+        if s > le:
+            merged.append(i)
+        else:
+            merged[-1] = [ls, max(e, le)]
+    return merged
+
+#https://practice.geeksforgeeks.org/problems/sick-pasha0323/1
+#https://www.geeksforgeeks.org/count-the-number-of-intervals-in-which-a-given-value-lies/?ref=rp
+def processIntervalFrequencies(intervals):
+    start, end = intervals[0][0], intervals[0][1]
+    for interval in intervals:
+        start = min(start, interval[0])
+        end = max(end, interval[1])
+
+    freq = [0]*(end-start+2)
+    s,e = 0,0
+    for i in intervals:
+        s, e = i[0], i[1]
+        freq[s-start] += 1
+        freq[e-start+1] -= 1
+
+    freq.pop()
+    for i in range(1, len(freq)):
+        freq[i] += freq[i-1]
+
+    return (start, freq)
+

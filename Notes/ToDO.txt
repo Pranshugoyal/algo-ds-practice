@@ -5,6 +5,8 @@ Algorithms
 	- Huffman Codes
 	- Implenting Dijkstra efficiently using modifiable heap
 	- Johnson's algorithm for shortest path with priority queue
+    - Operations on sets of intervals
+    - String pattern matching algorithms
 
 Data Structures
 	- Unrolled Linked Lists
