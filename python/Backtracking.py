@@ -76,60 +76,6 @@ def solveMazeForRat(m,n):
 	
 	return solveForPosition(0,0,"",set())
 
-class Trie:
-	def __init__(self, words=[]):
-		self.children = {}
-		self.path = ""
-		self.isComplete = False
-		for word in words:
-			self.addWord(word)
-	
-	def hasChildren(self):
-		return len(self.children) > 0
-	
-	def pathsMatching(self, paths):
-		count = 0
-		for c in paths:
-			if c in self.children:
-				count += 1
-		return count
-	
-	def addWord(self, word):
-		node = self
-		for i in range(len(word)):
-			c = word[i]
-			if c not in node.children:
-				newNode = Trie()
-				newNode.path = word[:i+1]
-				node.children[c] = newNode
-			node = node.children[c]
-			if i == len(word)-1:
-				node.isComplete = True
-	
-	def searchWord(self, word, partial=False):
-		node = self
-		for c in word:
-			if c not in node.children:
-				return False
-			node = node.children[c]
-		return True if partial else not node.hasChildren()
-	
-	def getDictionary(self):
-		if len(self.children) == 0:
-			return []
-
-		words = []
-		for c in self.children:
-			cWords = self.children[c].getDictionary()
-			if len(cWords) == 0:
-				words.append(c)
-				continue
-
-			for word in cWords:
-				words.append(c+word)
-
-		return words
-
 #https://practice.geeksforgeeks.org/problems/word-boggle4143/1#
 def wordBoggle(board,dictionary):
 	trie = Trie(dictionary)
