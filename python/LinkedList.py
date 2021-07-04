@@ -27,6 +27,13 @@ def findMid(head):
         nextNode = nextNode.next
     return nextNode.data
 
+def findMidFast(head):
+    slow, fast = head, head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow
+
 def reverseList(head):
 	last = None
 	current = head

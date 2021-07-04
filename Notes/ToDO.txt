@@ -85,6 +85,8 @@ Problems:
 		- http://www.algorithmsandme.com/find-kth-smallest-element-in-two-sorted-arrays/
 	* Find array rotation with duplicate elements, Leetcode 154: Find Minimum in Rotated Sorted Array II
 	* Leetcode 109: Convert Sorted List to Binary Search Tree
+    * Replace element with greater element to its right
+        - https://www.geeksforgeeks.org/replace-every-element-with-the-least-greater-element-on-its-right/
 
 - Greedy:
 	- Swap all occurrences of two characters to get lexicographically smallest string (https://practice.geeksforgeeks.org/problems/choose-and-swap0531/1#)
@@ -123,6 +125,7 @@ Problems:
 	- Different traversals used to serialize a (Binary) Tree
     - Iterative traversals es. PostOrder
     - Leetcode 437: Path Sum III
+    - Morris tree travel
 
 - Swap Sort
 	- Leetcode 287: Find the Duplicate Number

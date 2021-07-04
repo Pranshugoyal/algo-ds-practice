@@ -461,6 +461,29 @@ def mirrorBinaryTree(root):
     mRoot.right = self.invertTree(root.left)
     return mRoot
 
+#https://pdf.sciencedirectassets.com/271600/1-s2.0-S0167642300X00913/1-s2.0-0167642388900639/main.pdf
+#https://www.educative.io/edpresso/what-is-morris-traversal
+def morrisInorderTreeTraversal(root):
+    curr = root
+    res = []
+    while curr:
+        if curr.left is None:
+            res.append(curr.data)
+            curr = curr.right
+        else:
+            lmax = curr.left
+            while lmax.right and lmax.right is not curr:
+                lmax = lmax.right
+
+            if lmax.right is None:
+                lmax.right = curr
+                curr = curr.left
+            else:
+                lmax.right = None
+                res.append(curr.data)
+                curr = curr.right
+    return res
+
 #https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/
 #https://practice.geeksforgeeks.org/problems/inorder-traversal/1
 def inorderIterative(root):
@@ -986,3 +1009,19 @@ def areIsomorphic(r1, r2):
         if areIsomorphic(r1.left, r2.right) and areIsomorphic(r1.right, r2.left):
             return True
         return False
+
+#https://leetcode.com/problems/merge-two-binary-trees/
+def mergeTrees(root1, root2):
+    if not root1 and not root2:
+        return None
+    elif not root1 or not root2:
+        r = root1 if root1 else root2
+        root = TreeNode(r.val)
+        root.left = mergeTrees(r.left, None)
+        root.right = mergeTrees(r.right, None)
+        return root
+    else:
+        root = TreeNode(root1.val + root2.val)
+        root.left = mergeTrees(root1.left, root2.left)
+        root.right = mergeTrees(root1.right, root2.right)
+        return root
