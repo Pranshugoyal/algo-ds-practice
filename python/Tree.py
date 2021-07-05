@@ -583,12 +583,6 @@ def inorderIterativeMorrisStack(root):
                 current = None
     return res
 
-root = Node(3)
-root.left = Node(2)
-root.right = Node(4)
-root.right.left = Node(1)
-print(inorderIterativeMorrisStack(root))
-
 #https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/
 #https://practice.geeksforgeeks.org/problems/inorder-traversal/1
 def inorderIterative(root):
