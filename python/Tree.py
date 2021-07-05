@@ -461,7 +461,6 @@ def mirrorBinaryTree(root):
     mRoot.right = self.invertTree(root.left)
     return mRoot
 
-#https://pdf.sciencedirectassets.com/271600/1-s2.0-S0167642300X00913/1-s2.0-0167642388900639/main.pdf
 #https://www.educative.io/edpresso/what-is-morris-traversal
 def morrisInorderTreeTraversal(root):
     curr = root
@@ -484,12 +483,117 @@ def morrisInorderTreeTraversal(root):
                 curr = curr.right
     return res
 
+#https://pdf.sciencedirectassets.com/271600/1-s2.0-S0167642300X00913/1-s2.0-0167642388900639/main.pdf
+#This is buggy, needs testing and fixes
+def morrisStyleIterativeInorder(root):
+    curr, stack = root, []
+    res = []
+
+    def rightOrPeek(node):
+        return curr.right if curr.right else stack[-1] if stack else None
+
+    while curr:
+        if curr.left is None:
+            res.append(curr.data)
+            curr = rightOrPeek(curr)
+        else:
+            if stack and stack[-1] is curr:
+                res.append(curr.data)
+                stack.pop()
+                curr = rightOrPeek(curr)
+            else:
+                stack.append(curr)
+                curr = curr.left
+    return res
+
+class MorrisStack:
+    def __init__(self, root):
+        self.root = None
+        self.last = None
+
+    def push(self, node):
+        p = self._loopParent(node)
+        if p:
+            p.right = node
+            self.last = node
+            if not self.root:
+                self.root = node
+
+    def peek(self):
+        return self.last
+
+    def pop(self):
+        node = self.peek()
+        if not node:
+            return None
+        self._loopParent(node).right = None
+
+        last = node
+        while last.right and last.right.left is not node:
+            last = last.right
+        self.last = last.right
+        if self.last is None:
+            self.root = None
+
+        return node
+
+    def _loopParent(self, node):
+        if not node.left:
+            return None
+
+        lmax = node.left
+        while lmax.right and lmax.right is not node:
+            lmax = lmax.right
+
+        return lmax
+
+    def __contains__(self, node):
+        p = self._loopParent(node)
+        if p:
+            return p.right is node
+        else:
+            return False
+
+    def __bool__(self):
+        return self.peek() is not None
+
+#Is buggy, needs fixing
+def inorderIterativeMorrisStack(root):
+    current = root
+    stack, res = MorrisStack(root), []
+    while current or stack:
+        if current:
+            if current.left:
+                stack.push(current)
+                current = current.left
+            else:
+                res.append(current.data)
+                print(current.data)
+                if current.right and current.right not in stack:
+                    current = current.right
+                else:
+                    current = None
+        elif stack:
+            current = stack.pop()
+            res.append(current.data)
+            print(current.data)
+            if current.right and current.right not in stack:
+                current = current.right
+            else:
+                current = None
+    return res
+
+root = Node(3)
+root.left = Node(2)
+root.right = Node(4)
+root.right.left = Node(1)
+print(inorderIterativeMorrisStack(root))
+
 #https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/
 #https://practice.geeksforgeeks.org/problems/inorder-traversal/1
 def inorderIterative(root):
     current = root
-    stack = []
-    res = []
+    stack, res = [], []
     while current or stack:
         if current:
             stack.append(current)
