@@ -25,6 +25,7 @@ Resources:
 
 Problems:
 - Stack
+    - Stack sortable permutations
 	- K stacks in Array
 		https://www.youtube.com/watch?v=DxW7VAsdX0o
 		https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
@@ -84,6 +85,9 @@ Problems:
 		- https://www.baeldung.com/java-kth-smallest-element-in-sorted-arrays
 		- http://www.algorithmsandme.com/find-kth-smallest-element-in-two-sorted-arrays/
 	* Find array rotation with duplicate elements, Leetcode 154: Find Minimum in Rotated Sorted Array II
+
+- Binary Searct Tree (BST):
+    * Validate preorder traversal of BST
 	* Leetcode 109: Convert Sorted List to Binary Search Tree
     * Replace element with greater element to its right
         - https://www.geeksforgeeks.org/replace-every-element-with-the-least-greater-element-on-its-right/

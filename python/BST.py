@@ -134,6 +134,7 @@ def updateInorderSuccession(root, parent=None):
         return root
 
 #https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/
+#https://practice.geeksforgeeks.org/problems/preorder-to-postorder4423/1#
 def bstFromPreorder(arr):
     def decodeUtil(i, lb, rb):
         if i >= len(arr) or arr[i] >= rb or arr[i] <= lb:
@@ -145,6 +146,24 @@ def bstFromPreorder(arr):
         return root, i
     
     return decodeUtil(0, 0, 100)[0]
+
+#https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversal-set-2/
+def bstFromPreorderIterative(arr):
+    root, stack, temp = Node(arr[0]), [], None
+    stack.append(root)
+    for n in arr[1:]:
+        temp = None
+        while stack and n > stack[-1].data:
+            temp = stack.pop()
+
+        if temp:
+            temp.right = Node(n)
+            stack.append(temp.right)
+        else:
+            temp = stack[-1]
+            temp.left = Node(n)
+            stack.append(temp.left)
+    return root
 
 #https://practice.geeksforgeeks.org/problems/binary-tree-to-bst/1#
 def btToBst(root):
@@ -414,3 +433,44 @@ def flattenBst(root):
         return head, tail
 
     return util(root)[0]
+
+#https://www.geeksforgeeks.org/replace-every-element-with-the-least-greater-element-on-its-right/
+def leastGreaterToRight(arr):
+    def insertAndGetSuccessor(root, n, parent=None):
+        if not root:
+            return Node(n), parent
+        elif root.data > n:
+            root.left, succ = insertAndGetSuccessor(root.left, n, root)
+            return root, succ
+        elif root.data <= n:
+            root.right, succ = insertAndGetSuccessor(root.right, n, parent)
+            return root, succ
+
+    root, res = None, []
+    for n in reversed(arr):
+        root, succ = insertAndGetSuccessor(root, n)
+        res.append(succ.data if succ else -1)
+    res.reverse()
+    return res
+
+#https://www.geeksforgeeks.org/check-if-a-given-array-can-represent-preorder-traversal-of-binary-search-tree/
+def validatePreorderTraversal(arr):
+    root, s = None, []
+    for val in arr:
+        if root and val < root:
+            return False
+        while s and s[-1] < val:
+            root = s.pop()
+        s.append(val)
+    return True
+
+#https://practice.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1
+def hasDeadEnds(root):
+    def deUtil(root, lo, hi):
+        if not root:
+            return False
+        elif lo == hi:
+            return True
+        else:
+            return deUtil(root.left, lo, root.data-1) or deUtil(root.right, root.data+1, hi)
+    return deUtil(root, 0, None)
