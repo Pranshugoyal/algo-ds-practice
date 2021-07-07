@@ -343,3 +343,28 @@ def minSwaps(nums):
         correct(i)
     return swaps
 
+#https://leetcode.com/problems/reduce-array-size-to-the-half/
+def reduceArrayToHalf(arr):
+    from collections import Counter
+
+    counts = sorted(Counter(arr).values(), reverse=True)
+    setSize, target = 0, len(arr)//2
+    for n in counts:
+        setSize += 1
+        target -= n
+        if target <= 0:
+            break
+    return setSize
+
+#https://leetcode.com/problems/reshape-the-matrix/
+def matrixReshape(mat, r, c):
+    n, m = len(mat), len(mat[0])
+    if n*m != r*c:
+        return mat
+    
+    res = []
+    for i in range(r):
+        res.append([])
+    for k in range(n*m):
+        res[k//c].append(mat[k//m][k%m])
+    return res

@@ -868,3 +868,30 @@ def robCircular(nums):
     ll = rob(nums[:-1])
     return max(tl, ll)
 
+#https://leetcode.com/problems/count-vowels-permutation/
+def countVowelPermutation(n):
+    ruleMap = { 'a': ['e'],
+                'e': ['a', 'i'],
+                'i': ['a', 'e', 'o', 'u'],
+                'o': ['u', 'i'],
+                'u': ['a']
+            }
+
+from functools import lru_cache
+
+    @lru_cache(maxsize=None)
+    def countUtil(n, last):
+        if n == 0:
+            return 1
+        elif n == 1:
+            return len(ruleMap[last])
+        else:
+            total = 0
+            for k in ruleMap[last]:
+                total += countUtil(n-1, k)
+            return total
+
+    total, l = 0, (10**9 + 7)
+    for k in ruleMap.keys():
+        total += countUtil(n-1, k)%l
+    return total%l
