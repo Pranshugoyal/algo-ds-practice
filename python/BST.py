@@ -474,3 +474,77 @@ def hasDeadEnds(root):
         else:
             return deUtil(root.left, lo, root.data-1) or deUtil(root.right, root.data+1, hi)
     return deUtil(root, 0, None)
+
+#https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k
+def maxSumSubmatrix(matrix, k):
+
+    def insertBST(root, v):
+        if not root:
+            return Node(v)
+        elif root.data == v:
+            return root
+        elif root.data > v:
+            root.left = insertBST(root.left, v)
+            return root
+        else:
+            root.right = insertBST(root.right, v)
+            return root
+
+    def searchCeilBST(root, k, ceil=None):
+        if not root:
+            return ceil
+        elif root.data == k:
+            return root
+        elif root.data < k:
+            return searchCeilBST(root.right, k, ceil)
+        else:
+            return searchCeilBST(root.left, k, root)
+
+    def chooseMax(a, b):
+        if a is None or b is None:
+            return a if a is not None else b
+        else:
+            return max(a, b)
+
+    def chooseMin(a, b):
+        if a is None or b is None:
+            return a if a is not None else b
+        else:
+            return min(a, b)
+
+    def kadanesMaxSum(arr):
+        cs, ms = 0, arr[0]
+        for i, n in enumerate(arr):
+            cs = max(cs+n, n)
+            ms = max(ms, cs)
+        return ms
+
+    def maxSumArray(arr, k):
+        maxKadane = kadanesMaxSum(arr)
+        if maxKadane <= k:
+            return maxKadane
+
+        cs, prefixSums = 0, Node(0)
+        ps, diff = None, None
+        maxSum = None
+        for c, n in enumerate(arr):
+            cs += n
+            ps = searchCeilBST(prefixSums, cs-k)
+            insertBST(prefixSums, cs)
+            diff = cs-ps.data if ps else None
+            maxSum = chooseMax(maxSum, diff)
+            if maxSum == k:
+                break
+        return maxSum
+
+    sumArray = []
+    maxSum = None
+    for i in range(len(matrix)):
+        sumArray = [0]*len(matrix[0])
+        for r in range(i, len(matrix)):
+            for c in range(len(matrix[r])):
+                sumArray[c] += matrix[r][c]
+            maxSum = chooseMax(maxSum, maxSumArray(sumArray, k))
+            if maxSum == k:
+                break
+    return maxSum
