@@ -7,6 +7,7 @@ Algorithms
 	- Johnson's algorithm for shortest path with priority queue
     - Operations on sets of intervals
     - String pattern matching algorithms
+    - Peak Finding
 
 Data Structures
 	- Unrolled Linked Lists
@@ -85,6 +86,7 @@ Problems:
 		- https://www.baeldung.com/java-kth-smallest-element-in-sorted-arrays
 		- http://www.algorithmsandme.com/find-kth-smallest-element-in-two-sorted-arrays/
 	* Find array rotation with duplicate elements, Leetcode 154: Find Minimum in Rotated Sorted Array II
+    * Leetcode: 719: Find K-th Smallest Pair Distance
 
 - Binary Searct Tree (BST):
     * Validate preorder traversal of BST
