@@ -351,3 +351,45 @@ def mergeKLists(arr,K):
 			heapq.heappush(heap,(node.data, index))
 		
 	return head
+
+#https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
+def kthSmallestMatrix(matrix, k):
+    n = len(matrix)
+    h = []
+    for r in range(n):
+        h.append((matrix[r][0], r, 0))
+    heapq.heapify(h)
+
+    r, c = None, None
+    for _ in range(k-1):
+        r, c = h[0][1], h[0][2]
+        if c == n-1:
+            heapq.heappop(h)
+        else:
+            heapq.heapreplace(h, (matrix[r][c+1], r, c+1))
+
+    return h[0][0]
+
+def kthSmallestMatrixSaddleBackSearch(matrix, k):
+    def countLessThanK(n, k):
+        r, c = 0, n-1
+        count = 0
+        while r < n and c >= 0:
+            if matrix[r][c] <= k:
+                count += c+1
+                r += 1
+            else:
+                c -=1
+        return count
+
+    #Binary search for ans
+    n = len(matrix)
+    lo, hi = matrix[0][0], matrix[-1][-1]
+    while lo < hi:
+        mid = lo + (hi-lo)//2
+        count = countLessThanK(n, mid)
+        if count < k:
+            lo = mid + 1
+        else:
+            hi = mid
+    return lo

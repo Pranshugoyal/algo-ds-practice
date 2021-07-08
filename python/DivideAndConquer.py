@@ -98,3 +98,32 @@ def mergeSort(arr,l,r):
 	for n in temp:
 		arr[i] = n
 		i += 1
+
+################################################################################
+# ----------------------------- Leetcode Practice ---------------------------- #
+################################################################################
+
+#https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
+def kthSmallestMatrixSaddleBackSearch(matrix, k):
+    def countLessThanK(n, k):
+        r, c = 0, n-1
+        count = 0
+        while r < n and c >= 0:
+            if matrix[r][c] <= k:
+                count += c+1
+                r += 1
+            else:
+                c -=1
+        return count
+
+    #Binary search for ans
+    n = len(matrix)
+    lo, hi = matrix[0][0], matrix[-1][-1]
+    while lo < hi:
+        mid = lo + (hi-lo)//2
+        count = countLessThanK(n, mid)
+        if count < k:
+            lo = mid + 1
+        else:
+            hi = mid
+    return lo
