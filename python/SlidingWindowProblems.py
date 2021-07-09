@@ -246,3 +246,41 @@ def minWindowSubstring2(S, t):
 		j += 1
 	return S[result[0]:result[1]+1]
 
+#https://leetcode.com/problems/find-k-closest-elements/
+def elementsClosestToK(arr, k, x):
+    def searchOrCeil(arr, n):
+        lo, hi = 0, len(arr)-1
+        while lo < hi:
+            mid = lo + (hi-lo)//2
+            if arr[mid] >= n:
+                hi = mid
+            else:
+                lo = mid+1
+        return lo
+
+    ceil = searchOrCeil(arr, x)
+    if ceil == 0:
+        return arr[:k]
+    elif ceil == len(arr):
+        return arr[n-k:]
+
+    if arr[ceil] != x:
+        if abs(arr[ceil-1]-x) <= abs(arr[ceil]-x):
+            ceil -= 1
+
+    i, j = ceil, ceil
+    while j-i+1 < k:
+        if i == 0:
+            j += 1
+            continue
+        elif j == len(arr)-1:
+            i -= 1
+            continue
+
+        if abs(arr[i-1]-x) <= abs(arr[j+1]-x):
+            i -= 1
+        else:
+            j += 1
+
+    return arr[i:j+1]
+

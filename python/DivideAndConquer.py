@@ -127,3 +127,28 @@ def kthSmallestMatrixSaddleBackSearch(matrix, k):
         else:
             hi = mid
     return lo
+
+#https://leetcode.com/problems/find-k-th-smallest-pair-distance/
+def kthSmallestPairDistance(nums, k):
+    nums.sort()
+    def countPairsWithDiffLessThan(d):
+        i, j = 0,1
+        count = 0
+        while j < len(nums):
+            while nums[j] - nums[i] > d and i <= j:
+                i += 1
+            count += j - i
+            j += 1
+            if count >= k:
+                return True
+
+        return False
+
+    lo, hi = 0, nums[-1]-nums[0]
+    while lo < hi:
+        mid = lo + (hi-lo)//2
+        if countPairsWithDiffLessThan(mid):
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
