@@ -8,6 +8,8 @@ Algorithms
     - Operations on sets of intervals
     - String pattern matching algorithms
     - Peak Finding
+    - Range minimum query using segment tree
+    - Euclidean Algorithms
 
 Data Structures
 	- Unrolled Linked Lists
@@ -58,6 +60,7 @@ Problems:
 
 - Backtracking
 	* Leetcode 1723: Find Minimum Time to Finish All Jobs
+    * Decode Ways II
 
 - Two Pointer Algorithms
 	* Swapping pairs make sum equal (https://practice.geeksforgeeks.org/problems/swapping-pairs-make-sum-equal/0)
@@ -147,3 +150,4 @@ Problems:
 
 - Matrix:
     - Leetcode 885: Spiral Matrix III
+    - Inplace matrix rotation
