@@ -48,3 +48,17 @@ Practice Problems:
 	- Job sequencing using disjoint sets (https://www.geeksforgeeks.org/job-sequencing-using-disjoint-set-union/)
 	- Scheduling to Minimize Lateness (https://www.cs.umd.edu/class/fall2017/cmsc451-0101/Lects/lect07-greedy-sched.pdf)
 
+	- Swap all occurrences of two characters to get lexicographically smallest string (https://practice.geeksforgeeks.org/problems/choose-and-swap0531/1#)
+	- Leetcode 630: Course Schedule III
+	- How to check if a currency system can give correcy answer using greedy for minimum coins required
+	- Minimize the maximum difference between the heights
+		- https://stackoverflow.com/a/65880544/5952189
+		- https://www.geeksforgeeks.org/minimize-the-maximum-difference-between-the-heights/
+	- Minimize the sum of product of two arrays with permutations allowed
+		- https://www.geeksforgeeks.org/minimize-sum-product-two-arrays-permutations-allowed/
+		- https://practice.geeksforgeeks.org/problems/minimize-the-sum-of-product/0
+		- https://stackoverflow.com/a/28334813/5952189
+		- https://www.wikiwand.com/en/Rearrangement_inequality
+	- Geek collects the balls
+		- https://practice.geeksforgeeks.org/problems/geek-collects-the-balls5515/1#
+		- https://hackerranksolutionc.blogspot.com/2019/02/collects-balls-between-two-roads.html
