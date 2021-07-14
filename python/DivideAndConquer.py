@@ -152,3 +152,38 @@ def kthSmallestPairDistance(nums, k):
         else:
             lo = mid + 1
     return lo
+
+#https://www.spoj.com/problems/EKO/
+def getBladeHeight(heights, n, M):
+    heights.sort()
+    prefix = [0]*n
+    prefix[-1] = heights[-1]
+    for i in reversed(range(n-1)):
+        prefix[i] = heights[i] + prefix[i+1]
+
+    def countWoodBS(h):
+        lo, hi = 0, n-1
+        while lo < hi:
+            mid = lo + (hi-lo)//2
+            if heights[mid] > h:
+                hi = mid
+            else:
+                lo = mid+1
+        
+        return prefix[lo] - (n-lo)*h
+
+    def countWood(h):
+        w = 0
+        for th in heights:
+            w += max(th-h, 0)
+        return w
+
+    lo, hi = 0, max(heights) 
+    while lo < hi:
+        mid = lo + (hi-lo)//2
+        if countWoodBS(mid) < M:
+            hi = mid
+        else:
+            lo = mid + 1
+
+    return lo - 1
