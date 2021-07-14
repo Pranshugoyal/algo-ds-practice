@@ -72,6 +72,11 @@ Problems:
 		Sort an array by first moving elements around mid, make sure all elements in left half are smaller than all elements in right half, then sort recursively
 		https://www.geeksforgeeks.org/k-th-element-two-sorted-arrays/
 		http://www.algorithmsandme.com/find-kth-smallest-element-in-two-sorted-arrays/
+    * Three Sum Closest
+        - https://www.interviewbit.com/problems/3-sum/
+        - https://leetcode.com/problems/3sum-closest/
+        - https://practice.geeksforgeeks.org/problems/three-sum-closest/1/
+        - https://www.geeksforgeeks.org/find-a-triplet-in-an-array-whose-sum-is-closest-to-a-given-number/amp/
 
 - Heap:
 	* https://leetcode.com/problems/sliding-window-median/
