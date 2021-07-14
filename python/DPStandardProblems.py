@@ -915,3 +915,63 @@ def longestCommonSubarray(nums1, nums2):
                 dp[i][j] = 0
             lcs = max(lcs, dp[i][j])
     return lcs
+
+#https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/amp/
+def longestIncreasingSubsequence(nums):
+    def findCeilBS(arr, k):
+        lo, hi = 0, len(arr)-1
+        while lo < hi:
+            mid = lo + (hi-lo)//2
+            if arr[mid] >= k:
+                hi = mid
+            else:
+                lo = mid+1
+        return lo
+
+    lis = [nums[0]]
+    for n in nums[1:]:
+        if n > lis[-1]:
+            lis.append(n)
+        else:
+            ceil = findCeilBS(lis, n)
+            lis[ceil] = n
+
+    return len(lis)
+
+#https://leetcode.com/problems/russian-doll-envelopes/
+def maxEnvelopes(envelopes):
+    envelopes.sort(key=lambda x: (x[0], -x[1]))
+    heights = list(map(lambda x: x[1], envelopes))
+    return longestIncreasingSubsequence(heights)
+
+#https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/
+#https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/discuss/952053/Python-3-solutions%3A-LIS-dp-O(n-log-n)-explained
+def makeMountainArray(nums):
+    def lisSizeArray(nums):
+        def ceil(arr, k):
+            lo, hi = 0, len(arr)-1
+            while lo < hi:
+                mid = lo + (hi-lo)//2
+                if arr[mid] >= k:
+                    hi = mid
+                else:
+                    lo = mid+1
+            return lo
+
+        lis, lisL = nums[:1], [1]
+        for n in nums[1:]:
+            if n > lis[-1]:
+                lis.append(n)
+                lisL.append(len(lis))
+            else:
+                i = ceil(lis, n)
+                lis[i] = n
+                lisL.append(i+1)
+        return lisL
+    
+    lis, lds = lisSizeArray(nums), lisSizeArray(nums[::-1])[::-1]
+    mountainSize = 0
+    for i in range(len(nums)):
+        if lis[i] >= 2 and lds[i] >= 2:
+            mountainSize = max(mountainSize, lis[i] + lds[i] - 1)
+    return len(nums) - mountainSize

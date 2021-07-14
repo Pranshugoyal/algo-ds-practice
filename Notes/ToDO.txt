@@ -15,6 +15,7 @@ Data Structures
 	- Unrolled Linked Lists
 	- Skip Lists
 	- Self Balancing BST: Binary/AVL/Red-Black/Binary-Indexed Tree
+    - Suffix Trees
 	- Interval/Segment Tree
 		- https://leetcode.com/problems/merge-intervals/discuss/21452/Share-my-interval-tree-solution-no-sorting
 	- Disjoint Set Data Structures
@@ -50,6 +51,9 @@ Problems:
 		- Other interesting solution: https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
 	* Longest increasing subsequence in an Array in NLogN:
 		- https://stackoverflow.com/a/2631810/5952189
+        - Leetcode 354: Russian Doll Envelopes (https://leetcode.com/problems/russian-doll-envelopes/)
+        - Leetcode 1671: Minimum Number of Removals to Make Mountain Array (https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/discuss/952053/Python-3-solutions%3A-LIS-dp-O(n-log-n)-explained)
+        - Leetcode 673: Number of Longest Increasing Subsequence
 	* Minimum number of jumps 
 		- https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1#
 		- https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
@@ -97,22 +101,6 @@ Problems:
 	* Leetcode 109: Convert Sorted List to Binary Search Tree
     * Replace element with greater element to its right
         - https://www.geeksforgeeks.org/replace-every-element-with-the-least-greater-element-on-its-right/
-
-- Greedy:
-	- Swap all occurrences of two characters to get lexicographically smallest string (https://practice.geeksforgeeks.org/problems/choose-and-swap0531/1#)
-	- Leetcode 630: Course Schedule III
-	- How to check if a currency system can give correcy answer using greedy for minimum coins required
-	- Minimize the maximum difference between the heights
-		- https://stackoverflow.com/a/65880544/5952189
-		- https://www.geeksforgeeks.org/minimize-the-maximum-difference-between-the-heights/
-	- Minimize the sum of product of two arrays with permutations allowed
-		- https://www.geeksforgeeks.org/minimize-sum-product-two-arrays-permutations-allowed/
-		- https://practice.geeksforgeeks.org/problems/minimize-the-sum-of-product/0
-		- https://stackoverflow.com/a/28334813/5952189
-		- https://www.wikiwand.com/en/Rearrangement_inequality
-	- Geek collects the balls
-		- https://practice.geeksforgeeks.org/problems/geek-collects-the-balls5515/1#
-		- https://hackerranksolutionc.blogspot.com/2019/02/collects-balls-between-two-roads.html
 
 - String:
 	- Swap characters in a String (https://www.geeksforgeeks.org/swap-characters-in-a-string/)

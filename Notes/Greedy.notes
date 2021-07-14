@@ -8,11 +8,20 @@ The two basic properties of optimal Greedy algorithms are:
 	1) Greedy choice property
 	2) Optimal substructure
 
-1: Greedy choice property
-This property says that the globally optimal solution can be obtained by making a locally optimal solution (Greedy).The choice made by a Greedy algorithm may depend on earlier choices but not on the future. It iteratively makes one Greedy choice after another and reduces the given problem to a smaller one.
+    1: Greedy choice property
+    This property says that the globally optimal solution can be obtained by making a locally optimal solution (Greedy).The choice made by a Greedy algorithm may depend on earlier choices but not on the future. It iteratively makes one Greedy choice after another and reduces the given problem to a smaller one.
 
-2: Optimal substructure
-A problem exhibits optimal substructure if an optimal solution to the problem contains optimal solutions to the subproblems. That means we can solve subproblems and build up the solutions to solve larger problems
+    2: Optimal substructure
+    A problem exhibits optimal substructure if an optimal solution to the problem contains optimal solutions to the subproblems. That means we can solve subproblems and build up the solutions to solve larger problems
+
+Interval Scheduling Problem:
+If there are two intervals A, B, with A has earlier finish time, then B is either
+	- Start time later than A's finish time, then no conflict at all, why not both?
+	- Start time earlier than A's finish time, there is conflict, I can only choose A OR B, however, A ends earlier, it gives a higher chance to pick more shows afterwards,
+
+Interval colouring/partitioning or Min no. of rooms to fit all classes requires sorting by start times.
+
+Min rooms with start and end times of classes. Find max number fo clashes at any point in time. Sort all start and end times in one array, create cumuative array: add 1 for each start and -1 for each end. Max of this array is max number of clashes. (Karunmanchi 17.15: Number of railway-platforms)
 
 Greedy Applications:
 	 1: Sorting: Selection sort, Topological sort
@@ -39,11 +48,3 @@ Practice Problems:
 	- Job sequencing using disjoint sets (https://www.geeksforgeeks.org/job-sequencing-using-disjoint-set-union/)
 	- Scheduling to Minimize Lateness (https://www.cs.umd.edu/class/fall2017/cmsc451-0101/Lects/lect07-greedy-sched.pdf)
 
-9: Interval Scheduling Problem thought process:
-If there are two intervals A, B, with A has earlier finish time, then B is either
-	- Start time later than A's finish time, then no conflict at all, why not both?
-	- Start time earlier than A's finish time, there is conflict, I can only choose A OR B, however, A ends earlier, it gives a higher chance to pick more shows afterwards,
-
-Interval colouring/partitioning or Min no. of rooms to fit all classes requires sorting by start times.
-
-Min rooms with start and end times of classes. Find max number fo clashes at any point in time. Sort all start and end times in one array, create cumuative array: add 1 for each start and -1 for each end. Max of this array is max number of clashes. (Karunmanchi 17.15: Number of railway-platforms)
