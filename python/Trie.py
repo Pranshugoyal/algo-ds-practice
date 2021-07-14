@@ -111,3 +111,16 @@ def numMatchingSubseqLinear(S, words):
                 word_dict[word[1]].append(word[1:])
     
     return count
+
+#https://practice.geeksforgeeks.org/problems/phone-directory/0
+def phoneDirectoryPrefixSearch(n, contact, s):
+    res = []
+    root = Trie(contact)
+    for i in range(len(s)):
+        if s[i] in root.children:
+            root = root.children[s[i]]
+            res.append(sorted(root.getDictionary()))
+        else:
+            res += [[0]]*(n-i)
+            break
+    return res
