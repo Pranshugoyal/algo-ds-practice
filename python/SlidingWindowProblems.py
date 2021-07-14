@@ -5,6 +5,8 @@
 # --------------------------- Fixed Sized Window ----------------------------- #
 ################################################################################
 
+from collections import deque
+
 def maxSubarraySum(list, k):
 	maxSum = -1
 	lastSum = 0
@@ -22,7 +24,6 @@ def maxSubarraySum(list, k):
 	return maxSum
 
 def firstNegativeNumberInSubArrays(list, k):
-	from collections import deque
 	q = deque()
 	result = []
 	i = 0
@@ -283,4 +284,53 @@ def elementsClosestToK(arr, k, x):
             j += 1
 
     return arr[i:j+1]
+
+#https://leetcode.com/problems/longest-substring-of-all-vowels-in-order/
+def longestBeautifulSubstring(word):
+    def isPartBeautiful(d):
+        order = "aeiou"
+        for i in range(len(d)):
+            c = order[i]
+            if c not in d:
+                return False 
+            if i > 0 and d[c][0] < d[order[i-1]][-1]:
+                return False
+        return True
+
+    n = len(word)
+    i, j = 0,0
+    d, lb = {}, 0
+    while j < n:
+        if word[j] not in d:
+            d[word[j]] = deque([j])
+        else:
+            d[word[j]].append(j)
+
+        while len(d) > 0 and not isPartBeautiful(d):
+            c = word[i]
+            d[c].popleft()
+            if len(d[c]) == 0:
+                d.pop(c)
+            i += 1
+
+        if len(d) < 5:
+            j += 1
+            continue
+
+        lb = max(lb, j-i+1)
+        j += 1
+
+    return lb
+
+def longestBeautifulSubstring2(word):
+    seen = set()
+    lo, longest = -1, 0
+    for hi, c in enumerate(word):
+        if hi > 0 and c < word[hi - 1]:
+            seen = set()
+            lo = hi - 1    
+        seen.add(c)    
+        if len(seen) == 5:
+            longest = max(longest, hi - lo)
+    return longest
 
