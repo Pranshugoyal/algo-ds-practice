@@ -10,11 +10,12 @@ Algorithms
     - Peak Finding
     - Range minimum query using segment tree
     - Euclidean Algorithms
+    - Set Cover Problem
 
 Data Structures
 	- Unrolled Linked Lists
 	- Skip Lists
-	- Self Balancing BST: Binary/AVL/Red-Black/Binary-Indexed Tree
+	- Self Balancing BST: Binary/AVL/Red-Black/Splay/Binary-Indexed Tree
     - Suffix Trees
 	- Interval/Segment Tree
 		- https://leetcode.com/problems/merge-intervals/discuss/21452/Share-my-interval-tree-solution-no-sorting
@@ -61,6 +62,7 @@ Problems:
 	* Binary Strings with at most K Consecutive One (https://algocademy.com/app/#problem/binary-strings-with-at-most-k-consecutive-ones/lang/py/solution/1-1/tab/solution-hints/noredirect/true)
 	* Interleaving Strings: https://leetcode.com/problems/interleaving-string/discuss/31888/1ms-tiny-DFS-beats-94.57
 	* Partition array into k equal sub sets https://www.geeksforgeeks.org/partition-set-k-subsets-equal-sum/
+    * Leetcode 1125: Smallest Sufficient Team
 
 - Backtracking
 	* Leetcode 1723: Find Minimum Time to Finish All Jobs
