@@ -193,3 +193,15 @@ def josephus(n,k):
 
 	return arr[nextMan]
 
+#https://leetcode.com/problems/count-good-numbers/
+def countGoodNumbers(n):
+    def fastExp(b, e, M):
+        if e < 3:
+            return b**e
+        elif e%2 == 0:
+            return fastExp(b, e//2, M) ** 2 % M
+        else:
+            return fastExp(b, e-1, M) * b % M
+
+    M = 10**9 + 7
+    return fastExp(4, n//2, M) * fastExp(5, n - n//2, M) % M

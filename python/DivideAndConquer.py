@@ -187,3 +187,42 @@ def getBladeHeight(heights, n, M):
             lo = mid + 1
 
     return lo - 1
+
+#https://www.geeksforgeeks.org/find-a-peak-in-a-given-array/
+def findPeak(arr, lo, hi):
+    if lo == hi:
+        return lo
+    elif hi-lo == 1:
+        return hi if arr[hi] > arr[lo] else lo
+
+    mid = lo + (hi-lo)//2
+    if arr[mid-1] < arr[mid] > arr[mid+1]:
+        return mid
+    elif arr[mid] < arr[mid+1]:
+        return findPeak(arr, mid+1, hi)
+    else:
+        return findPeak(arr, lo, mid-1)
+
+#https://leetcode.com/problems/find-a-peak-element-ii/
+#https://www.geeksforgeeks.org/find-peak-element-2d-array/
+def peakFinding2D(mat, lo, hi):
+    def maxRowIndex(row):
+        return row.index(max(row))
+
+    if lo == hi:
+        return [lo, maxRowIndex(mat[lo])]
+    elif hi-lo == 1:
+        mi = maxRowIndex(mat[lo])
+        if mat[lo][mi] > mat[hi][mi]:
+            return [lo, mi]
+        else:
+            return [hi, maxRowIndex(mat[hi])]
+
+    mid = lo + (hi-lo)//2
+    mi = maxRowIndex(mat[mid])
+    if mat[mid-1][mi] < mat[mid][mi] > mat[mid+1][mi]:
+        return [mid, mi]
+    elif mat[mid-1][mi] > mat[mid][mi]:
+        return peakFinding2D(mat, lo, mid-1)
+    else:
+        return peakFinding2D(mat, mid+1, hi)
