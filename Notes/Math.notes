@@ -1,0 +1,2 @@
+
+- If m is prime x^n = x^(n % (M-1)), from Fermat's Little Theorem

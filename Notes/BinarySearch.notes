@@ -11,3 +11,6 @@ Problems:
 		- 875: Koko Eating Bananas Minimize 
 		- 774: Max Distance to Gas Station
 		- 410: Split Array Largest Sum
+
+T(n) = T(sqrt(n)) + 1
+=> T(n) = O(lglgn)
