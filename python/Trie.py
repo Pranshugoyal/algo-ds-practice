@@ -45,9 +45,9 @@ class Trie:
 
     def getLeafCount(self):
         if self.isLeaf():
-            return 1
+            return self.isComplete
 
-        count = 0
+        count = self.isComplete
         for _, child in self.children.items():
             count += child.getLeafCount()
         return count
