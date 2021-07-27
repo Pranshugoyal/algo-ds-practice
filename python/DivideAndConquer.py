@@ -17,6 +17,16 @@ def binarySearch(arr,k):
 			left = mid + 1
 	return left
 
+def bsCeil(k):
+    lo, hi = 0, len(arr)-1
+    while lo < hi:
+        mid = hi - (hi-lo)//2
+        if arr[mid] <= k:
+            lo = mid
+        else:
+            hi = mid-1
+    return hi if arr[hi] == k else -1
+
 #https://practice.geeksforgeeks.org/problems/find-the-element-that-appears-once-in-sorted-array/0
 def findOnce(arr : list, n : int):
 	def condition(i) -> bool:
@@ -226,3 +236,14 @@ def peakFinding2D(mat, lo, hi):
         return peakFinding2D(mat, lo, mid-1)
     else:
         return peakFinding2D(mat, mid+1, hi)
+
+#https://practice.geeksforgeeks.org/problems/count-squares3649/1
+def countSquares(N):
+    lo, hi = 1, N
+    while lo < hi:
+        mid = lo + (hi-lo)//2
+        if mid**2 >= N:
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo - 1
