@@ -142,6 +142,7 @@ Problems:
 	- Find the element that appears once
 		- https://www.geeksforgeeks.org/find-the-element-that-appears-once/
     - LeetCode 89: Gray Code
+    - Find if a number in base b is of a form a x b^k where a and k are whole numbers
 
 - Matrix:
     - Leetcode 885: Spiral Matrix III
