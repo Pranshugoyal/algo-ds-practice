@@ -79,11 +79,11 @@ def maxSubArraySum(a,size):
             minSum = min(minSum, currentSum)
         return maxSubSum
 
-    def kadanesMaxSubarraySum(arr):
-        maxSum, lastSum = arr[0], 0
-        for n in arr:
-            lastSum = max(lastSum+n, n)
-            maxSum = max(maxSum, lastSum)
+    def kadanesMaxSubarraySum(nums):
+        ls, maxSum = nums[0], nums[0]
+        for i in range(1, len(nums)):
+            ls = max(ls+nums[i], nums[i])
+            maxSum = max(maxSum, ls)
         return maxSum
     
     return maxSubarraySum(arr)
