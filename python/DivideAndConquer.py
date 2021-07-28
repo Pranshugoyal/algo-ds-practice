@@ -247,3 +247,25 @@ def countSquares(N):
         else:
             lo = mid + 1
     return lo - 1
+
+#https://www.geeksforgeeks.org/move-negative-numbers-beginning-positive-end-constant-extra-space/
+def partitionOnZero(nums):
+    i = 0
+    for j in range(len(nums)):
+        if nums[j] < 0:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+
+#https://www.geeksforgeeks.org/quick-sort/
+def quickSort(nums, l, h):
+    if l >= h:
+        return
+
+    i, p = l, h-1
+    for j in range(l, h):
+        if nums[j] < nums[p]:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+    nums[i], nums[p] = nums[p], nums[i]
+    quickSort(nums, l, i)
+    quickSort(nums, i+1, h)
