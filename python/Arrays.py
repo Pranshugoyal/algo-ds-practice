@@ -149,6 +149,35 @@ def inversionCountMerge(arr) -> int:
 	mergeSortAndCount(arr)
 	return count
 
+#https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+def inversionCountInPlace(arr, l=0, r=None):
+    if r is None:
+        r = len(arr)
+    if l >= r-1:
+        return 0
+
+    n = r - l
+    mid = l + (n//2)
+
+    count = inversionCountInPlace(arr, l, mid)
+    count += inversionCountInPlace(arr, mid, r)
+    res = []
+
+    i, j = l, mid
+    while i < mid and j < r:
+        if arr[i] <= arr[j]:
+            res.append(arr[i])
+            i += 1
+        else:
+            res.append(arr[j])
+            count += mid-i
+            j += 1
+    res += arr[i:mid]
+    res += arr[j:r]
+    arr[l:r] = res
+
+    return count
+
 def minimumPlatform(n,arr,dep):
 	events = []
 	for i in range(n):
@@ -400,3 +429,101 @@ def minJumps(arr):
         lastMin, lastMax = lastMax+1, newMax
         if lastMax >= n-1:
             return jumps
+
+#https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays5135/1
+def mergeWithoutExtraSpace(a, b):
+    n, m = len(a), len(b)
+    lo, hi = 0, n-1
+    while lo < hi:
+        mid = lo + (hi-lo)//2
+        exchange = n - mid
+        print(lo, hi, "Mid:", mid, "exchange:", exchange)
+        if m >= exchange and a[mid] > b[exchange-1]:
+            hi = mid
+        else:
+            lo = mid+1
+
+    print("Search end, lo:", lo)
+    if lo == n-1 and a[-1] < b[0]:
+        return
+
+    print("Exchange", n-lo, " numbers")
+    a[lo:], b[:n-lo] = b[:n-lo], a[lo:]
+    a.sort()
+    b.sort()
+
+#https://leetcode.com/problems/next-permutation/solution/
+def nextLexicographicalPermutation(nums):
+    n = len(nums)
+    i = n-1
+    while i >= 0:
+        if nums[i] > nums[i-1]:
+            break
+        i -= 1
+
+    i -= 1
+    if i >= 0:
+        for j in reversed(range(i+1, n)):
+            if nums[j] > nums[i]:
+                break
+
+        nums[i], nums[j] = nums[j], nums[i]
+    i, j = i+1, n-1
+    while i < j:
+        nums[i], nums[j] = nums[j], nums[i]
+        i += 1
+        j -= 1
+
+#https://practice.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1
+def countTwoSumPairs(arr, n, k):
+    d = {}
+    count = 0
+    for e in arr:
+        count += d.get(k-e, 0)
+        d[e] = d.get(e, 0) + 1
+    return count
+
+#https://practice.geeksforgeeks.org/problems/common-elements1132/1
+def sortedArrayIntersection(A, B, C):
+    from heapq import heappush, heappop, heapify
+
+    space = [A, B, C]
+    h = [(space[i][0], 0, i) for i in range(3)]
+    n = sum([len(a) for a in space])
+    heapify(h)
+
+    common, last, sets = [], None, set()
+    for _ in range(n):
+        next, i, li = heappop(h)
+        l = space[li]
+        if i < len(l)-1:
+            heappush(h, (l[i+1], i+1, li))
+
+        if last != next:
+            last = next
+            sets = set([li])
+        elif len(sets) < 3:
+            sets.add(li)
+            if len(sets) == 3:
+                common.append(next)
+    return common
+
+#https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/amp/
+def rearrangeArrayAlternatively(arr):
+    def partition(arr):
+        i = 0
+        for j in range(len(arr)):
+            if arr[j] < 0:
+                arr[i], arr[j] = arr[j], arr[i]
+                i += 1
+        return i
+
+    i = partition(arr)
+    i += i%2
+    j = 1
+    while i < len(arr) and arr[j] < 0:
+        arr[i], arr[j] = arr[j], arr[i]
+        i += 2
+        j += 2
+        print(arr, i, j)
+    return arr

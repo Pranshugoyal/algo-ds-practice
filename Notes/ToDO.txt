@@ -121,6 +121,7 @@ Problems:
 	- Largest Number formed from an Array (https://practice.geeksforgeeks.org/problems/largest-number-formed-from-an-array1117/1#)
 	- Stock Buy and sell. Find days of buying and selling. (https://practice.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1)
 	- Min of last n numbers in a stream
+    - Leetcode 31: Next Permutation
 
 - Tree
 	- Longest consecutive sequence in Binary tree
@@ -147,3 +148,6 @@ Problems:
 - Matrix:
     - Leetcode 885: Spiral Matrix III
     - Inplace matrix rotation
+
+- Math
+    - Leetcode 932: Beautiful Array

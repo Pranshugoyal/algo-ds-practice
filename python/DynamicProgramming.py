@@ -975,3 +975,45 @@ def makeMountainArray(nums):
         if lis[i] >= 2 and lds[i] >= 2:
             mountainSize = max(mountainSize, lis[i] + lds[i] - 1)
     return len(nums) - mountainSize
+
+#https://practice.geeksforgeeks.org/problems/unique-bsts-1587115621/1
+def uniqueBst(n):
+    dp = [None]*(n+1)
+    dp[0:2] = [1, 1]
+
+    M = 1000000007
+    for i in range(2, n+1):
+        count = 0
+        for k in range(i):
+            count += dp[k] * dp[i-k-1]
+        dp[i] = count%M
+    return dp[n]
+
+#https://leetcode.com/problems/01-matrix/
+def closestZeroes(mat):
+    r, c = len(mat), len(mat[0])
+    dp = [[r+c]*c for _ in range(r)]
+
+    for i in range(r):
+        for j in range(c):
+            if mat[i][j] == 0:
+                dp[i][j] = 0
+                continue
+
+            if j > 0:
+                dp[i][j] = min(dp[i][j], dp[i][j-1]+1)
+            if i > 0:
+                dp[i][j] = min(dp[i][j], dp[i-1][j]+1)
+
+    for i in reversed(range(r)):
+        for j in reversed(range(c)):
+            if mat[i][j] == 0:
+                dp[i][j] = 0
+                continue
+
+            if j < c-1:
+                dp[i][j] = min(dp[i][j], dp[i][j+1]+1)
+            if i < r-1:
+                dp[i][j] = min(dp[i][j], dp[i+1][j]+1)
+
+    return dp
