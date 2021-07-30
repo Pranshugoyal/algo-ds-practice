@@ -15,7 +15,38 @@ def findDuplicateAndMissingNumber(list):
 	
 	return list
 
-if __name__ == "__main__":
-	list = [2,11,12,13,14,2,1,1,3,4,3,7,8,6]
-	print(findDuplicateAndMissingNumber(list))
+#https://leetcode.com/problems/find-the-duplicate-number
+def findDuplicate(nums):
+    def countLessEqual(k):
+        count = 0
+        for n in nums:
+            count += 1 if n <= k else 0
+        return count
 
+    lo, hi = 1, len(nums)-1
+    while lo < hi:
+        mid = lo + (hi-lo)//2
+        if countLessEqual(mid) > mid:
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
+
+#Very interesting, look at other solutions too on leetcode
+#https://leetcode.com/problems/find-the-duplicate-number/
+def findDuplicateFloyd(nums):
+    slow, fast = 0, 0
+    while True:
+        slow = nums[slow]
+        fast = nums[nums[fast]]
+        if slow == fast:
+            break
+
+    print(slow, fast)
+    slow = 0
+    while nums[slow] != nums[fast]:
+        slow = nums[slow]
+        fast = nums[fast]
+        print(slow, fast)
+
+    return nums[slow]

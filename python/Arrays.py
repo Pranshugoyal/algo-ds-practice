@@ -368,3 +368,35 @@ def matrixReshape(mat, r, c):
     for k in range(n*m):
         res[k//c].append(mat[k//m][k%m])
     return res
+
+################################################################################
+# --------------------------------- Love's Sheet ----------------------------- #
+################################################################################
+
+#https://www.geeksforgeeks.org/minimize-the-maximum-difference-between-the-heights/amp/
+def getMinDiff(arr, n, k):
+    arr.sort()
+    minDiff = arr[-1] - arr[0]
+    highest, lowest = 0, 0
+    for i in range(0, n-1):
+        highest = max(arr[i]+k, arr[-1]-k)
+        lowest = min(arr[0]+k, arr[i+1]-k)
+        if highest >= 0 and lowest >= 0:
+            minDiff = min(minDiff, highest-lowest)
+    return minDiff
+
+#https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1
+def minJumps(arr):
+    n = len(arr)
+    lastMin, lastMax = 0, 0
+    for jumps in range(1, n):
+        newMax = lastMax + arr[lastMax]
+        for cell in range(lastMin, lastMax):
+            newMax = max(newMax, cell + arr[cell])
+
+        #print("Jump", jumps, "Range:", lastMax+1, newMax)
+        if newMax <= lastMax:
+            return -1
+        lastMin, lastMax = lastMax+1, newMax
+        if lastMax >= n-1:
+            return jumps
