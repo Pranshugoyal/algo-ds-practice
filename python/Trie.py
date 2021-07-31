@@ -52,6 +52,33 @@ class Trie:
             count += child.getLeafCount()
         return count
 
+#https://leetcode.com/problems/path-with-maximum-gold/
+class MapSum:
+
+    def __init__(self):
+        from Trie import Trie
+        self.pairs = {}
+        self.trie = Trie()
+
+    def insert(self, key: str, val: int) -> None:
+        if key not in self.pairs:
+            self.trie.addWord(key)
+        self.pairs[key] = val
+
+    def sum(self, prefix: str) -> int:
+        t = self.trie
+        for c in prefix:
+            if c in t.children:
+                t = t.children[c]
+            else:
+                return 0
+
+        s = 0
+        for key in t.getDictionary():
+            s += self.pairs[key]
+        print(s)
+        return s
+
 from collections import defaultdict
 
 #https://leetcode.com/problems/number-of-matching-subsequences/
