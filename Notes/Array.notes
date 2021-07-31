@@ -4,3 +4,4 @@ Practice problems:
 	- Merge two sorted arrays in place without auxillary space
 	- Find inversion count of an unsorted array
     - Leetcode 287: Find the duplicate number
+    - Count elements with frequency more than n/k. Misa-Gries Algorithm (http://dimacs.rutgers.edu/~graham/pubs/papers/encalgs-mg.pdf)

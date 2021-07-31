@@ -1017,3 +1017,30 @@ def closestZeroes(mat):
                 dp[i][j] = min(dp[i][j], dp[i+1][j]+1)
 
     return dp
+
+#https://practice.geeksforgeeks.org/problems/gold-mine-problem2608/1
+def goldMineProblem(n, m, M):
+    gold = [[0]*m for _ in range(n)]
+    for r in range(n):
+        gold[r][0] = M[r][0]
+
+    def getGold(r, c):
+        if 0 <= r < n and 0 <= c < m:
+            return gold[r][c]
+        else:
+            return 0
+
+    def getMaxLast(r, c):
+        mg = 0
+        for r in range(r-1, r+2):
+            mg = max(mg, getGold(r, c-1))
+        return mg
+
+    for c in range(1, m):
+        for r in range(n):
+            gold[r][c] = getMaxLast(r,c) + M[r][c]
+
+    mg = 0
+    for r in range(n):
+        mg = max(mg, gold[r][-1])
+    return mg

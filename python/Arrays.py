@@ -21,7 +21,7 @@ def subArraySum(arr, n, s):
 		j += 1
 	return [i+1, j+1]
 
-def countTriplet(arr, n):
+def zeroSumTripletCount(arr, n):
 	arr.sort()
 	def findSum(s,e,k) -> int:
 		i,j = s,e
@@ -527,3 +527,167 @@ def rearrangeArrayAlternatively(arr):
         j += 2
         print(arr, i, j)
     return arr
+
+#https://practice.geeksforgeeks.org/problems/subarray-with-0-sum-1587115621/1
+def subArrayWithSumZero(arr):
+    sums, last = set([0]), 0
+    for i in arr:
+        last += i
+        if last in sums:
+            return True
+        sums.add(last)
+    return False
+
+#https://practice.geeksforgeeks.org/problems/maximum-product-subarray3604/1
+def maxProductSubarray(arr):
+    mp = 0
+    for i in range(len(arr)):
+        lp = arr[i]
+        lmp = arr[i]
+        if lp == 0:
+            mp = max(mp, lp)
+            continue
+        for j in range(i+1, len(arr)):
+            lp *= arr[j]
+            lmp = max(lmp, lp)
+
+        mp = max(mp, lmp)
+    return mp 
+
+def maxProductSubarrayDP(arr):
+    hasZero = False
+    cp, mp = 1,arr[0]
+    for n in arr:
+        cp *= n
+        if cp == 0:
+            cp = 1
+            hasZero = True
+            continue
+        mp = max(mp, cp)
+
+    cp = 1
+    for n in reversed(arr):
+        cp *= n
+        if cp == 0:
+            cp = 1
+            continue
+        mp = max(cp, mp)
+    return max(mp, 0) if hasZero else mp
+
+#https://practice.geeksforgeeks.org/problems/longest-consecutive-subsequence2449/1
+def longestConsecutiveSubsequence(arr):
+    nums = set(arr)
+    start, end = min(nums), max(nums)+1
+
+    maxL, cl = 0, 0
+    for n in range(start, end):
+        if n in nums:
+            if n-1 in nums:
+                cl += 1
+            else:
+                cl = 1
+        else:
+            cl = 0
+        maxL = max(maxL, cl)
+    return maxL
+
+#https://www.geeksforgeeks.org/maximum-profit-by-buying-and-selling-a-share-at-most-twice/
+def maxProfitBuySellTwoTransactions(prices):
+    n = len(prices)
+    profit = [0]*len(prices)
+
+    mr = prices[-1]
+    for i in reversed(range(n-1)):
+        if prices[i] < mr:
+            profit[i] = max(profit[i+1], mr - prices[i])
+        else:
+            mr = prices[i]
+
+    ml = prices[0]
+    maxProfit = 0
+    for i in range(n-1):
+        if prices[i] < ml:
+            ml = prices[i]
+        else:
+            maxProfit = max(maxProfit, prices[i]-ml+profit[i+1])
+
+    if prices[-1] > ml:
+        maxProfit = max(maxProfit, prices[-1]-ml)
+    return maxProfit
+
+#https://practice.geeksforgeeks.org/problems/count-element-occurences/1
+#https://cs.stackexchange.com/questions/100833/find-all-values-repeating-more-than-lfloor-n-k-rfloor-times-in-on-log-k
+#Boyer-Moore Majority Vote / Misra-Gries Summary / Tetris Algorithm
+def findKMajority(arr,n,k):
+    count = {}
+    for num in arr:
+        if num in count:
+            count[num] += 1
+        elif len(count) < k-1:
+            count[num] = 1
+        else:
+            keysToPop = []
+            for key in count:
+                count[key] -= 1
+                if count[key] == 0:
+                    keysToPop.append(key)
+            for key in keysToPop:
+                count.pop(key)
+
+    for key in count:
+        count[key] = 0
+
+    for num in arr:
+        if num in count:
+            count[num] += 1
+
+    res = 0
+    for _, v in count.items():
+        res += 1 if v > n//k else 0
+    return res
+
+#https://practice.geeksforgeeks.org/problems/triplet-sum-in-array/0
+def threeSum(A, n, X):
+    from collections import Counter
+
+    count = Counter(A)
+
+    def twoSum(t):
+        for n in A:
+            if count[n] > 0 and t-n in count and count[t-n] > 0:
+                if t-n != n or count[t-n] > 1:
+                    return True
+        return False
+
+    for i in range(n):
+        count[A[i]] -= 1
+        if twoSum(X-A[i]):
+            return True
+        else:
+            count[A[i]] += 1
+    return False
+
+#https://practice.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1
+def trappingRainWater(arr, n):
+    prefixMax = [arr[0]]
+    for h in arr[1:]:
+        prefixMax.append(max(h, prefixMax[-1]))
+
+    suffixMax = [arr[-1]]
+    for h in reversed(arr[:-1]):
+        suffixMax.append(max(h, suffixMax[-1]))
+    suffixMax.reverse()
+
+    water = 0
+    for i in range(1,n-1):
+        water += max(min(prefixMax[i], suffixMax[i]) - arr[i], 0)
+    return water
+
+#https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1
+def chocolateDistribution(A, n, m):
+    A.sort()
+    minDiff = A[-1] - A[0]
+    for i in range(n-m+1):
+        minDiff = min(minDiff, A[i+m-1]-A[i])
+    return minDiff
+

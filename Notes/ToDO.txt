@@ -151,3 +151,4 @@ Problems:
 
 - Math
     - Leetcode 932: Beautiful Array
+    - Multiplying long numbers using individual digits using carry (https://www.geeksforgeeks.org/factorial-large-number/)
