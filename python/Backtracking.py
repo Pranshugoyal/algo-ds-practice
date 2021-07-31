@@ -151,3 +151,42 @@ def generateAllPossibleIPAddresses(s):
         return addresses
 
     return placeDots(s,[],4)
+
+#https://leetcode.com/problems/path-with-maximum-gold/
+def getMaxGold(grid, n, m):
+    stack = set()
+
+    def isValid(r,c):
+        if 0 <= r < n and 0 <= c < m:
+            if (r,c) not in stack:
+                return grid[r][c] != 0
+            else:
+                return False
+        else:
+            return False
+
+    def getValidChildren(r, c):
+        d = [1,0,-1,0,1]
+        children = []
+        for i in range(4):
+            r1, c1 = r+d[i], c+d[i+1]
+            if isValid(r1,c1):
+                children.append((r1, c1))
+        return children
+
+    def explore(r, c):
+        stack.add((r,c))
+        mg = 0
+        for cr, cc in getValidChildren(r,c):
+            mg = max(mg, explore(cr, cc))
+        stack.remove((r, c))
+        return mg + grid[r][c]
+
+    gold = 0
+    for r in range(n):
+        for c in range(m):
+            if grid[r][c] == 0:
+                continue
+            gold = max(gold, explore(r,c))
+
+    return gold
