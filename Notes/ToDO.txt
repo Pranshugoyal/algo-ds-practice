@@ -87,6 +87,7 @@ Problems:
 		Solution: https://leetcode.com/problems/finding-mk-average/discuss/1154068/Python-4-heaps-one-list-O(n-log-n)-explained
 	* Leetcode 407: Trapping Rain Water II (https://leetcode.com/problems/trapping-rain-water-ii/discuss/1138028/Python3Visualization-BFS-Solution-With-Explanation)
 	* Leetcode 632: Smallest Range Covering Elements from K Lists
+    * K maximum sum combinations from two arrays (https://www.geeksforgeeks.org/k-maximum-sum-combinations-two-arrays/)
 
 - Graph:
 	* Minimum Swaps needed to sort an array (https://practice.geeksforgeeks.org/problems/minimum-swaps/1)

@@ -691,3 +691,26 @@ def chocolateDistribution(A, n, m):
         minDiff = min(minDiff, A[i+m-1]-A[i])
     return minDiff
 
+#https://www.geeksforgeeks.org/maximum-sum-iarri-among-rotations-given-array/
+def maxValueRotation(arr):
+    n = len(arr)
+    ts = sum(arr)
+    s = 0
+    for i in range(n):
+        s += i * arr[i]
+
+    ms = s
+    for i in range(n-1, 0, -1):
+        s += ts - n*arr[i]
+        ms = max(s, ms)
+    return ms
+
+#https://www.geeksforgeeks.org/find-the-distance-between-two-person-after-reconstruction-of-queue/
+def queueConstructionFromOrder(arr):
+    n = len(arr)
+    heights = list(range(1, n+1))
+    res = [None]*n
+
+    for i in reversed(range(n)):
+        res[i] = heights.pop(-arr[i]-1)
+    return res

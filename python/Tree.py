@@ -1123,3 +1123,25 @@ def mergeTrees(root1, root2):
         root.left = mergeTrees(root1.left, root2.left)
         root.right = mergeTrees(root1.right, root2.right)
         return root
+
+def replaceNodeWithSumOfRLLeafs(root):
+    if not root:
+        return
+    elif not root.right and not root.left:
+        return root.data, root.data
+    elif not root.right:
+        ll, _ = replaceNodeWithSumOfRLLeafs(root.left)
+        rr = root.data
+        root.data = ll
+        return ll+rr, rr
+    elif not root.left:
+        _, rr = replaceNodeWithSumOfRLLeafs(root.right)
+        ll = root.data
+        root.data = rr
+        return ll, rr+ll
+    else:
+        ll, lr = replaceNodeWithSumOfRLLeafs(root.left)
+        rl, rr = replaceNodeWithSumOfRLLeafs(root.right)
+        d = root.data
+        root.data = ll + rr
+        return ll+d, rr+d
