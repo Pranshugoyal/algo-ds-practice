@@ -11,6 +11,7 @@ Algorithms
     - Range minimum query using segment tree
     - Euclidean Algorithms
     - Set Cover Problem
+    - Recursive Descent parser
 
 Data Structures
 	- Unrolled Linked Lists
@@ -63,6 +64,7 @@ Problems:
 	* Interleaving Strings: https://leetcode.com/problems/interleaving-string/discuss/31888/1ms-tiny-DFS-beats-94.57
 	* Partition array into k equal sub sets https://www.geeksforgeeks.org/partition-set-k-subsets-equal-sum/
     * Leetcode 1125: Smallest Sufficient Team
+    * Leetcode 1563: Stone Game V
 
 - Backtracking
 	* Leetcode 1723: Find Minimum Time to Finish All Jobs
@@ -70,6 +72,8 @@ Problems:
 
 - Two Pointer Algorithms
 	* Swapping pairs make sum equal (https://practice.geeksforgeeks.org/problems/swapping-pairs-make-sum-equal/0)
+    * Find Celebrity (https://www.geeksforgeeks.org/the-celebrity-problem/amp/)
+    * Minimum merge operations to make an array palindrome (https://www.geeksforgeeks.org/find-minimum-number-of-merge-operations-to-make-an-array-palindrome/)
 	* Median of two sorted arrays/kth position after merging of two sorted arrays
 		Sort an array by first moving elements around mid, make sure all elements in left half are smaller than all elements in right half, then sort recursively
 		https://www.geeksforgeeks.org/k-th-element-two-sorted-arrays/
@@ -129,10 +133,14 @@ Problems:
 		- https://www.geeksforgeeks.org/longest-consecutive-sequence-binary-tree/
 	- Count inversions in an array
 		- https://www.geeksforgeeks.org/count-inversions-array-set-3-using-bit/
+    - Binary Indexed Tree
+        - https://cs.stackexchange.com/questions/10538/bit-what-is-the-intuition-behind-a-binary-indexed-tree-and-how-was-it-thought-a
+        - https://www.topcoder.com/thrive/articles/Binary%20Indexed%20Trees
 	- Different traversals used to serialize a (Binary) Tree
     - Iterative traversals es. PostOrder
     - Leetcode 437: Path Sum III
     - Morris tree travel
+    - Leetcode 307: Range Sum Query | Segment Trees
 
 - Swap Sort
 	- Leetcode 287: Find the Duplicate Number

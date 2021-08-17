@@ -1145,3 +1145,45 @@ def replaceNodeWithSumOfRLLeafs(root):
         d = root.data
         root.data = ll + rr
         return ll+d, rr+d
+
+#https://leetcode.com/problems/range-sum-query-mutable/
+class NumArray:
+    def __init__(self, nums: List[int]):
+        n = len(nums)
+        tree = [0]*(2*n - 1)
+        tree[n-1:] = nums
+        for i in reversed(range(n-1)):
+            tree[i] = tree[2*i + 1] + tree[2*i + 2]
+        self.tree = tree
+        self.n = n
+
+    def update(self, index: int, val: int) -> None:
+        i = index + self.n - 1
+        diff = val - self.tree[i]
+        while i >= 0:
+            self.tree[i] += diff
+            i = self.parent(i)
+
+    def parent(self, i):
+        return (i-1)//2
+
+    def isRightChild(self, i):
+        return i%2 == 0
+
+    def isLeftChild(self, i):
+        return i%2 == 1
+
+    def sumRange(self, left: int, right: int) -> int:
+        l = left + n-1
+        r = right + n-1
+        res = 0
+        while l <= r:
+            if self.isRightChild(l):
+                res += self.tree[l]
+                l += 1
+            if self.isLeftChild(r):
+                res += self.tree[r]
+                r -= 1
+            l = self.parent(l)
+            r = self.parent(r)
+        return res

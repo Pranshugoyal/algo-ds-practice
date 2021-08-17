@@ -81,3 +81,13 @@ Variants:
 	Practice:
 		- https://leetcode.com/problems/binary-tree-maximum-path-sum/
 		- https://leetcode.com/problems/path-sum-iii/ (https://leetcode.com/problems/path-sum-iii/discuss/779227/Python-dfs-%2B-hash-table-using-cumulative-sums-explained)
+
+6: Palindrome Partitioning
+    
+    - Find longest palindromic sunstring in a string
+    - Manacher's Algorithm
+
+    Practice:
+         - Leetcode 132: Palindrome Partitioning II
+         - Leetcode 312: Burst Baloons
+         - Leetcode 546: Remove Boxes (https://leetcode.com/problems/remove-boxes/discuss/101310/Java-top-down-and-bottom-up-DP-solutions)

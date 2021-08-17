@@ -269,3 +269,20 @@ def quickSort(nums, l, h):
     nums[i], nums[p] = nums[p], nums[i]
     quickSort(nums, l, i)
     quickSort(nums, i+1, h)
+
+#https://www.geeksforgeeks.org/k-th-element-two-sorted-arrays/
+def kthElementInMergedSortedArrays(a, b, k):
+    l, r = max(0, k-len(b)), min(k, len(a))
+    while l < r:
+        mid = r - (r-l)//2
+        if k-mid >= len(b) or a[mid-1] <= b[k-mid]:
+            l = mid
+        else:
+            r = mid - 1
+
+    if r == k:
+        return a[k-1]
+    elif r == 0:
+        return b[k-1]
+    else:
+        return max(a[r-1], b[k-r-1])

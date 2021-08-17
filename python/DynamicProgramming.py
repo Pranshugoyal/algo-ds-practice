@@ -1044,3 +1044,70 @@ def goldMineProblem(n, m, M):
     for r in range(n):
         mg = max(mg, gold[r][-1])
     return mg
+
+#https://www.geeksforgeeks.org/longest-palindrome-substring-set-1/amp/
+def longestPalindromicSubstring(S):
+    n = len(S)
+    dp = [[None]*n for _ in range(n)]
+
+    maxLen = 0
+    for r in reversed(range(n)):
+        for c in range(r, n):
+            if r == c:
+                dp[r][c] = True
+            elif c == r+1:
+                dp[r][c] = S[r] == S[c]
+            elif S[r] == S[c]:
+                dp[r][c] = dp[r+1][c-1]
+            else:
+                dp[r][c] = False
+            if dp[r][c]:
+                maxLen = max(maxLen, c-r+1)
+    return maxLen
+
+#https://www.geeksforgeeks.org/longest-palindromic-substring-set-2/amp/
+def longestPalindromicSubstringSet2(S, n):
+    def extendSelection(l,r):
+        while l >= 0 and r < n and S[l] == S[r] :
+            l -= 1
+            r += 1
+        return l+1, r-1
+
+    maxLen = 0
+    for i in range(n):
+        l, r = extendSelection(i,i)
+        maxLen = max(maxLen, r-l+1)
+        if i < n-1 and S[i] == S[i+1]:
+            l, r = extendSelection(i, i+1)
+            maxLen = max(maxLen, r-l+1)
+    return maxLen
+
+#https://leetcode.com/problems/flip-string-to-monotone-increasing/
+def minFlipsMonoIncr(s):
+    ones = 0
+    for c in s:
+        if c == '1':
+            ones += 1
+
+    n = len(s)
+    oc, zr = 0, n - ones
+    flips, f = ones, ones
+    for i, c in enumerate(s):
+        oc += 1 if s[i] == '1' else 0
+        zr = n - i - 1 - (ones - oc) 
+        if c == '0':
+            f = oc + zr + 1
+        else:
+            f = oc - 1 + zr
+        flips = min(flips, f)
+    return flips
+
+def minFlipsMonoIncrDP(s):
+    ones, flips = 0, 0
+    for c in s:
+        if c == '0':
+            flips += 1
+        else:
+            ones += 1
+        flips = min(flips, ones)
+    return flips
