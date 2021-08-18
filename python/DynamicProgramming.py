@@ -17,7 +17,7 @@ def knapsackProblem(weights, values, W):
 	def show(k):
 		for row in k:
 			print(row)
-		print()
+        print()
 
 	for i in range(1,n+1):
 		#show(t)
@@ -1111,3 +1111,35 @@ def minFlipsMonoIncrDP(s):
             ones += 1
         flips = min(flips, ones)
     return flips
+
+#https://leetcode.com/problems/burst-balloons/
+def burstBalloons(nums):
+    nums = [1] + nums + [1]
+    n = len(nums) - 2
+
+    from functools import lru_cache
+    @lru_cache(maxsize=None)
+    def util(l, r):
+        maxScore = 0
+        for i in range(l, r):
+            score = util(l, i) + util(i+1, r) + (nums[l-1] * nums[i] * nums[r])
+            maxScore = max(maxScore, score)
+        return maxScore
+
+    dp = [[0]*n for _ in range(n)]
+    for l in reversed(range(n)):
+        for r in range(l, n):
+            if l == r:
+                dp[l][r] = nums[l] * nums[l+1] * nums[l+2]
+                continue
+
+            maxScore = 0
+            for i in range(l, r+1):
+                left = dp[l][i-1] if i > l else 0
+                right = dp[i+1][r] if i < r else 0
+                score = left + right + (nums[l] * nums[i+1] * nums[r+2])
+                maxScore = max(maxScore, score)
+            dp[l][r] = maxScore
+
+    #return util(1, n+1)
+    return dp[0][-1]
