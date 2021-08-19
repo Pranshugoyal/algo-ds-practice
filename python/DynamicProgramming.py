@@ -1143,3 +1143,19 @@ def burstBalloons(nums):
 
     #return util(1, n+1)
     return dp[0][-1]
+
+#https://leetcode.com/problems/decode-ways/
+def numDecodings(s):
+    n = len(s)
+    l, sl = 1, 1
+    for i in reversed(range(n)):
+        if s[i] == '0':
+            c = 0
+        elif i == n-1:
+            c = 1
+        else:
+            c = l
+            if 0 < int(s[i:i+2]) <= 26:
+                c += sl
+        l, sl = c, l
+    return l
