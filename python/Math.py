@@ -36,3 +36,18 @@ def fisherYatesShuffle(nums, n):
         j = random.randrange(i, n)
         nums[i], nums[j] = nums[j], nums[i]
     return nums
+
+#https://www.geeksforgeeks.org/orientation-3-ordered-points/amp/
+def threePointOrientation(p1, p2, p3):
+    s12 = (p2.y - p1.y)/(p2.x - p1.x)
+    s23 = (p3.y - p2.y)/(p3.x - p2.x)
+    diff = s12 - s23
+    if diff > 0:
+        #Clockwise
+        return 1
+    elif diff < 0:
+        #Anti-Clockwise
+        return -1
+    else:
+        #Collinear
+        return 0
