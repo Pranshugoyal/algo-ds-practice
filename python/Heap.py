@@ -1,4 +1,8 @@
 
+################################################################################
+# ------------------------------------ Heap ---------------------------------- #
+################################################################################
+
 import heapq
 from collections import deque
 
@@ -370,3 +374,26 @@ def kthSmallestMatrix(matrix, k):
 
     return h[0][0]
 
+#https://leetcode.com/problems/single-threaded-cpu/
+def getTaskOrder(tasks):
+    n = len(tasks)
+    for i in range(n):
+        tasks[i].append(i)
+    tasks.sort(reverse=True)
+
+    order, currentTime, q = [], 0, []
+
+    def addToQueue(time):
+        while tasks and tasks[-1][0] <= time:
+            task = tasks.pop()
+            heapq.heappush(q, (task[1], task[2]))
+
+    while len(order) < n:
+        if not q and currentTime < tasks[-1][0]:
+            currentTime = tasks[-1][0]
+        addToQueue(currentTime)
+        task = heapq.heappop(q)
+        currentTime += task[0]
+        order.append(task[1])
+
+    return order

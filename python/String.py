@@ -1,4 +1,8 @@
 
+################################################################################
+# ---------------------------------- String ---------------------------------- #
+################################################################################
+
 def longestPalindrome(S):
 	if len(S) <= 1:
 		return S
@@ -166,3 +170,30 @@ def longestCommonPrefix(arr, n):
 	else:
 		return -1
 
+#https://leetcode.com/problems/longest-uncommon-subsequence-ii/
+def longestUncommonSequence(strs):
+    from collections import Counter
+
+    def isSubsequence(s, t):
+        i = 0
+        for c in s:
+            if c == t[i]:
+                i += 1
+            if i == len(t):
+                return True
+        return False
+
+    n = len(strs)
+    counts = Counter(strs)
+    strs.sort(key=len)
+    for i in reversed(range(n)):
+        if counts[strs[i]] > 1:
+            continue
+        isUnique = True
+        for j in strs[i+1:]:
+            if isSubsequence(strs[j], j):
+                isUnique = False
+                break
+        if isUnique:
+            return len(strs[i])
+    return -1

@@ -46,4 +46,15 @@ def maxConsecutiveOnes(N):
 		n //= 2
 	return count
 
-print(maxConsecutiveOnes(14))
+#https://leetcode.com/problems/maximum-xor-for-each-query/
+def getMaximumXor(nums, maximumBit):
+    from collections import deque
+
+    XOR = (1<<maximumBit) - 1
+    lx = 0
+    ans = deque()
+    for n in nums:
+        lx ^= n
+        ans.appendleft(XOR^lx)
+    
+    return ans

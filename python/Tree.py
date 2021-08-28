@@ -1187,3 +1187,37 @@ class NumArray:
             l = self.parent(l)
             r = self.parent(r)
         return res
+
+#https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/
+def isValidSerialization(preorder):
+    arr = preorder.split(',')
+
+    def verifyTree(i):
+        n = len(arr)
+        if i >= n:
+            return False, i
+        elif arr[i] == '#':
+            return True, i+1
+
+        i += 1
+
+        lt, i = verifyTree(i)
+        if not lt or i >= n:
+            return False, i+1
+
+        return verifyTree(i)
+
+    isValid, i = verifyTree(0)
+    return isValid and i == len(arr)
+
+def isValidSerializationSlotCount(preorder):
+    s = preorder.split(',')
+    slots = 1
+    for node in s:
+        if slots == 0:
+            return False
+        elif node == '#':
+            slots -= 1
+        else:
+            slots += 1
+    return slots == 0
