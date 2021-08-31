@@ -201,3 +201,16 @@ def maxBalls(N, M, a, b):
 		j += ji + 1
 		print("Match found:", i-1, j-1, collection)
 	return balls
+
+#https://leetcode.com/problems/patching-array/
+def minPatches(self, nums: List[int], n: int) -> int:
+    reach, patches, i = 0, 0, 0
+    while reach < n:
+        if i < len(nums) and nums[i] <= reach+1:
+            reach += nums[i]
+            i += 1
+        else:
+            patches += 1
+            #Add reach+1 to list
+            reach += reach + 1
+    return patches
