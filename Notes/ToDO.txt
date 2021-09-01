@@ -12,6 +12,7 @@ Algorithms
     - Euclidean Algorithms
     - Set Cover Problem
     - Recursive Descent parser
+    - Line Sweep Algorithm
 
 Data Structures
 	- Unrolled Linked Lists
@@ -161,3 +162,11 @@ Problems:
 - Math
     - Leetcode 932: Beautiful Array
     - Multiplying long numbers using individual digits using carry (https://www.geeksforgeeks.org/factorial-large-number/)
+
+- Unsolved Leetcode Monthly challenge questions
+    - 132: Palindrome Partitioning II
+    - 1632: Rank Transform of a Matrix
+    - 954: Array of Doubled Pairs
+    - 546: Remove Boxes
+    - 850: Rectangle Area II
+    - 1235: Maximum Profit in Job Scheduling
