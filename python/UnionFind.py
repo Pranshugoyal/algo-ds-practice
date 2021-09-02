@@ -26,3 +26,17 @@ class UnionFind:
 
     def areDisjoint(self, s1, s2):
         return self.find(s1) != self.find(s2)
+
+#https://leetcode.com/problems/array-nesting/
+def arrayNesting(nums):
+    def findLoop(k):
+        count = 0
+        while nums[k] is not None:
+            nums[k], k = None, nums[k]
+            count += 1
+        return count
+
+    maxLen = 1
+    for i in range(len(nums)):
+        maxLen = max(maxLen, findLoop(i))
+    return maxLen
