@@ -1,2 +1,3 @@
 
 - If m is prime x^n = x^(n % (M-1)), from Fermat's Little Theorem
+- Convex Hull notes: http://www.dcs.gla.ac.uk/~pat/52233/slides/Geometry1x1.pdf

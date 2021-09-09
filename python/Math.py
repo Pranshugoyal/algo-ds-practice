@@ -37,10 +37,22 @@ def fisherYatesShuffle(nums, n):
         nums[i], nums[j] = nums[j], nums[i]
     return nums
 
+class Point:
+    def __init__(self, p):
+        self.x, self.y = p
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    @staticmethod
+    def pack(self):
+        return [self.x, self.y]
+
+#http://www.dcs.gla.ac.uk/~pat/52233/slides/Geometry1x1.pdf
 #https://www.geeksforgeeks.org/orientation-3-ordered-points/amp/
 def threePointOrientation(p1, p2, p3):
-    s12 = (p2.y - p1.y)/(p2.x - p1.x)
-    s23 = (p3.y - p2.y)/(p3.x - p2.x)
+    s12 = (p2.y - p1.y)*(p3.x - p2.x)
+    s23 = (p3.y - p2.y)*(p2.x - p1.x)
     diff = s12 - s23
     if diff > 0:
         #Clockwise
@@ -51,3 +63,76 @@ def threePointOrientation(p1, p2, p3):
     else:
         #Collinear
         return 0
+
+def isPointOnSegment(p, q, P):
+    return min(p.x, q.x) <= P.x <= max(p.x, q.x) and min(p.y, q.y) <= P.y <= max(p.y, q.y)
+
+#https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/amp/
+def lineSegmentIntersection(p1, q1, p2, q2):
+    o1 = threePointOrientation(p1, q1, p2)
+    o2 = threePointOrientation(p1, q1, q2)
+    o3 = threePointOrientation(p2, q2, p1)
+    o4 = threePointOrientation(p2, q2, q1)
+
+    #General Case
+    if o1 != o2 and o3 != o4:
+        return True
+
+    #special Cases
+    if o1 == 0 and isPointOnSegment(p1, q1, p2):
+        return True
+    if o2 == 0 and isPointOnSegment(p1, q1, q2):
+        return True
+    if o3 == 0 and isPointOnSegment(p2, q2, p1):
+        return True
+    if o4 == 0 and isPointOnSegment(p2, q2, q1):
+        return True
+    else:
+        return False
+
+#https://www.geeksforgeeks.org/convex-hull-set-1-jarviss-algorithm-or-wrapping/amp/
+def convexHullJarvis(points):
+    n = len(points)
+
+    def leftmostPoint():
+        left = points[0]
+        for point in points:
+            if point.x < left.x:
+                left = point
+            elif point.x == left.x:
+                if point.y > left.y:
+                    left = point
+        return left
+
+    def findNextPoint(p):
+        q = None
+        for point in points:
+            if point != p:
+                q = point
+                break
+
+        for point in points:
+            if point == p or point == q:
+                continue
+            o = threePointOrientation(p, point, q)
+            if o < 0:
+                q = point
+            elif o == 0:
+                if isPointOnSegment(p, q, point):
+                    q = point
+        return q
+
+    l = leftmostPoint()
+    p, hull = findNextPoint(l), [l]
+    while p != l:
+        hull.append(p)
+        p = findNextPoint(p)
+    return hull
+
+#https://leetcode.com/problems/erect-the-fence/solution/
+def fencePerimeter(trees):
+    if len(trees) < 4:
+        return trees
+    points = list(map(Point, trees))
+    fence = convexHullJarvis(points)
+    return list(map(Point.pack, fence))

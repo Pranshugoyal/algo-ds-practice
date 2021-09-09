@@ -161,6 +161,7 @@ Problems:
 
 - Math
     - Leetcode 932: Beautiful Array
+    - Conve Hull | Leetcode 587: Erect the Fence
     - Multiplying long numbers using individual digits using carry (https://www.geeksforgeeks.org/factorial-large-number/)
 
 - Unsolved Leetcode Monthly challenge questions
