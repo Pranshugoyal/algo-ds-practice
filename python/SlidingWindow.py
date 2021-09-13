@@ -334,3 +334,35 @@ def longestBeautifulSubstring2(word):
             longest = max(longest, hi - lo)
     return longest
 
+#https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/
+def getMaxLen(nums):
+    i, j = 0, 0
+    product = 1
+    maxlen = 0
+    while j < len(nums):
+        if nums[j] < 0:
+            product *= -1
+            if product > 0:
+                maxlen = max(maxlen, j-i+1)
+        elif nums[j] == 0:
+            while i < j:
+                if nums[i] < 0:
+                    product *= -1
+                i += 1
+                if product > 0:
+                    maxlen = max(maxlen, j-i)
+            i += 1
+            product = 1
+        else:
+            if product > 0:
+                maxlen = max(maxlen, j-i+1)
+        j += 1
+
+    while i < j:
+        if nums[i] < 0:
+            product *= -1
+        i += 1
+        if product > 0:
+            maxlen = max(maxlen, j-i)
+
+    return maxlen

@@ -58,3 +58,18 @@ def getMaximumXor(nums, maximumBit):
         ans.appendleft(XOR^lx)
     
     return ans
+
+#https://leetcode.com/problems/single-number-iii/
+def uniqueNumbers(nums):
+    xor = 0
+    for n in nums:
+        xor ^= n
+    xor &= -xor
+
+    x1, x2 = 0, 0
+    for n in nums:
+        if n&xor > 0:
+            x1 ^= n
+        else:
+            x2 ^= n
+    return [x1, x2]

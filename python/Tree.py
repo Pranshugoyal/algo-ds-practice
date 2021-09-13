@@ -1221,3 +1221,32 @@ def isValidSerializationSlotCount(preorder):
         else:
             slots += 1
     return slots == 0
+
+#https://leetcode.com/problems/sum-of-distances-in-tree/
+def sumOfDistancesInTree(n, edges):
+    adj = [[] for _ in range(n)]
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+
+    count = [1]*n
+    ans = [0]*n
+    
+    def dfs(node, parent=None):
+        for child in adj[node]:
+            if child == parent:
+                continue
+            dfs(child, node)
+            count[node] += count[child]
+            ans[node] += ans[child] + count[child]
+
+    def dfsFill(node, parent=None):
+        for child in adj[node]:
+            if child == parent:
+                continue
+            ans[child] = ans[node] - count[child] + n - count[child] 
+            dfsFill(child, node)
+
+    dfs(0)
+    dfsFill(0)
+    return ans

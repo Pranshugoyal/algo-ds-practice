@@ -870,14 +870,14 @@ def robCircular(nums):
 
 #https://leetcode.com/problems/count-vowels-permutation/
 def countVowelPermutation(n):
+    from functools import lru_cache
+
     ruleMap = { 'a': ['e'],
                 'e': ['a', 'i'],
                 'i': ['a', 'e', 'o', 'u'],
                 'o': ['u', 'i'],
                 'u': ['a']
             }
-
-from functools import lru_cache
 
     @lru_cache(maxsize=None)
     def countUtil(n, last):
@@ -1159,3 +1159,47 @@ def numDecodings(s):
                 c += sl
         l, sl = c, l
     return l
+
+#https://leetcode.com/problems/delete-and-earn/
+def deleteAndEarn(nums):
+    from collections import Counter
+
+    count = Counter(nums)
+    values = sorted([k for k in count])
+
+    def earnings(i):
+        return values[i] * count[values[i]]
+
+    n = len(values)
+    if n == 1:
+        return earnings(0)
+
+    l, sl = 0, 0
+    for i in range(n):
+        if values[i] == values[i-1] + 1:
+            e = max(l, sl + earnings(i))
+        else:
+            e = l + earnings(i)
+        l, sl = e, l
+    return l
+
+#https://www.geeksforgeeks.org/maximum-product-subarray-set-3/amp/
+#https://leetcode.com/problems/maximum-product-subarray/
+def maxProduct(nums):
+    maxp, minp, gp = [nums[0]]*3
+    for n in nums[1:]:
+        if n < 0:
+            maxp, minp = minp, maxp
+
+        maxp = max(maxp * n, n)
+        minp = min(minp * n, n)
+        gp = max(gp, maxp)
+    return gp
+
+#https://leetcode.com/problems/best-sightseeing-pair/
+def maxScoreSightseeingPair(values):
+    bestLeft, maxScore = 0, 0
+    for i in range(1, len(values)):
+        bestLeft = max(bestLeft, values[i-1]) - 1
+        maxScore = max(maxScore, values[i]+bestLeft)
+    return maxScore

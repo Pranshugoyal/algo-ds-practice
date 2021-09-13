@@ -843,3 +843,52 @@ def isBipartiteGraph(V, adj):
         return True
 
     return addToGroup(0, 0)
+
+#https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/
+def reachableNodes(edges, maxMoves, n):
+    import heapq, sys
+
+    def createAdjList():
+        adj = [[] for _ in range(n)]
+        for u, v, nodes in edges:
+            adj[u].append((v, nodes+1))
+            adj[v].append((u, nodes+1))
+        return adj
+
+    def dijktraHeap(adj):
+        moves = [sys.maxsize]*n
+        moves[0] = 0
+        h = [(0, 0)]
+
+        u = 0
+        while u is not None:
+            for v, count in adj[u]:
+                d = moves[u] + count
+                if moves[v] > d:
+                    moves[v] = d
+                    heapq.heappush(h, (d, v))
+
+            if h:
+                d, u = heapq.heappop(h)
+                #Instead of tracking visited, if moves[u] < d ==> u is visited
+                #and this is duplicate copy in heap as we're not removing elements from heap
+                while moves[u] < d and h:
+                    d, u = heapq.heappop(h)
+            else:
+                u = None
+
+        return moves
+    
+    moves = dijktraHeap(createAdjList())
+    reachable = 0
+    for u, v, nodes in edges:
+        if moves[u] + nodes <= maxMoves or moves[v] + nodes <= maxMoves:
+            reachable += nodes
+        else:
+            fromu = max(maxMoves - moves[u], 0)
+            fromv = max(maxMoves - moves[v], 0)
+            reachable += min(fromu+fromv, nodes)
+    for steps in moves:
+        if steps <= maxMoves:
+            reachable += 1
+    return reachable
