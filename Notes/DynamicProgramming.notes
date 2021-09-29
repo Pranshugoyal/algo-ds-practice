@@ -91,3 +91,13 @@ Variants:
          - Leetcode 132: Palindrome Partitioning II
          - Leetcode 312: Burst Baloons
          - Leetcode 546: Remove Boxes (https://leetcode.com/problems/remove-boxes/discuss/101310/Java-top-down-and-bottom-up-DP-solutions)
+
+7: Buy and sell Stock
+
+    https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems
+
+    Practice:
+        - Leetcode 121: Best Time to Buy and Sell Stock
+        - Leetcode 309: Best Time to Buy and Sell Stock with Cooldown
+        - Leetcode 122: Best Time to Buy and Sell Stock II
+        - Leetcode 714: Best Time to Buy and Sell Stock with Transaction Fee

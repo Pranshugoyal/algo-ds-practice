@@ -53,3 +53,30 @@ class NumMatrix:
         OC = P[row2+1][col1]
         OA = P[row1][col1]
         return OD - OB - OC + OA
+
+#https://leetcode.com/problems/matrix-block-sum/
+def matrixBlockSum(mat, k):
+    def calculatePresums(matrix):
+        n, m = len(matrix), len(matrix[0])
+        P = [[0]*(m+1) for _ in range(n+1)]
+        for r in range(1, n+1):
+            for c in range(1, m+1):
+                P[r][c] = P[r-1][c] + P[r][c-1] + matrix[r-1][c-1] - P[r-1][c-1]
+        return P
+
+    def sumRegion(P, row1: int, col1: int, row2: int, col2: int):
+        OD = P[row2+1][col2+1]
+        OB = P[row1][col2+1]
+        OC = P[row2+1][col1]
+        OA = P[row1][col1]
+        return OD - OB - OC + OA
+
+    n, m = len(mat), len(mat[0])
+    P = calculatePresums(mat)
+    blockSums = [[0]*m for _ in range(n)]
+    for i in range(n):
+        for j in range(m):
+            il, ih = max(i-k, 0), min(i+k, n-1)
+            jl, jh = max(j-k, 0), min(j+k, m-1)
+            blockSums[i][j] = sumRegion(P, il, jl, ih, jh)
+    return blockSums

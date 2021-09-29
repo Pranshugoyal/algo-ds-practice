@@ -5,29 +5,20 @@
 
 def knapsackProblem(weights, values, W):
     n = len(weights)
-    t = []
-    for i in range(n+1):
-        t.append([-1 for j in range(W+1)])
+    t = [-1 for _ in range(W+1)]*(n+1)
 
     for j in range(W+1):
         t[0][j] = 0
     for i in range(n+1):
         t[i][0] = 0
 
-    def show(k):
-        for row in k:
-            print(row)
-        print()
-
     for i in range(1,n+1):
-        #show(t)
         for j in range(1,W+1):
             if weights[i-1] > j:
                 t[i][j] = t[i-1][j]
             else:
                 t[i][j] = max(t[i-1][j], t[i-1][j-weights[i-1]]+values[i-1])
 
-    #show(t)
     return t[n][W]
 
 # This is a recursive version
@@ -1203,3 +1194,90 @@ def maxScoreSightseeingPair(values):
         bestLeft = max(bestLeft, values[i-1]) - 1
         maxScore = max(maxScore, values[i]+bestLeft)
     return maxScore
+
+#https://leetcode.com/problems/arithmetic-slices-ii-subsequence/
+#https://leetcode.com/problems/arithmetic-slices-ii-subsequence/discuss/92822/Detailed-explanation-for-Java-O(n2)-solution
+def numberOfArithmeticSlices(nums):
+    from collections import defaultdict
+
+    slices, n = 0, len(nums)
+
+    #dp[i][d] ==> Slices ending at i with diff d
+    #dp[0][d] = 0
+    dp = [defaultdict(int) for _ in range(n)]
+    for i in range(1, n):
+        for j in range(i):
+            d = nums[i] - nums[j]
+            dp[i][d] += dp[j][d] + 1
+            slices += dp[j][d]
+    return slices
+
+#https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/761720/Python-dp-O(n)-solution-using-differences-explained
+#https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+def maxProfit(prices):
+    n = len(prices)
+    dp = [0,0,0]
+    dpMax = [0,0,0]
+    for i in range(1, n):
+        d = prices[i] - prices[i-1]
+        dp.append(d + max(dp[-1], dpMax[-3]))
+        dpMax.append(max(dp[-1], dpMax[-1]))
+    return dpMax[-1]
+
+def addOperators(num, target):
+    res = []
+    ops = set(['*', '+', '-'])
+
+    def solve(exp):
+        expA = []
+        n = ""
+        for c in exp:
+            if c not in ops:
+                n += c
+            else:
+                expA.append(int(n))
+                expA.append(c)
+                n = ""
+        expA.append(int(n))
+        i = len(expA) - 1
+        while i >= 0:
+            if expA[i] == '*':
+                expA[i-1:i+2] = [expA[i-1] * expA[i+1]]
+            i -= 1
+        i = len(expA) - 1
+        while i >= 0:
+            if expA[i] == '+':
+                expA[i-1:i+2] = [expA[i-1] + expA[i+1]]
+            elif expA[i] == '-':
+                expA[i-1:i+2] = [expA[i-1] - expA[i+1]]
+            i -= 1
+        return expA[0]
+
+    def choose(input, rem):
+        if len(rem) == 0:
+            if solve(input) == target:
+                res.append(input)
+            return
+
+        choose(input+"*"+rem[0], rem[1:])
+        choose(input+"+"+rem[0], rem[1:])
+        choose(input+"-"+rem[0], rem[1:])
+        choose(input+rem[0], rem[1:])
+
+    choose(num[0], num[1:])
+    return res
+
+#https://leetcode.com/problems/distinct-subsequences/
+def numDistinct(s, t):
+    n, m = len(s), len(t)
+    dp = [[0]*(n+1) for _ in range(m+1)]
+    for i in range(n+1):
+        dp[0][i] = 1
+
+    for i in range(1, m+1):
+        for j in range(1, n+1):
+            if s[j-1] == t[i-1]:
+                dp[i][j] = dp[i-1][j-1] + dp[i][j-1]
+            else:
+                dp[i][j] = dp[i][j-1]
+    return dp[-1][-1]

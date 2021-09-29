@@ -714,3 +714,45 @@ def queueConstructionFromOrder(arr):
     for i in reversed(range(n)):
         res[i] = heights.pop(-arr[i]-1)
     return res
+
+# Given an array A of integers of size N. Find the maximum of value of j - i such that A[i] <= A[j]
+# https://www.geeksforgeeks.org/given-an-array-arr-find-the-maximum-j-i-such-that-arrj-arri/
+def maxDistance(nums):
+    prefixMin = [nums[0]]
+    for n in nums[1:]:
+        prefixMin.append(min(n, prefixMin[-1]))
+
+    def bsfloor(k):
+        l, r = 0, len(nums)-1
+        while l < r:
+            m = l + (r-l)//2
+            if prefixMin[m] <= k:
+                r = m
+            else:
+                l = m + 1
+        return l
+
+    maxD = 0
+    for i in range(len(nums)):
+        maxD = max(maxD, i - bsfloor(nums[i]))
+    return maxD
+
+# PUBG
+# There are N players each with strength A[i].
+# When player i attack player j, player j strength reduces to max(0, A[j]-A[i]).
+# When a player's strength reaches zero, it loses the game and the game continues in the same manner
+# until only 1 survivor remains.
+# Can you tell the minimum health last surviving person can have?
+def minLife(A):
+    import heapq
+    heapq.heapify(A)
+    zero = 0
+
+    while len(A) > 1:
+        nextMin = A[0] - zero
+        zero += nextMin
+        heapq.heapreplace(A, nextMin + zero)
+        while A[0] <= zero:
+            heapq.heappop(A)
+
+    return A[0] - zero
