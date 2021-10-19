@@ -1,7 +1,7 @@
 
-#
-# 1toNProblems
-#
+################################################################################
+# ------------------------------ 1 to N Problems ----------------------------- #
+################################################################################
 
 def findDuplicateAndMissingNumber(list):
 	def swap(i, j):
@@ -42,11 +42,39 @@ def findDuplicateFloyd(nums):
         if slow == fast:
             break
 
-    print(slow, fast)
     slow = 0
     while nums[slow] != nums[fast]:
         slow = nums[slow]
         fast = nums[fast]
-        print(slow, fast)
 
     return nums[slow]
+
+#https://practice.geeksforgeeks.org/problems/find-duplicates-in-an-array/1
+def duplicates(arr, n):
+    for num in arr:
+        arr[num%n] += n
+
+    dupes = []
+    for i in range(n):
+        if arr[i]//n > 1:
+            dupes.append(i)
+
+    return dupes
+
+#https://leetcode.com/problems/first-missing-positive/
+def firstMissingPositive(self, nums: List[int]) -> int:
+    n = 0
+    for i in range(len(nums)):
+        if 0 < nums[i] <= len(nums)+1:
+            nums[i], nums[n] = nums[n], nums[i]
+            n += 1
+
+    for i in range(n):
+        j = abs(nums[i]) - 1
+        if j < n and nums[j] > 0:
+            nums[j] *= -1
+
+    for i in range(n):
+        if nums[i] > 0:
+            return i + 1
+    return n+1

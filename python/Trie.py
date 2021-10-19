@@ -7,6 +7,15 @@ class Trie:
         for word in words:
             self.addWord(word)
     
+    def __contains__(self, c):
+        return c in self.children
+
+    def __getitem__(self, c):
+        return self.children[c]
+
+    def __len__(self):
+        return len(self.children)
+
     def hasChildren(self):
         return len(self.children) > 0
 
@@ -151,3 +160,34 @@ def phoneDirectoryPrefixSearch(n, contact, s):
             res += [[0]]*(n-i)
             break
     return res
+
+#https://leetcode.com/problems/palindrome-pairs/
+#TODO: Incomplete
+def palindromePairs(words):
+    trie = Trie()
+    for word in words:
+        trie.addWord(word[::-1])
+
+    def isPalindrome(s):
+        i, j = 0, len(s)-1
+        while i < j:
+            if s[i] != s[j]:
+                return False
+            i += 1
+            j -= 1
+        return True
+
+    print(trie.getDictionary())
+    pairs = []
+    for j, word in enumerate(words):
+        node = trie
+        for i, c in enumerate(word):
+            print("char", c, "node:", node.path, node.children.keys())
+            if c in node:
+                node = node[c]
+            else:
+                break
+        if node.isComplete and isPalindrome(word[i:]):
+            pairs.append((j, words.index(node.path[::-1])))      
+    return pairs
+

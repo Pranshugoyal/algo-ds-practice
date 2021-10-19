@@ -397,3 +397,19 @@ def getTaskOrder(tasks):
         order.append(task[1])
 
     return order
+
+#https://leetcode.com/problems/find-k-pairs-with-smallest-sums/
+def kSmallestPairs(nums1, nums2, k):
+    n, m = len(nums1), len(nums2)
+    heap = [(nums1[i]+nums2[0], i, 0) for i in range(min(n, k))]
+    heapq.heapify(heap)
+
+    pairs = []
+    while heap and len(pairs) < k:
+        _, i, j = heapq.heappop(heap)
+        pairs.append([nums1[i], nums2[j]])
+
+        j += 1
+        if j < m:
+            heapq.heappush(heap, (nums1[i]+nums2[j], i, j))
+    return pairs

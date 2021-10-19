@@ -49,6 +49,7 @@ def graphDFS(V,adj):
 
 #https://practice.geeksforgeeks.org/problems/topological-sort/1
 def topologicalSort(V, adj):
+    # Kahn's Algorithm
     indegreeCount = [0 for i in range(V)]
     for v in range(V):
         for u in adj[v]:
@@ -771,6 +772,42 @@ def primsMST(V, adj):
     edges = []
     for v in mst:
         if parent[v] != -1:
+            edges.append((parent[v], v, cost[v]))
+    edges.sort(key=lambda x:x[0])
+    return edges
+
+def primsMSTHeap(V, adj):
+    import sys
+    import heapq
+    INF = sys.maxsize
+
+    cost = [INF]*V
+    h = [(INF, i) for i in range(V)]
+    parent = [None]*V
+
+    def nextVertex(mst):
+        c, v = heapq.heappop(h)
+        while v in mst or cost[v] < c:
+            c, v = heapq.heappop(h)
+        return v
+
+    mst = set()
+    source = 0
+    cost[source] = 0
+    h[source] = (0, source)
+    heapq.heapify(h)
+    while len(mst) < V:
+        v = nextVertex(mst)
+        mst.add(v)
+        for u, w in adj[v]:
+            if u not in mst and cost[u] >= w:
+                cost[u] = w
+                parent[u] = v
+                heapq.heappush(h, (cost[u], u))
+
+    edges = []
+    for v in mst:
+        if parent[v] is not None:
             edges.append((parent[v], v, cost[v]))
     edges.sort(key=lambda x:x[0])
     return edges

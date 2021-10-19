@@ -118,6 +118,7 @@ Problems:
 - String:
 	- Swap characters in a String (https://www.geeksforgeeks.org/swap-characters-in-a-string/)
 	- Leetcode 686: Repeated String Match
+	- Leetcode 336: Palindrome Pairs
 	- Roman Number to Integer
 	- Recursively remove all adjacent duplicates
 		- https://www.geeksforgeeks.org/recursively-remove-adjacent-duplicates-given-string/
@@ -143,9 +144,6 @@ Problems:
     - Morris tree travel
     - Leetcode 307: Range Sum Query | Segment Trees
 
-- Swap Sort
-	- Leetcode 287: Find the Duplicate Number
-
 - Bit Manipulation:
 	- Swap all odd and even bits
 	- Maximum subset XOR
@@ -161,6 +159,8 @@ Problems:
 
 - Math
     - Leetcode 932: Beautiful Array
+    - Leetcode 1643: Kth Smallest Instructions (Kth permutation of string)
+        - https://www.geeksforgeeks.org/find-n-th-lexicographically-permutation-string-set-2/
     - Conve Hull | Leetcode 587: Erect the Fence
     - Multiplying long numbers using individual digits using carry (https://www.geeksforgeeks.org/factorial-large-number/)
 

@@ -205,3 +205,35 @@ def countGoodNumbers(n):
 
     M = 10**9 + 7
     return fastExp(4, n//2, M) * fastExp(5, n - n//2, M) % M
+
+#https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
+def canPartitionKSubsets(nums, n, k):
+    if k == 1:
+        return True
+    elif k > len(nums):
+        return False
+
+    target = sum(nums)
+    if target % k != 0:
+        return False
+
+    target //= k
+    taken = [False]*n
+
+    def partition(buckets, searchIndex, currentSum):
+        if buckets == 1:
+            return True
+        elif currentSum == target:
+            return partition(buckets-1, 0, 0)
+
+        for i in range(searchIndex, n):
+            if taken[i] or currentSum + nums[i] > target:
+                continue
+
+            taken[i] = True
+            if partition(buckets, i+1, currentSum+nums[i]):
+                return True
+            taken[i] = False
+        return False
+
+    return partition(k, 0, 0)
