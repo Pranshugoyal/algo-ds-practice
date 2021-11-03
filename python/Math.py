@@ -30,6 +30,11 @@ def modInverse(a, m):
  
     return x
 
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
 #https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
 def fisherYatesShuffle(nums, n):
     for i in range(n):
@@ -136,3 +141,19 @@ def fencePerimeter(trees):
     points = list(map(Point, trees))
     fence = convexHullJarvis(points)
     return list(map(Point.pack, fence))
+
+def findPi(n, size):
+    from random import randrange as rr
+    from math import gcd, pi
+
+    def isCoprime():
+        a, b = rr(size) + 1, rr(size) + 1
+        return gcd(a, b) == 1
+
+    coprimePairs = 0
+    for _ in range(n):
+        coprimePairs += 1 if isCoprime() else 0
+
+    return (6*n/coprimePairs)**(0.5)
+
+print(findPi(int(1_00_00 * (pi)**2), 10000))

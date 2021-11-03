@@ -197,3 +197,25 @@ def longestUncommonSequence(strs):
         if isUnique:
             return len(strs[i])
     return -1
+
+#https://leetcode.com/problems/longest-palindromic-substring
+def longestPalindrome(s):
+    n = len(s)
+    if n == 0:
+        return 0
+
+    dp = [[False]*n for _ in range(n)]
+    maxLen = 1
+    for i, c in enumerate(s):
+        dp[i][i] = True
+        if i < n-1 and s[i] == s[i+1]:
+            dp[i][i+1] = True
+            maxLen = 2
+
+    for i in reversed(range(n-2)):
+        for j in range(i+2, n):
+            dp[i][j] = s[i] == s[j] and dp[i+1][j-1]
+            if dp[i][j]:
+                maxLen = max(maxLen, j-i+1)
+
+    return maxLen
