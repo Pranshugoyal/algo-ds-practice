@@ -9,12 +9,38 @@ class DLXNode:
         self.size = 0
         self.name = None
 
+    def removeH(self):
+        self.r.l = self.l
+        self.l.r = self.r
+
+    def removeV(self):
+        self.u.d = self.d
+        self.d.u = self.u
+        self.c.size -= 1
+
+    def addH(self):
+        self.r.l = self
+        self.l.r = self
+
+    def addV(self):
+        self.d.u = self
+        self.u.d = self
+        self.c.size += 1
+
 class DLXMatrix:
     def __init__(self, M, names=None):
         self.names = names
         self.root, self.header = self._columnHeaders(M)
         self._setupCells(M)
-        self.header = None
+        #self.header = None
+
+    def __str__(self):
+        node = self.root.r
+        ans = []
+        while node is not self.root:
+            ans.append(node.name)
+            node = node.r
+        return "".join(ans)
 
     def _columnHeaders(self, M):
         n, m = len(M), len(M[0])
@@ -64,6 +90,17 @@ class DLXMatrix:
         for i in range(m):
             row[i].d = self.header[i]
             self.header[i].u = row[i]
+    
+    def getRow(self, r):
+        node = r.r
+        s = [r.c.name]
+        while node is not r:
+            s.append(node.c.name)
+            node = node.r
+        return "".join(s)
+
+    def solve(self):
+        return self.search([])
 
     def chooseColumn(self):
         if self.root.r is self.root:
@@ -78,45 +115,36 @@ class DLXMatrix:
         return selected
 
     def cover(self, c):
-        def removeH(node):
-            node.r.l = node.l
-            node.l.r = node.r
-
-        def removeV(node):
-            node.u.d = node.d
-            node.d.u = node.u
-            node.c.size -= 1
-
-        removeH(c)
+        c.removeH()
         node = c.d
         while node is not c:
             next = node.r
             while next is not node:
-                removeV(next)
+                next.removeV()
                 next = next.r
             node = node.d
 
     def uncover(self, c):
-        def addH(node):
-            node.r.l = node
-            node.l.r = node
-
-        def addV(node):
-            node.d.u = node
-            node.u.d = node
-            node.c.size += 1
-
         node = c.u
         while node is not c:
             next = node.l
             while next is not node:
-                addV(next)
+                next.addV()
                 next = next.l
             node = node.u
-        addH(c)
+        c.addH()
 
-    def solve(self):
-        return self.search([])
+    def hideRow(self, row):
+        node = row.r
+        while node is not row:
+            self.cover(node.c)
+            node = node.r
+
+    def unhideRow(self, row):
+        node = row.l
+        while node is not row:
+            self.uncover(node.c)
+            node = node.l
 
     def search(self, s):
         if self.root.r is self.root:
@@ -127,36 +155,10 @@ class DLXMatrix:
         self.cover(c)
         r = c.d
         while r is not c:
-            # Wind
-            j = r.r
-            while j is not r:
-                self.cover(j.c)
-                j = j.r
-
+            self.hideRow(r)
             sol += self.search(s+[r.name])
-
-            # Unwind
-            j = r.l
-            while j is not r:
-                self.uncover(j.c)
-                j = j.l
+            self.unhideRow(r)
             r = r.d
         self.uncover(c)
         return sol
-    
-    def getRow(self, r):
-        node = r.r
-        s = [r.c.name]
-        while node is not r:
-            s.append(node.c.name)
-            node = node.r
-        return "".join(s)
-
-    def __str__(self):
-        node = self.root.r
-        ans = []
-        while node is not self.root:
-            ans.append(node.name)
-            node = node.r
-        return "".join(ans)
 
